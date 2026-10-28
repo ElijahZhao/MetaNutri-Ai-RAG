@@ -19,12 +19,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  security-review:
-    name: Claude Code security review
+  bandit:
+    name: Security scan (bandit)
     runs-on: ubuntu-latest
-    if: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+    if: ${{ hashFiles('**/*.py') != '' }}
     steps:
       - uses: actions/checkout@v4
-      - uses: anthropics/claude-code-security-review@main
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install bandit
+      - run: bandit -r src app.py -q

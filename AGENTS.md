@@ -9,13 +9,13 @@ MetaNutri 生态的 RAG 研究应用模块：健康饮食问答系统。
 ## 三仓库架构
 | | 仓库 | 可见性 | 用途 |
 |---|---|---|---|
-| 主仓库 | ElijahZhao/nutri-rag | Public | 展示面：README、代码、docs/ |
-| 错题本 | ElijahZhao/project-archive | Private | 本项目一切过程材料 → `nutri-rag/` 子目录（01-过程证据/02-审查产物/03-诊断书/05-AI使用记录） |
-| 学习笔记 | ElijahZhao/learning-notes | Private | 仅跨项目通用心得，同样写在 `nutri-rag/` 下 |
+| 主仓库 | 本仓库（nutri-rag） | Public | 展示面：README、代码、docs/ |
+| 错题本 | 私有归档仓库 | Private | 本项目一切过程材料 → 归档仓库 `nutri-rag/` 子目录（01-过程证据/02-审查产物/03-诊断书/05-AI使用记录） |
+| 学习笔记 | 私有笔记仓库 | Private | 仅跨项目通用心得，同样写在 `nutri-rag/` 下 |
 
 硬规则：
-- 只允许新增/修改 `project-archive/nutri-rag/` 与 `learning-notes/nutri-rag/` 下的内容；其他项目内容只读不动
-- 不得用 submodule/subtree 关联私人仓库；主仓库任何文件、README、commit、CI 中不得出现两个私人仓库的名称或 URL
+- 只允许新增/修改私有归档仓库与私有笔记仓库 `nutri-rag/` 下的内容；其他项目内容只读不动
+- 不得用 submodule/subtree 关联私人仓库；主仓库任何文件、README、commit、CI 中不得出现任何私人仓库的名称或 URL
 - `[项目名]` = `nutri-rag`，与主仓库大小写、连字符完全一致
 
 ## 常用命令
@@ -26,7 +26,7 @@ MetaNutri 生态的 RAG 研究应用模块：健康饮食问答系统。
 - 可选 API：`uvicorn src.api:app --reload`
 
 ## 开发与审查流程（权威规范仓库）
-- 规范源：`ElijahZhao/List-of-open-source-projects-for-AI-coding-agent-specification`
+- 规范源：私有开发规范仓库（未公开，按约定路径获取）
 - 审查类任务（审查/收尾/README/去味）必须先加载该仓库《项目审查提示词库.md》全文，按任务编号执行：
   ① 文件体检 → ② 过程产物审查 → ③ 竣工评审 → ④ 修缮审查 → ⑤ README 重写 → ⑥ 去 AI 味
 - **一任务一确认**：每任务产出清单/报告后停下等用户拍板，禁止连跑

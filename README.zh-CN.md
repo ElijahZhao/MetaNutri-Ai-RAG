@@ -58,6 +58,10 @@ flowchart TD
 
 ![问答界面（英文）](assets/screenshots/screenshot-chat-en.png)
 
+**评测研究面板（整页长图）** —— 50 题评测明细 + 拒答评测 + 超参数消融（9 组）+ 混合检索对比 + 消融失败案例，一页看完整条研究链：
+
+![评测研究面板](assets/screenshots/screenshot-eval-research-zh.png)
+
 ## ⚡ 快速开始
 
 ```bash

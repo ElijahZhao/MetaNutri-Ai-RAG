@@ -103,6 +103,7 @@ I18N = {
         "th_rag": "RAG覆盖", "th_norag": "无RAG覆盖",
         "caption": "共 {} 条 · 全部 50 条：检索命中 50/50 · 忠实 50/50 · 引用 50/50",
         "eval_missing": "评测报告缺失：未找到 data/eval_report.json",
+        "err_api": "服务暂时不可用，请稍后重试；若持续失败请检查 API 配置。",
         "vis_title": "🧭 评测覆盖总览 · 50 题",
         "vis_norag": "无 RAG 覆盖 {0} · RAG 补齐 {1}",
         "vis_ok": "双覆盖（RAG + 无 RAG）",
@@ -203,6 +204,7 @@ I18N = {
         "th_rag": "RAG cover", "th_norag": "No-RAG cover",
         "caption": "{} rows · All 50: hit 50/50 · faithful 50/50 · citation 50/50",
         "eval_missing": "Evaluation report missing: data/eval_report.json not found",
+        "err_api": "Service temporarily unavailable — please retry shortly; if it persists, check the API configuration.",
         "vis_title": "🧭 Evaluation Coverage Overview · 50 items",
         "vis_norag": "No-RAG coverage {0} · RAG recovered {1}",
         "vis_ok": "Covered both ways (RAG + no-RAG)",
@@ -556,11 +558,18 @@ def ask(question):
     with st.chat_message("user"):
         st.markdown(question)
     with st.chat_message("assistant"):
-        with st.spinner(L["spinner"]):
-            hits = retriever.search(question, top_k=TOP_K)
-        answer = st.write_stream(
-            generator.answer_stream(question, hits, language=st.session_state.lang)
-        )
+        try:
+            with st.spinner(L["spinner"]):
+                hits = retriever.search(question, top_k=TOP_K)
+            answer = st.write_stream(
+                generator.answer_stream(question, hits, language=st.session_state.lang)
+            )
+        except Exception as e:
+            # API / network / quota failures: show a readable error instead of a crash page
+            msg = L["err_api"]
+            st.error(msg)
+            conv["messages"].append({"role": "assistant", "content": msg})
+            return
         cites = sorted(set(c for c in extract_citations(answer) if 1 <= c <= len(hits)))
         if cites:
             with st.expander(L["cite_exp"].format(len(cites))):

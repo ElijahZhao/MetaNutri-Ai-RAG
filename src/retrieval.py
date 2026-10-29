@@ -26,7 +26,12 @@ class Retriever:
         self.collection = db.get_collection(COLLECTION)
 
     def embed(self, text: str) -> list:
-        r = self._client.embeddings.create(model=EMB_MODEL, input=text)
+        try:
+            r = self._client.embeddings.create(model=EMB_MODEL, input=text)
+        except Exception as e:  # network / auth / quota failures surface readably
+            raise RuntimeError(
+                f"embedding API 调用失败（{type(e).__name__}）：{e}"
+            ) from e
         return r.data[0].embedding
 
     def search(self, query: str, top_k: int | None = None, min_score: float | None = None) -> list[dict]:
@@ -39,7 +44,8 @@ class Retriever:
         k = top_k or self.top_k
         emb = self.embed(query)
         food_k = max((k + 1) // 2, 1)
-        guide_k = k - food_k
+        # keep guide_k >= 1: ChromaDB rejects n_results=0 when k==1
+        guide_k = max(k - food_k, 1)
 
         food = self.collection.query(
             query_embeddings=[emb], n_results=food_k, where={"type": "food"}

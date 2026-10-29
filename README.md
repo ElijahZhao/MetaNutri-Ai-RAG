@@ -42,21 +42,13 @@ Ask questions like *"高血压人群饮食上应该注意什么？"* or *"每100
 
 ## 🖼️ Screenshots
 
-**Chat** — Chinese interface; every answer carries `[n]` citations to source chunks:
+| Chat · Chinese — every answer carries `[n]` citations | Chat · English — full i18n, answers follow the UI language |
+|---|---|
+| ![Chat - Chinese](assets/screenshots/screenshot-chat-zh.png) | ![Chat - English](assets/screenshots/screenshot-chat-en.png) |
 
-![Chat - Chinese](assets/screenshots/screenshot-chat-zh.png)
-
-**Evaluation dashboard** — 50-case coverage matrix by category (green = covered by both RAG and no-RAG, orange = RAG-only gain):
-
-![Evaluation dashboard](assets/screenshots/screenshot-eval-zh.png)
-
-**Chat** — English interface (full i18n, answers follow the UI language):
-
-![Chat - English](assets/screenshots/screenshot-chat-en.png)
-
-**Evaluation research dashboard (full-page)** — 50-case detail table, refusal evaluation, 9-run hyper-parameter sweep, hybrid retrieval comparison and ablation failure cases, the whole research chain in one scroll:
-
-![Evaluation research dashboard](assets/screenshots/screenshot-eval-research-en.png)
+| Evaluation dashboard · 50-case coverage matrix (green = covered both ways, orange = RAG-only gain) | Evaluation research (full-page) · 50-case details, refusal, 9-run sweep, hybrid comparison, failure cases — the whole research chain in one scroll |
+|---|---|
+| ![Evaluation dashboard](assets/screenshots/screenshot-eval-zh.png) | ![Evaluation research dashboard](assets/screenshots/screenshot-eval-research-en.png) |
 
 ## ⚡ Quick Start
 
@@ -111,6 +103,8 @@ For deployment on Streamlit Community Cloud: set `DASHSCOPE_API_KEY` in **Advanc
 | Eval | Custom 50-case set + ablation script |
 
 ## 📊 Evaluation
+
+_Below: the 50-case offline evaluation, then four research extensions — refusal (anti-hallucination), hyper-parameter sweep, hybrid-retrieval comparison and failure attribution — each backed by a one-command regenerable report._
 
 Offline evaluation on 50 hand-verified cases (20 composition / 15 guideline / 15 special; gold answers are real CSV values or verbatim guideline text — none hand-written), qwen-plus, 100 LLM calls total:
 
@@ -193,6 +187,9 @@ For applicants & interviewers: how to tell the Nutri-RAG story — one-liner, PS
 
 ## 📝 Changelog
 
+- **v0.6** — Portfolio & robustness: portfolio narrative guide, EN/zh evaluation research screenshots, publication-opportunity memo, readable API-failure handling (no more crash page)
+- **v0.5** — UI & i18n: full English interface, streaming answers, warm theme, 4-block evaluation panel, 8 English example questions (4×2)
+- **v0.4** — Research suite: refusal evaluation (10 out-of-scope cases), 9-run hyper-parameter sweep, hybrid-retrieval comparison, failure attribution (6 no-RAG cases)
 - **v0.3** — Streamlit demo (chat + citations + eval dashboard), deployed
 - **v0.2** — RAG pipeline: balanced two-path retrieval, generation with citations, 50-case eval + ablation
 - **v0.1** — Data pipeline: 325 foods × 32 nutrients, 17 guideline chunks, 342-chunk vector store

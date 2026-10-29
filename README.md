@@ -1,5 +1,9 @@
 <div align="center">
 
+<p align="right">
+  <strong>English</strong> | <a href="README.zh-CN.md">简体中文</a>
+</p>
+
 # 🥗 Nutri-RAG
 
 **Health-diet Q&A via Retrieval-Augmented Generation** — the LLM research module of the MetaNutri ecosystem

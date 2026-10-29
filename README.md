@@ -56,7 +56,7 @@ Ask questions like *"高血压人群饮食上应该注意什么？"* or *"每100
 
 **Evaluation research dashboard (full-page)** — 50-case detail table, refusal evaluation, 9-run hyper-parameter sweep, hybrid retrieval comparison and ablation failure cases, the whole research chain in one scroll:
 
-![Evaluation research dashboard](assets/screenshots/screenshot-eval-research-zh.png)
+![Evaluation research dashboard](assets/screenshots/screenshot-eval-research-en.png)
 
 ## ⚡ Quick Start
 

@@ -48,11 +48,11 @@ flowchart TD
 
 | 问答界面（中文）—— 每条回答带 `[n]` 引用编号指向来源切片 | 问答界面（英文）—— 全界面中英切换，回答语言跟随界面语言 |
 |---|---|
-| ![问答界面（中文）](assets/screenshots/screenshot-chat-zh.png) | ![问答界面（英文）](assets/screenshots/screenshot-chat-en.png) |
+| <img src="assets/screenshots/screenshot-chat-zh.png" width="100%" alt="问答界面（中文）" /> | <img src="assets/screenshots/screenshot-chat-en.png" width="100%" alt="问答界面（英文）" /> |
 
 | 评测面板 —— 50 条评测覆盖矩阵（绿色 = RAG 与无 RAG 均覆盖，橙色 = RAG 增量补齐） | 评测研究面板（整页长图）—— 50 题评测明细 + 拒答评测 + 超参数消融（9 组）+ 混合检索对比 + 消融失败案例，一页看完整条研究链 |
 |---|---|
-| ![评测面板](assets/screenshots/screenshot-eval-zh.png) | ![评测研究面板](assets/screenshots/screenshot-eval-research-zh.png) |
+| <img src="assets/screenshots/screenshot-eval-zh.png" width="100%" alt="评测面板" /> | <img src="assets/screenshots/screenshot-eval-research-zh.png" width="100%" alt="评测研究面板" /> |
 
 ## ⚡ 快速开始
 

@@ -48,11 +48,11 @@ Ask questions like *"高血压人群饮食上应该注意什么？"* or *"每100
 
 | Chat · Chinese — every answer carries `[n]` citations | Chat · English — full i18n, answers follow the UI language |
 |---|---|
-| ![Chat - Chinese](assets/screenshots/screenshot-chat-zh.png) | ![Chat - English](assets/screenshots/screenshot-chat-en.png) |
+| <img src="assets/screenshots/screenshot-chat-zh.png" width="100%" alt="Chat - Chinese" /> | <img src="assets/screenshots/screenshot-chat-en.png" width="100%" alt="Chat - English" /> |
 
 | Evaluation dashboard · 50-case coverage matrix (green = covered both ways, orange = RAG-only gain) | Evaluation research (full-page) · 50-case details, refusal, 9-run sweep, hybrid comparison, failure cases — the whole research chain on one page |
 |---|---|
-| ![Evaluation dashboard](assets/screenshots/screenshot-eval-zh.png) | ![Evaluation research dashboard](assets/screenshots/screenshot-eval-research-en.png) |
+| <img src="assets/screenshots/screenshot-eval-zh.png" width="100%" alt="Evaluation dashboard" /> | <img src="assets/screenshots/screenshot-eval-research-en.png" width="100%" alt="Evaluation research dashboard" /> |
 
 ## ⚡ Quick Start
 

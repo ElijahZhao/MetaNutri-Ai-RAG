@@ -1,0 +1,142 @@
+<div align="center">
+
+<p align="right">
+  <a href="README.md">English</a> | <strong>简体中文</strong>
+</p>
+
+# 🥗 Nutri-RAG
+
+**基于检索增强生成（RAG）的健康饮食问答** — MetaNutri 生态的 LLM 研究模块
+
+[![在线演示](https://img.shields.io/badge/Streamlit-%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
+[![CI](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)]()
+[![向量库](https://img.shields.io/badge/VectorDB-ChromaDB-4ea94b)]()
+[![LLM](https://img.shields.io/badge/LLM-qwen--plus-FF6B6B)]()
+[![Embedding](https://img.shields.io/badge/Embedding-text--embedding--v3-8b5cf6)]()
+
+</div>
+
+**Nutri-RAG** 是一个研究型 RAG 应用，基于官方中文营养数据回答健康饮食问题：*《中国食物成分表》*（325 种食物 × 32 项营养指标）与 *《中国居民膳食指南（2022）》*（平衡膳食八准则 + 详细实践）。
+
+## ✨ 核心亮点
+
+- **均衡双路检索** — 食物切片与指南切片按等额配额分别检索，指南建议不会被 325 条食物切片挤出召回窗口
+- **引用溯源回答** — 每条关键信息都带 `[n]` 引用编号指向来源切片，回答全程可核验、无虚构数值
+- **内置评测** — 50 条评测集（成分 / 指南 / 禁忌三类）+ 无 RAG vs RAG 消融对比，一条命令可复现
+- **可复现数据管线** — 官方数据源，采集 → 清洗 → 切片 → 入库全程脚本化
+- **轻量部署** — 单进程 Streamlit 应用跑在免费层，向量库缺失时自动从备份解压恢复
+
+## 🏗️ 架构
+
+```mermaid
+flowchart TD
+    A["官方数据源<br/>中国食物成分表 + 膳食指南2022"] --> B["数据管线<br/>采集 → 清洗 → 切片"]
+    B --> C[("ChromaDB 向量库<br/>342 chunks")]
+    C --> D["Python RAG 管线<br/>检索 → 上下文组装 → LLM → 回答 + 引用"]
+    D --> E["Streamlit 应用<br/>聊天界面 + 评测面板"]
+```
+
+## 🚀 在线演示
+
+立即体验：**[metanutri-ai-rag-question-answering.streamlit.app](https://metanutri-ai-rag-question-answering.streamlit.app/)**
+
+试试 *"高血压人群饮食上应该注意什么？"* 或 *"每100克鸡蛋含多少蛋白质？"* —— 每条回答都可展开查看引用来源进行核验。
+
+## ⚡ 快速开始
+
+```bash
+git clone https://github.com/ElijahZhao/nutri-rag.git
+cd nutri-rag
+pip install -r requirements.txt
+
+# 在 .env 中配置阿里云百炼 API Key：
+#   DASHSCOPE_API_KEY=sk-...
+
+# 可选：重建向量库（缺失时会自动从 data/chroma_db.tar.gz 恢复）
+python3 src/kb.py --rebuild
+
+streamlit run app.py
+```
+
+部署到 Streamlit Community Cloud：在 **Advanced settings → Secrets** 中以 TOML 格式配置 `DASHSCOPE_API_KEY`，参见 `.streamlit/secrets.toml.example`。
+
+## 📁 目录结构
+
+```
+├── app.py                  # Streamlit 演示：问答 + 引用 + 评测面板
+├── src/
+│   ├── config.py           # 管线配置
+│   ├── retrieval.py        # 均衡双路检索（食物 + 指南）
+│   ├── generation.py       # 上下文组装 + LLM 回答（带 [n] 引用）
+│   ├── kb.py               # 向量库构建/重建（ChromaDB）
+│   └── evaluation.py       # 50 条评测 + 无 RAG vs RAG 消融
+├── data/
+│   ├── fetch_*.py          # 数据采集脚本（官方数据源）
+│   ├── build_kb_texts.py   # 知识切片
+│   ├── build_eval_set.py   # 评测集生成
+│   ├── eval_questions.json # 50 条评测集
+│   ├── eval_report.json    # 最新评测报告
+│   ├── kb_foods.txt        # 325 条食物切片
+│   ├── kb_guidelines.txt   # 17 段指南切片
+│   ├── chroma_db.tar.gz    # 向量库备份（342 chunks）
+│   └── SOURCES.md          # 数据来源登记
+└── requirements.txt
+```
+
+## 🧰 技术栈
+
+| 组件 | 选型 |
+|---|---|
+| 语言 | Python 3.12 |
+| 演示 UI | Streamlit |
+| 向量库 | ChromaDB（嵌入式、文件型） |
+| Embedding | `text-embedding-v3`（阿里云百炼） |
+| LLM | `qwen-plus`（OpenAI 兼容端点） |
+| 评测 | 自建 50 条评测集 + 消融脚本 |
+
+## 📊 评测结果
+
+离线评测：50 条人工核验评测集（成分 20 / 指南 15 / 禁忌 15；gold 全部来自 CSV 真实数值或指南原文，无手编数字），qwen-plus，共 100 次 LLM 调用：
+
+| 指标 | 得分 |
+|---|---|
+| 检索命中率 | **100%**（50/50） |
+| 生成忠实度 | **100%**（50/50） |
+| 引用溯源率 | **100%**（50/50） |
+| 关键信息覆盖：无 RAG → RAG | **88% → 100%** |
+
+三类（成分 / 指南 / 禁忌）检索命中与忠实度均为 **1.0**。消融差异集中在库内专有数值（如牛奶钙、猪里脊蛋白质、红薯能量）——裸模型答不出，RAG 全部命中且带引用溯源。
+
+重新生成报告：`python3 src/evaluation.py`
+
+## 📚 数据来源
+
+- **中国食物成分表** — 中国疾病预防控制中心营养与健康所（[nlc.chinanutri.cn](https://nlc.chinanutri.cn/fq/)）
+- **中国居民膳食指南（2022）** — 中国营养学会（[dg.cnsoc.org](http://dg.cnsoc.org/)）
+
+完整来源登记、采集脚本与重建说明：[`data/SOURCES.md`](data/SOURCES.md)
+
+## ⚠️ 免责声明
+
+本项目仅供学习研究演示，不构成医疗建议。健康问题请咨询专业医师或注册营养师。
+
+## 🔗 生态关联
+
+Nutri-RAG 是 **MetaNutri** 生态的 LLM 研究模块：
+
+- **MetaNutri** — 全栈精准营养平台（[仓库](https://github.com/ElijahZhao/MetaNutri---AI-) · [演示](https://meta-nutri-ai.vercel.app/)）
+- **ppgr-predictor** — 餐后 2 小时血糖预测（[仓库](https://github.com/ElijahZhao/ppgr-predictor) · [演示](https://metanutri-ai-ppgr-predictor.streamlit.app/)）
+- **Nutri-RAG**（本仓库）— 基于 RAG 的健康饮食问答
+
+## ❓ 常见问题
+
+- **为什么不做全栈应用？** RAG 的叙事核心在检索管线、引用溯源与评测——全栈工程能力已由 MetaNutri 展示。
+- **数据从哪来？** 仅官方公开数据源，全程脚本化可复现。
+- **运行成本？** 几乎为零：重计算全在 API 侧，Streamlit 免费层即可。
+
+## 📝 更新日志
+
+- **v0.3** — Streamlit 演示（问答 + 引用 + 评测面板），已部署上线
+- **v0.2** — RAG 管线：均衡双路检索、带引用生成、50 条评测 + 消融
+- **v0.1** — 数据管线：325 食物 × 32 营养项、17 段指南切片、342-chunk 向量库

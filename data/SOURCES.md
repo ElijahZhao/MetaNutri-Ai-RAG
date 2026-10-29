@@ -4,9 +4,9 @@
 - 来源：中国疾病预防控制中心营养与健康所「食物营养成分查询平台」
 - 网址：https://nlc.chinanutri.cn/fq/
 - 数据版本：平台现行版（2026-10-28 抓取）
-- 内容：307 条常见食物，每食物 32 项营养成分（能量/蛋白质/脂肪/碳水/维生素/矿物质/脂肪酸等），单位 g/mg/μg/kJ
-- 抓取方式：`data/fetch_foodlist.py`（全量清单 1356 条）→ `data/fetch_foods_selected.py`（精选 307 条）→ `data/fetch_food_details.py`（详情）
-- 缺失说明：部分营养项平台本身未收录（如膳食纤维 282/307 缺失、维生素E 287/307 缺失、碘 281/307 缺失），切片中该字段不列出；问答时对缺失项按"数据源未收录"处理，不估算
+- 内容：325 条常见食物，每食物 32 项营养成分（能量/蛋白质/脂肪/碳水/维生素/矿物质/脂肪酸等），单位 g/mg/μg/kJ
+- 抓取方式：`data/fetch_foodlist.py`（全量清单 1356 条）→ `data/fetch_foods_selected.py`（精选 325 条，含 MUST_INCLUDE_NAMES 18 个高频食物保底）→ `data/fetch_food_details.py`（详情）
+- 缺失说明：部分营养项平台本身未收录（如总膳食纤维 298/325 缺失、维生素E(α-TE) 303/325 缺失、碘 297/325 缺失），切片中该字段不列出；问答时对缺失项按"数据源未收录"处理，不估算
 
 ## 2. 膳食指南
 - 来源：中国营养学会·中国居民膳食指南官网
@@ -15,10 +15,12 @@
 - 抓取日期：2026-10-28
 
 ## 3. 切片产物
-- data/kb_foods.txt：307 条食物，每食物一段（按知识点切片）
-- data/kb_guidelines.txt：8 准则 + 准则六详细版，每准则一段
+- data/kb_foods.txt：325 条食物，每食物一段（按知识点切片）
+- data/kb_guidelines.txt：17 段（8 准则核心推荐 + 准则六详细实践 8 小节 + 概述）
+- 切片脚本：`data/build_kb_texts.py`（食物按名称切片；指南按准则与详细实践小节切）
 
-## 4. 向量库恢复
-- 备份：`data/chroma_db.tar.gz`（316 chunks，ChromaDB `nutri_kb` 集合）
-- 恢复：`tar -xzf data/chroma_db.tar.gz -C data/`
-- 重建：`python3 src/kb.py`（需在 `.env` 配置 `DASHSCOPE_API_KEY`，阿里百炼 text-embedding-v3，OpenAI 兼容端点）
+## 4. 向量库（ChromaDB）
+- 数据：data/chroma_db/（325 食物 + 17 指南 = **342 chunks**）
+- 备份：data/chroma_db.tar.gz（2.0MB，恢复：`tar xzf data/chroma_db.tar.gz -C data`）
+- 重建：`python3 src/kb.py --rebuild`（需 .env 配置 DASHSCOPE_API_KEY）
+- 说明：检索为均衡双路（食物路 top-3 + 指南路 top-3 合并，见 src/retrieval.py）

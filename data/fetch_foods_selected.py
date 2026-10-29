@@ -87,6 +87,28 @@ def main():
                 keep.add(fid)
             selected = [x for x in selected if x[2] != cat or x[0] in keep]
 
+    # MUST_INCLUDE: high-frequency foods that the cap/rank logic tends to drop
+    MUST_INCLUDE_NAMES = [
+        "香蕉[甘蕉]", "猪肉(里脊)", "猪肉(瘦)", "鸡(均值)", "鸭(均值)",
+        "带鱼[白带鱼，刀鱼]", "燕麦片", "核桃(干)[胡桃]", "牛肉(里脊)", "羊肉(里脊)",
+        "火龙果[仙蜜果、红龙果]", "草莓[洋莓，凤阳草莓]", "中华猕猴桃[毛叶猕猴桃]",
+        "木瓜[番木瓜]", "奶酪[干酪]", "胡萝卜(红)[金笋，丁香萝卜]",
+        "虾（河虾）", "虾（海虾）",
+    ]
+    # match by full name from the whole list (food_id dedup)
+    full_pool = {}
+    for cat, arr in foods.items():
+        for fid, nm in arr:
+            full_pool[nm] = (fid, cat)
+    selected_ids = {x[0] for x in selected}
+    for nm in MUST_INCLUDE_NAMES:
+        if nm in full_pool:
+            fid, cat = full_pool[nm]
+            if fid not in selected_ids:
+                selected.append((fid, nm, cat))
+                selected_ids.add(fid)
+                print(f"  + MUST_INCLUDE: {nm}")
+
     selected.sort(key=lambda x: (x[2], x[1]))
     with open("data/foods_selected_list.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)

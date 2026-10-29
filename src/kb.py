@@ -51,18 +51,27 @@ def embed_batch(texts):
 
 
 def main():
+    import sys
     import chromadb
+
+    rebuild = "--rebuild" in sys.argv
 
     chunks = load_chunks()
     print(f"chunks: {len(chunks)} (food={sum(1 for c in chunks if c['type']=='food')}, "
           f"guideline={sum(1 for c in chunks if c['type']!='food')})")
 
     db = chromadb.PersistentClient(path="data/chroma_db")
+    if rebuild:
+        try:
+            db.delete_collection(COLLECTION)
+            print("old collection deleted")
+        except Exception:
+            pass
     col = db.get_or_create_collection(
         COLLECTION, metadata={"hnsw:space": "cosine"}
     )
     if col.count() > 0:
-        print(f"collection already has {col.count()} docs; delete to rebuild")
+        print(f"collection already has {col.count()} docs; delete to rebuild (--rebuild)")
         return
 
     ids, docs, metas, vecs = [], [], [], []

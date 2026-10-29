@@ -360,9 +360,6 @@ div[data-testid="stTabs"] button[aria-selected="true"]{color:var(--brand);font-w
   padding:.5rem .75rem;margin:.2rem 0 .6rem;color:var(--text);font-size:.88rem;line-height:1.55;}
 .qa-mini.bad{background:#fdf2f2;border-left-color:#dc2626;}
 .qa-mini.good{background:var(--brand-soft);border-left-color:var(--brand);}
-[data-testid="stChatInput"]{display:none !important;}
-/* 问答 tab（第一个 tab）激活时显示吸底输入框 */
-.stApp:has([data-testid="stTab"]:first-of-type[aria-selected="true"]) [data-testid="stChatInput"]{display:flex !important;}
 @media (max-width:900px){
   .metric-grid{grid-template-columns:repeat(2,1fr);}
   .matrix{grid-template-columns:repeat(5,1fr);}
@@ -553,9 +550,24 @@ def ask(question):
     conv["messages"].append({"role": "assistant", "content": answer})
 
 
-tab_chat, tab_eval = st.tabs([L["tab_chat"], L["tab_eval"]])
+# ------------------------------------------------------------------ custom tabs
+# session_state-driven views instead of st.tabs: chat history, streaming
+# answers and the input box live only inside the chat view, so switching to
+# the eval view shows a clean page (no input box, no leaked conversation).
+st.session_state.setdefault("tab", "chat")
+tab_now = st.session_state.tab
 
-with tab_chat:
+_tb1, _tb2 = st.columns(2)
+if _tb1.button(L["tab_chat"], key="tbar_chat", use_container_width=True,
+               type="primary" if tab_now == "chat" else "secondary"):
+    st.session_state.tab = "chat"
+    st.rerun()
+if _tb2.button(L["tab_eval"], key="tbar_eval", use_container_width=True,
+               type="primary" if tab_now == "eval" else "secondary"):
+    st.session_state.tab = "eval"
+    st.rerun()
+
+if tab_now == "chat":
     conv = st.session_state.conversations[st.session_state.current_conv]
 
     for m in conv["messages"]:
@@ -571,10 +583,10 @@ with tab_chat:
         if col.button(q, use_container_width=True):
             ask(q)
 
-if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
-    ask(prompt)
+    if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
+        ask(prompt)
 
-with tab_eval:
+else:
     st.markdown(f"#### {L['eval_title']}")
     rep_path = ROOT / "data" / "eval_report.json"
     if rep_path.exists():

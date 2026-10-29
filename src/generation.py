@@ -69,6 +69,25 @@ class Generator:
         )
         return r.choices[0].message.content.strip()
 
+    def answer_stream(self, query: str, chunks: list[dict], language: str = "zh"):
+        """Streaming variant for the UI: yields text deltas as the LLM generates.
+        Non-streaming answer() stays the default for eval/tests."""
+        lang_rule = LANG_RULES.get(language, LANG_RULES["zh"])
+        messages = [
+            {"role": "system", "content": SYSTEM_PROMPT.format(LANG_RULE=lang_rule)},
+            {"role": "user", "content": self.build_prompt(query, chunks)},
+        ]
+        r = self._client.chat.completions.create(
+            model=LLM_MODEL,
+            messages=messages,
+            temperature=LLM_TEMPERATURE,
+            max_tokens=LLM_MAX_TOKENS,
+            stream=True,
+        )
+        for chunk in r:
+            if chunk.choices and chunk.choices[0].delta and chunk.choices[0].delta.content:
+                yield chunk.choices[0].delta.content
+
 
 def extract_citations(answer: str) -> list[int]:
     """Parse [n] citation markers from answer text."""

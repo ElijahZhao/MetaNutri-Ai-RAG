@@ -471,8 +471,9 @@ def ask(question):
     with st.chat_message("assistant"):
         with st.spinner(L["spinner"]):
             hits = retriever.search(question, top_k=TOP_K)
-            answer = generator.answer(question, hits, language=st.session_state.lang)
-        st.markdown(answer)
+        answer = st.write_stream(
+            generator.answer_stream(question, hits, language=st.session_state.lang)
+        )
         cites = sorted(set(c for c in extract_citations(answer) if 1 <= c <= len(hits)))
         if cites:
             with st.expander(L["cite_exp"].format(len(cites))):

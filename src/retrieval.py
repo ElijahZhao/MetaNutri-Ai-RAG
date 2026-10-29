@@ -29,10 +29,13 @@ class Retriever:
         r = self._client.embeddings.create(model=EMB_MODEL, input=text)
         return r.data[0].embedding
 
-    def search(self, query: str, top_k: int | None = None) -> list[dict]:
+    def search(self, query: str, top_k: int | None = None, min_score: float | None = None) -> list[dict]:
         """Balanced two-path retrieval: food and guideline chunks are queried
         separately with equal quota, so neither type can squeeze the other out
-        (food ~325 vs guideline ~9 would otherwise dominate)."""
+        (food ~325 vs guideline ~9 would otherwise dominate).
+
+        min_score: drop chunks below this cosine similarity (None = no threshold).
+        """
         k = top_k or self.top_k
         emb = self.embed(query)
         food_k = max((k + 1) // 2, 1)
@@ -53,7 +56,10 @@ class Retriever:
                 if doc in seen:
                     continue
                 seen.add(doc)
-                merged.append({"text": doc, "score": round(1 - dist, 4), "type": meta.get("type")})
+                score = round(1 - dist, 4)
+                if min_score is not None and score < min_score:
+                    continue
+                merged.append({"text": doc, "score": score, "type": meta.get("type")})
                 if len(merged) >= k:
                     return merged
         return merged

@@ -102,6 +102,12 @@ html[data-theme="dark"] .cite-tag.guide{background:#431407;color:#fdba74;}
 html[data-theme="dark"] .dtable th{color:#4ade80;}
 .dtable td{padding:.45rem .8rem;border-top:1px solid var(--border);color:var(--text);vertical-align:top;}
 .dtable tr:hover td{background:var(--brand-soft);}
+div[data-testid="stChatInput"]{border:1.5px solid var(--brand);border-radius:14px;box-shadow:var(--shadow);}
+div[data-testid="stChatInput"]:focus-within{box-shadow:0 0 0 3px rgba(22,163,74,.18);}
+div[data-testid="stChatInput"] textarea{font-size:.95rem;}
+.side-ecosystem{font-size:.86rem;line-height:1.9;}
+.side-ecosystem .ec-title{font-weight:700;color:var(--brand-dark);margin-bottom:.2rem;}
+html[data-theme="dark"] .side-ecosystem .ec-title{color:#4ade80;}
 @media (max-width:900px){.metric-grid{grid-template-columns:repeat(2,1fr);}}
 </style>
 """
@@ -132,15 +138,54 @@ with st.sidebar:
     )
     st.markdown(size_html, unsafe_allow_html=True)
     st.markdown(
-        "**MetaNutri 生态**  \n"
-        "· [MetaNutri 主仓](https://github.com/ElijahZhao/MetaNutri---AI-)  \n"
-        "· [ppgr-predictor](https://github.com/ElijahZhao/ppgr-predictor)  \n"
-        "· [Nutri-RAG](https://github.com/ElijahZhao/nutri-rag) 本仓库  \n"
-        "· [在线演示](https://metanutri-ai-rag-question-answering.streamlit.app/)"
+        '<div class="side-ecosystem"><div class="ec-title">🔗 MetaNutri 生态</div>'
+        '· <a href="https://github.com/ElijahZhao/MetaNutri---AI-">MetaNutri 主仓</a> — 全栈精准营养平台<br>'
+        '· <a href="https://github.com/ElijahZhao/ppgr-predictor">ppgr-predictor</a> — 餐后血糖预测<br>'
+        '· <a href="https://github.com/ElijahZhao/nutri-rag">Nutri-RAG</a> — 本仓库 · RAG 健康饮食问答<br>'
+        '· <a href="https://metanutri-ai-rag-question-answering.streamlit.app/">在线演示</a> — 就是本页面</div>',
+        unsafe_allow_html=True,
     )
     st.divider()
+
+    # ------------------------------------------------------ conversation manager
+    if "conversations" not in st.session_state:
+        st.session_state.conversations = {"conv_0": {"title": "对话 1", "messages": []}}
+        st.session_state.current_conv = "conv_0"
+
+    convs = st.session_state.conversations
+    cur = st.session_state.current_conv
+
+    if st.button("➕ 新建对话", use_container_width=True):
+        cid = f"conv_{len(convs)}"
+        st.session_state.conversations[cid] = {"title": f"对话 {len(convs) + 1}", "messages": []}
+        st.session_state.current_conv = cid
+        st.rerun()
+
+    sel = st.radio(
+        "会话",
+        list(convs),
+        index=list(convs).index(cur),
+        format_func=lambda cid: convs[cid]["title"],
+        label_visibility="collapsed",
+    )
+    if sel != cur:
+        st.session_state.current_conv = sel
+        st.rerun()
+
+    new_title = st.text_input(
+        "重命名", value=convs[cur]["title"], label_visibility="collapsed",
+        placeholder="重命名当前会话…",
+    )
+    if new_title and new_title != convs[cur]["title"]:
+        convs[cur]["title"] = new_title
+
+    if len(convs) > 1 and st.button("🗑 删除当前会话", use_container_width=True):
+        del st.session_state.conversations[cur]
+        st.session_state.current_conv = next(k for k in convs if k != cur)
+        st.rerun()
+
     if st.button("🗑 清空对话", use_container_width=True):
-        st.session_state.messages = []
+        convs[cur]["messages"] = []
         st.rerun()
 
 # ---------------------------------------------------------------------- hero
@@ -181,7 +226,11 @@ EXAMPLES = [
 
 
 def ask(question):
-    st.session_state.messages.append({"role": "user", "content": question})
+    conv = st.session_state.conversations[st.session_state.current_conv]
+    conv["messages"].append({"role": "user", "content": question})
+    # auto-title: replace the default "对话 N" with the first question
+    if conv["title"][:3] == "对话 " and conv["title"][3:].isdigit():
+        conv["title"] = question[:12] + ("…" if len(question) > 12 else "")
     with st.chat_message("user"):
         st.markdown(question)
     with st.chat_message("assistant"):
@@ -206,23 +255,25 @@ def ask(question):
                         f'<div class="body">{body}</div></div>',
                         unsafe_allow_html=True,
                     )
-    st.session_state.messages.append({"role": "assistant", "content": answer})
+    st.session_state.conversations[st.session_state.current_conv]["messages"].append(
+        {"role": "assistant", "content": answer}
+    )
 
 
 tab_chat, tab_eval = st.tabs(["💬 问答", "📊 评测结果"])
 
 with tab_chat:
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
+    conv = st.session_state.conversations[st.session_state.current_conv]
+
+    # history first (button-triggered asks render only their own new turn)
+    for m in conv["messages"]:
+        with st.chat_message(m["role"]):
+            st.markdown(m["content"])
 
     cols = st.columns(len(EXAMPLES))
     for col, q in zip(cols, EXAMPLES):
         if col.button(q, use_container_width=True):
             ask(q)
-
-    for m in st.session_state.messages:
-        with st.chat_message(m["role"]):
-            st.markdown(m["content"])
 
     if prompt := st.chat_input("请输入你的饮食营养问题（如：高尿酸人群能吃哪些豆制品？）"):
         ask(prompt)

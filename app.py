@@ -151,7 +151,9 @@ I18N = {
                      "What is the daily upper limit for trans fatty acids?",
                      "Which soy products can people with high uric acid eat?",
                      "How much calcium is in 100g of milk?",
-                     "Should I discard the egg yolk when eating eggs?"],
+                     "Should I discard the egg yolk when eating eggs?",
+                     "What foods should a nutritious breakfast include?",
+                     "How much protein is in 100g of pork tenderloin?"],
         "input_ph": "Ask a diet & nutrition question (e.g. which soy products can people with high uric acid eat?)",
         "side_data": "📦 Data",
         "side_data_rows": ["325 foods × 32 nutrients", "17 guideline sections · 342 chunks"],
@@ -603,14 +605,12 @@ if tab_now == "chat":
         with st.chat_message(m["role"]):
             st.markdown(m["content"])
 
-    cols = st.columns(3)
-    for col, q in zip(cols, EXAMPLES[:3]):
-        if col.button(q, use_container_width=True):
-            ask(q)
-    cols2 = st.columns(3)
-    for col, q in zip(cols2, EXAMPLES[3:]):
-        if col.button(q, use_container_width=True):
-            ask(q)
+    _ncol = 4 if st.session_state.lang == "en" else 3
+    for i in range(0, len(EXAMPLES), _ncol):
+        cols = st.columns(_ncol)
+        for col, q in zip(cols, EXAMPLES[i:i + _ncol]):
+            if col.button(q, use_container_width=True):
+                ask(q)
 
     if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
         ask(prompt)

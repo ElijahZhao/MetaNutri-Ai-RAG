@@ -17,13 +17,13 @@
 
 While building **MetaNutri**, a full-stack precision-nutrition platform with a post-meal glucose predictor, I realized a recommendation is only as good as the evidence behind it. That insight became **Nutri-RAG**: I curated 325 foods × 32 nutrients and 17 guideline sections from China's official food-composition tables and the 2022 Dietary Guidelines into 342 knowledge chunks, indexed them in ChromaDB, and served them through a dual-route retrieval + LLM pipeline that answers every question with per-claim citations.
 
-I refused to stop at "it works". I built a 50-case evaluation set and drove the system to 100% retrieval hit, citation and faithfulness — an 88%→100% leap over a bare LLM on the same questions. I ran a 9-configuration hyper-parameter sweep (top-k × similarity threshold) and let the data pick top-k=5 as the sweet spot. I added a 10-question refusal suite showing the RAG pipeline refuses out-of-scope questions 100% of the time while a bare LLM fabricates all of them. And I shipped all of it — CI with 26 passing tests, a bilingual Streamlit demo with streaming answers, and an evaluation dashboard where the whole research chain (refusal rates, ablation tables, failure-mode analysis) is visualized for the reader.
+"It works" was never the bar. A 50-case evaluation set drove the system to 100% retrieval hit, citation and faithfulness — an 88%→100% leap over a bare LLM on the same questions. The 9-configuration hyper-parameter sweep (top-k × similarity threshold) let the data, not intuition, pick top-k=5 as the sweet spot. A 10-question refusal suite showed the RAG pipeline refusing out-of-scope questions 100% of the time while a bare LLM fabricates all of them. All of it shipped with CI — 26 passing tests, a bilingual Streamlit demo with streaming answers, and an evaluation dashboard that puts the whole research chain (refusal rates, ablation tables, failure-mode analysis) on one page.
 
 To me, AI engineering is exactly this: making a claim measurable, and making the evidence visible. Nutri-RAG is my attempt to do both.
 
 **中文对照：** 在构建 MetaNutri（全栈精准营养平台 + 餐后血糖预测）的过程中，我意识到：一条建议的价值取决于它背后的证据。这个洞察催生了 Nutri-RAG：我把中国官方食物成分表（325 种食物 × 32 项营养）与 2022 膳食指南（17 段）清洗成 342 个知识切片，存入 ChromaDB，通过均衡双路检索 + LLM 生成管线回答每个问题，并给每句话附上可核验的引用。
 
-我不满足于"能跑"。我构建了 50 题评测集，把检索命中率、引用率、忠实度全部做到 100%——同一组问题下裸 LLM 仅 88%→100% 的差距正是 RAG 的价值。我做了 9 组超参数消融（top-k × 相似度阈值），让数据选出最优 top-k=5。我加了 10 题拒答评测：RAG 对资料外问题 100% 正确拒答，裸 LLM 则 100% 编造。最后我把这一切交付上线——26 个测试的 CI、中英双语流式问答 demo、以及把拒答率/消融表/失败归因全部可视化的评测面板。
+"能跑"从来不是目标。50 题评测集把检索命中率、引用率、忠实度全部推到 100%——同一组问题下裸 LLM 仅 88%→100% 的差距正是 RAG 的价值。9 组超参数消融（top-k × 相似度阈值）让数据而非直觉选出最优 top-k=5。10 题拒答评测证明：RAG 对资料外问题 100% 正确拒答，裸 LLM 则 100% 编造。这一切随 CI 一起交付上线——26 个测试、中英双语流式问答 demo、以及把拒答率/消融表/失败归因全部呈现在一页的评测面板。
 
 对我而言，AI 工程恰恰是：让结论可度量，让证据可见。Nutri-RAG 是我对这两件事的实践。
 

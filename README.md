@@ -50,7 +50,7 @@ Ask questions like *"高血压人群饮食上应该注意什么？"* or *"每100
 |---|---|
 | ![Chat - Chinese](assets/screenshots/screenshot-chat-zh.png) | ![Chat - English](assets/screenshots/screenshot-chat-en.png) |
 
-| Evaluation dashboard · 50-case coverage matrix (green = covered both ways, orange = RAG-only gain) | Evaluation research (full-page) · 50-case details, refusal, 9-run sweep, hybrid comparison, failure cases — the whole research chain in one scroll |
+| Evaluation dashboard · 50-case coverage matrix (green = covered both ways, orange = RAG-only gain) | Evaluation research (full-page) · 50-case details, refusal, 9-run sweep, hybrid comparison, failure cases — the whole research chain on one page |
 |---|---|
 | ![Evaluation dashboard](assets/screenshots/screenshot-eval-zh.png) | ![Evaluation research dashboard](assets/screenshots/screenshot-eval-research-en.png) |
 
@@ -123,7 +123,7 @@ Per category — all three at **1.0** (retrieval hit & faithfulness). The ablati
 
 Why the bare LLM misses exactly those cases (precision loss, regional-data mismatch, stance blending, framework mismatch): see [`docs/error-analysis.md`](docs/error-analysis.md).
 
-Regenerate the report with: `python3 src/evaluation.py`
+Regenerate: `python3 src/evaluation.py`
 
 **Refusal evaluation (anti-hallucination)** — 10 out-of-scope questions (6 off-topic + 4 not-in-KB foods/scenarios): how often does the system refuse instead of fabricating?
 
@@ -133,7 +133,7 @@ Regenerate the report with: `python3 src/evaluation.py`
 | Bare LLM (no RAG) | 0% (0/10) — fabricates nutrition facts |
 | Bare LLM + "refuse" instruction | 80% (8/10) |
 
-The 100% RAG refusal rate shows that *retrieval + an explicit knowledge-base boundary* — not prompting alone — is what prevents hallucination. Report: `python3 src/eval_refusal.py`
+The 100% RAG refusal rate shows that *retrieval + an explicit knowledge-base boundary* — not prompting alone — is what prevents hallucination. Regenerate: `python3 src/eval_refusal.py`
 
 **Hyper-parameter sweep** — 9 configurations (top-k ∈ {3,5,8} × similarity threshold ∈ {0.2,0.35,0.5}) on the 50-case eval set (450 LLM calls):
 
@@ -145,7 +145,7 @@ The 100% RAG refusal rate shows that *retrieval + an explicit knowledge-base bou
 | 8 | 0.2–0.35 | 100% | 100% | 98% | 98% |
 | 8 | 0.5 | 100% | 100% | 100% | 100% |
 
-top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverage (longer context, occasional omission), and the similarity threshold has little effect until 0.5. **top-k=5 with no threshold is the sweet spot** — and it is now the default. Full table: `data/sweep_report.json` · script: `python3 src/eval_sweep.py`
+top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverage (longer context, occasional omission), and the similarity threshold has little effect until 0.5. **top-k=5 with no threshold is the sweet spot** — and it is now the default. Full table: `data/sweep_report.json` · Regenerate: `python3 src/eval_sweep.py`
 
 **Hybrid retrieval comparison** (char-bigram BM25 + vector, RRF fusion) — 50 cases:
 
@@ -154,7 +154,7 @@ top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverag
 | Vector (current default) | 100% | 100% | 100% |
 | Hybrid (BM25+vector) | 100% | 96% | 96% |
 
-No retrieval gain (pure vector is already saturated on this set), and the fused context occasionally induces out-of-range citation numbers — so **plain balanced two-path vector retrieval stays the default**. Script: `python3 src/eval_hybrid.py`
+No retrieval gain (pure vector is already saturated on this set), and the fused context occasionally induces out-of-range citation numbers — so **plain balanced two-path vector retrieval stays the default**. Regenerate: `python3 src/eval_hybrid.py`
 
 ## 📚 Data Sources
 

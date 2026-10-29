@@ -1,0 +1,133 @@
+{
+  "grid": {
+    "top_k": [
+      3,
+      5,
+      8
+    ],
+    "min_score": [
+      0.2,
+      0.35,
+      0.5
+    ]
+  },
+  "current_defaults": {
+    "top_k": 6,
+    "min_score": null
+  },
+  "rows": [
+    {
+      "top_k": 3,
+      "min_score": 0.2,
+      "retrieval_hit_rate": 0.94,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "empty_context_cases": 0,
+      "seconds": 154.6
+    },
+    {
+      "top_k": 3,
+      "min_score": 0.35,
+      "retrieval_hit_rate": 0.94,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "empty_context_cases": 0,
+      "seconds": 152.7
+    },
+    {
+      "top_k": 3,
+      "min_score": 0.5,
+      "retrieval_hit_rate": 0.94,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "empty_context_cases": 0,
+      "seconds": 145.8
+    },
+    {
+      "top_k": 5,
+      "min_score": 0.2,
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "empty_context_cases": 0,
+      "seconds": 164.0
+    },
+    {
+      "top_k": 5,
+      "min_score": 0.35,
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "empty_context_cases": 0,
+      "seconds": 169.0
+    },
+    {
+      "top_k": 5,
+      "min_score": 0.5,
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 0.96,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 0.96,
+      "empty_context_cases": 0,
+      "seconds": 159.8
+    },
+    {
+      "top_k": 8,
+      "min_score": 0.2,
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 0.98,
+      "faithfulness": 0.98,
+      "empty_context_cases": 0,
+      "seconds": 174.3
+    },
+    {
+      "top_k": 8,
+      "min_score": 0.35,
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 0.98,
+      "faithfulness": 0.98,
+      "empty_context_cases": 0,
+      "seconds": 181.4
+    },
+    {
+      "top_k": 8,
+      "min_score": 0.5,
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "empty_context_cases": 0,
+      "seconds": 172.8
+    }
+  ],
+  "summary": {
+    "best_faithfulness": 1.0,
+    "best_config_by_faithfulness": {
+      "top_k": 3,
+      "min_score": 0.2,
+      "retrieval_hit_rate": 0.94,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "empty_context_cases": 0,
+      "seconds": 154.6
+    },
+    "best_balance": {
+      "top_k": 5,
+      "min_score": 0.2,
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "empty_context_cases": 0,
+      "seconds": 164.0
+    }
+  }
+}

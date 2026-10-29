@@ -133,6 +133,27 @@ Regenerate the report with: `python3 src/evaluation.py`
 
 The 100% RAG refusal rate shows that *retrieval + an explicit knowledge-base boundary* — not prompting alone — is what prevents hallucination. Report: `python3 src/eval_refusal.py`
 
+**Hyper-parameter sweep** — 9 configurations (top-k ∈ {3,5,8} × similarity threshold ∈ {0.2,0.35,0.5}) on the 50-case eval set (450 LLM calls):
+
+| top-k | threshold | Retrieval hit | Citation | Gold cover | Faithfulness |
+|---|---|---|---|---|---|
+| 3 | 0.2–0.5 | 94% | 100% | 100% | 100% |
+| **5** | **0.2–0.35** | **100%** | **100%** | **100%** | **100%** |
+| 5 | 0.5 | 100% | 96% | 100% | 96% |
+| 8 | 0.2–0.35 | 100% | 100% | 98% | 98% |
+| 8 | 0.5 | 100% | 100% | 100% | 100% |
+
+top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverage (longer context, occasional omission), and the similarity threshold has little effect until 0.5. **top-k=5 with no threshold is the sweet spot** — and it is now the default. Full table: `data/sweep_report.json` · script: `python3 src/eval_sweep.py`
+
+**Hybrid retrieval comparison** (char-bigram BM25 + vector, RRF fusion) — 50 cases:
+
+| Mode | Retrieval hit | Citation | Faithfulness |
+|---|---|---|---|
+| Vector (current default) | 100% | 100% | 100% |
+| Hybrid (BM25+vector) | 100% | 96% | 96% |
+
+No retrieval gain (pure vector is already saturated on this set), and the fused context occasionally induces out-of-range citation numbers — so **plain balanced two-path vector retrieval stays the default**. Script: `python3 src/eval_hybrid.py`
+
 ## 📚 Data Sources
 
 - **China Food Composition Tables** — National Institute for Nutrition and Health, China CDC ([nlc.chinanutri.cn](https://nlc.chinanutri.cn/fq/))

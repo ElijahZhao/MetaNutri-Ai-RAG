@@ -1,0 +1,536 @@
+{
+  "summary": {
+    "vector": {
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0
+    },
+    "hybrid": {
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 0.96,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 0.96
+    }
+  },
+  "rows": [
+    {
+      "mode": "vector",
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 1.0,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 1.0,
+      "items": [
+        {
+          "id": "C01",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C02",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C03",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C04",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C05",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C06",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C07",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C08",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C09",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C10",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C11",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C12",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C13",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C14",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C15",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C16",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C17",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C18",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C19",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C20",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G01",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G02",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G03",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G04",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G05",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G06",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G07",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G08",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G09",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G10",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G11",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G12",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G13",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G14",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G15",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S01",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S02",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S03",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S04",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S05",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S06",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S07",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S08",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S09",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S10",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S11",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S12",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S13",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S14",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S15",
+          "hit": true,
+          "faithful": true
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "retrieval_hit_rate": 1.0,
+      "citation_rate": 0.96,
+      "gold_cover_rate": 1.0,
+      "faithfulness": 0.96,
+      "items": [
+        {
+          "id": "C01",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C02",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C03",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C04",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C05",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C06",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C07",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C08",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C09",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C10",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C11",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C12",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C13",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C14",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C15",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C16",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C17",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C18",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C19",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "C20",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G01",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G02",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G03",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G04",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G05",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G06",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G07",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G08",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G09",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G10",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G11",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G12",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G13",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G14",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "G15",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S01",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S02",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S03",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S04",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S05",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S06",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S07",
+          "hit": true,
+          "faithful": false
+        },
+        {
+          "id": "S08",
+          "hit": true,
+          "faithful": false
+        },
+        {
+          "id": "S09",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S10",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S11",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S12",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S13",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S14",
+          "hit": true,
+          "faithful": true
+        },
+        {
+          "id": "S15",
+          "hit": true,
+          "faithful": true
+        }
+      ]
+    }
+  ]
+}

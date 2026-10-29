@@ -568,8 +568,8 @@ with tab_chat:
         if col.button(q, use_container_width=True):
             ask(q)
 
-if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
-    ask(prompt)
+    if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
+        ask(prompt)
 
 with tab_eval:
     st.markdown(f"#### {L['eval_title']}")

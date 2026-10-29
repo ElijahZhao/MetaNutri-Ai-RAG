@@ -10,6 +10,7 @@
 
 [![在线演示](https://img.shields.io/badge/Streamlit-%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
 [![CI](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml)
+[![License](https://img.shields.io/github/license/ElijahZhao/nutri-rag?color=8b5cf6)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)]()
 [![向量库](https://img.shields.io/badge/VectorDB-ChromaDB-4ea94b)]()
 [![LLM](https://img.shields.io/badge/LLM-qwen--plus-FF6B6B)]()
@@ -134,6 +135,10 @@ Nutri-RAG 是 **MetaNutri** 生态的 LLM 研究模块：
 - **为什么不做全栈应用？** RAG 的叙事核心在检索管线、引用溯源与评测——全栈工程能力已由 MetaNutri 展示。
 - **数据从哪来？** 仅官方公开数据源，全程脚本化可复现。
 - **运行成本？** 几乎为零：重计算全在 API 侧，Streamlit 免费层即可。
+
+## 📄 开源协议
+
+[MIT](LICENSE) —— 与 MetaNutri 生态（MetaNutri 与 ppgr-predictor）保持一致。
 
 ## 📝 更新日志
 

@@ -6,6 +6,7 @@
 
 [![Online Demo](https://img.shields.io/badge/Streamlit-Online%20Demo-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
 [![CI](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml)
+[![License](https://img.shields.io/github/license/ElijahZhao/nutri-rag?color=8b5cf6)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)]()
 [![Vector DB](https://img.shields.io/badge/VectorDB-ChromaDB-4ea94b)]()
 [![LLM](https://img.shields.io/badge/LLM-qwen--plus-FF6B6B)]()
@@ -130,6 +131,10 @@ Nutri-RAG is the LLM research module of the **MetaNutri** ecosystem:
 - **Why not a full-stack app?** The RAG narrative lives in the retrieval pipeline, citation grounding and evaluation — full-stack engineering is already demonstrated by MetaNutri itself.
 - **Where does the data come from?** Official public sources only; every step is scripted and reproducible.
 - **What does it cost to run?** Near-zero: all heavy computation is on the API side; the free Streamlit tier is sufficient.
+
+## 📄 License
+
+[MIT](LICENSE) — consistent with the MetaNutri ecosystem (MetaNutri & ppgr-predictor).
 
 ## 📝 Changelog
 

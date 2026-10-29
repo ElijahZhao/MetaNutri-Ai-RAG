@@ -183,6 +183,10 @@ Nutri-RAG is the LLM research module of the **MetaNutri** ecosystem:
 - **Where does the data come from?** Official public sources only; every step is scripted and reproducible.
 - **What does it cost to run?** Near-zero: all heavy computation is on the API side; the free Streamlit tier is sufficient.
 
+## 🎓 Portfolio narrative
+
+For applicants & interviewers: how to tell the Nutri-RAG story — one-liner, PS paragraph, resume bullets, three-repo ecosystem narrative and interview Q&A → [`docs/portfolio-narrative.md`](docs/portfolio-narrative.md).
+
 ## 📄 License
 
 [MIT](LICENSE) — consistent with the MetaNutri ecosystem (MetaNutri & ppgr-predictor).

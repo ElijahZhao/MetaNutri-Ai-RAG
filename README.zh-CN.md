@@ -187,6 +187,10 @@ Nutri-RAG 是 **MetaNutri** 生态的 LLM 研究模块：
 - **数据从哪来？** 仅官方公开数据源，全程脚本化可复现。
 - **运行成本？** 几乎为零：重计算全在 API 侧，Streamlit 免费层即可。
 
+## 🎓 作品集叙事
+
+面向申请者与面试官：如何讲好 Nutri-RAG 的故事——一句话简介、PS 段落、简历 bullet、三仓生态叙事与面试 Q&A → [`docs/portfolio-narrative.md`](docs/portfolio-narrative.md)。
+
 ## 📄 开源协议
 
 [MIT](LICENSE) —— 与 MetaNutri 生态（MetaNutri 与 ppgr-predictor）保持一致。

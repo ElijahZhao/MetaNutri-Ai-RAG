@@ -26,8 +26,13 @@ SYSTEM_PROMPT = """你是一名基于参考资料回答的健康饮食助手。�
 2. 涉及食物营养成分时，以"每100克可食部"口径给出数值与单位。
 3. 关键信息（数值、建议、结论）后必须用[编号]标注引用来源，编号对应参考资料序号。
 4. 引用必须来自参考资料，不得虚构引用编号。
-5. 回答使用简体中文，结构清晰、简洁。
+5. {LANG_RULE}
 6. 若资料中对问题给出了明确的关键数值或时间点（如摄入上限、建议时间、推荐量），回答应覆盖这些要点，不得遗漏直接相关的关键数字。"""
+
+LANG_RULES = {
+    "zh": "回答使用简体中文，结构清晰、简洁。",
+    "en": "Answer entirely in English (matching the language of the user's question). Keep numbers, units and citation numbers precise; give the Chinese food name in parentheses after the English name where it adds clarity.",
+}
 
 
 class Generator:
@@ -50,9 +55,10 @@ class Generator:
             f"请结合参考资料回答用户问题，并按规则标注引用编号。"
         )
 
-    def answer(self, query: str, chunks: list[dict]) -> str:
+    def answer(self, query: str, chunks: list[dict], language: str = "zh") -> str:
+        lang_rule = LANG_RULES.get(language, LANG_RULES["zh"])
         messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": SYSTEM_PROMPT.format(LANG_RULE=lang_rule)},
             {"role": "user", "content": self.build_prompt(query, chunks)},
         ]
         r = self._client.chat.completions.create(

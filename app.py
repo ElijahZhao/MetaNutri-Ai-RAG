@@ -182,17 +182,19 @@ CSS = """
   --font-sans:'Inter','Noto Sans SC',system-ui,sans-serif;
 }
 html[data-theme="dark"]{
-  --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#334155; --brand-soft:#122a1d;
+  --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#334155; --brand-soft:#122a1d; --sidebar-bg:#161b22;
 }
 *{font-family:var(--font-sans);}
 .block-container{padding-top:1.6rem;}
 [data-testid="stAppViewContainer"]{
   background:
-    radial-gradient(1100px 520px at 8% -4%, rgba(21,128,61,.06), transparent 60%),
-    radial-gradient(900px 480px at 105% 2%, rgba(217,119,6,.05), transparent 55%),
-    radial-gradient(700px 420px at 50% 108%, rgba(21,128,61,.04), transparent 60%),
+    radial-gradient(1100px 520px at 8% -4%, rgba(21,128,61,.05), transparent 60%),
+    radial-gradient(900px 480px at 105% 2%, rgba(217,119,6,.04), transparent 55%),
     linear-gradient(180deg,#fbfaf7 0%,#f6f4ef 100%);
 }
+[data-testid="stSidebar"]{background:var(--sidebar-bg,#faf9f6);}
+[data-testid="stSidebar"] > div:first-child{border-right:1px solid var(--border);}
+[data-testid="stSidebar"] [data-testid="stSidebarContent"]{background:transparent;}
 .hero{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:22px;
   padding:1.5rem 1.7rem;margin:.2rem 0 1rem;box-shadow:var(--shadow);
   background:linear-gradient(120deg,#eef4ea 0%,#ffffff 42%,#fdf6e8 78%,#f0f5ec 100%);
@@ -427,7 +429,7 @@ def ask(question):
     with st.chat_message("assistant"):
         with st.spinner(L["spinner"]):
             hits = retriever.search(question, top_k=TOP_K)
-            answer = generator.answer(question, hits)
+            answer = generator.answer(question, hits, language=st.session_state.lang)
         st.markdown(answer)
         cites = sorted(set(c for c in extract_citations(answer) if 1 <= c <= len(hits)))
         if cites:
@@ -463,8 +465,8 @@ with tab_chat:
         if col.button(q, use_container_width=True):
             ask(q)
 
-    if prompt := st.chat_input(L["input_ph"]):
-        ask(prompt)
+if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
+    ask(prompt)
 
 with tab_eval:
     st.markdown(f"#### {L['eval_title']}")

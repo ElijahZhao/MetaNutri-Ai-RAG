@@ -70,8 +70,10 @@ I18N = {
                 ("在线演示", "就是本页面",
                  "https://metanutri-ai-rag-question-answering.streamlit.app/")],
         "new_conv": "➕ 新建对话",
-        "rename_btn": "✏️ 重命名",
-        "del_conv": "🗑 删除会话",
+        "rename_btn": "重命名",
+        "pin_btn": "置顶",
+        "unpin_btn": "取消置顶",
+        "del_conv": "删除",
         "rename_title": "重命名会话",
         "rename_ph": "新名称",
         "save": "保存",
@@ -132,8 +134,10 @@ I18N = {
                 ("Live demo", "This very page",
                  "https://metanutri-ai-rag-question-answering.streamlit.app/")],
         "new_conv": "➕ New chat",
-        "rename_btn": "✏️ Rename",
-        "del_conv": "🗑 Delete",
+        "rename_btn": "Rename",
+        "pin_btn": "Pin",
+        "unpin_btn": "Unpin",
+        "del_conv": "Delete",
         "rename_title": "Rename chat",
         "rename_ph": "New name",
         "save": "Save",
@@ -169,24 +173,39 @@ I18N = {
 # ---------------------------------------------------------------- brand css
 CSS = """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@400;600;700;900&display=swap');
 :root{
   --brand:#16a34a; --brand-dark:#166534; --brand-soft:#f0fdf4;
   --accent:#f59e0b; --card-bg:#ffffff; --text:#1f2937; --muted:#6b7280;
   --border:#e5e7eb;
   --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+  --font-sans:'Inter','Noto Sans SC',system-ui,sans-serif;
 }
 html[data-theme="dark"]{
   --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#334155; --brand-soft:#123524;
 }
+*{font-family:var(--font-sans);}
 .block-container{padding-top:1.6rem;}
-.hero{background:linear-gradient(135deg,var(--brand-soft),var(--card-bg) 60%);
-  border:1px solid var(--border);border-radius:20px;padding:1.4rem 1.6rem;margin:.2rem 0 1rem;
-  box-shadow:var(--shadow);}
-.hero h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin:0 0 .35rem;color:var(--text);}
-.hero .sub{color:var(--muted);font-size:.98rem;margin:0 0 .9rem;}
-.pills{display:flex;flex-wrap:wrap;gap:.5rem;}
+[data-testid="stAppViewContainer"]{
+  background:
+    radial-gradient(1100px 520px at 8% -4%, rgba(22,163,74,.07), transparent 60%),
+    radial-gradient(900px 480px at 105% 2%, rgba(245,158,11,.06), transparent 55%),
+    radial-gradient(700px 420px at 50% 108%, rgba(22,163,74,.04), transparent 60%);
+}
+.hero{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:22px;
+  padding:1.5rem 1.7rem;margin:.2rem 0 1rem;box-shadow:var(--shadow);
+  background:linear-gradient(120deg,#ecfdf5 0%,#ffffff 45%,#fffbeb 80%,#f0fdf4 100%);
+  background-size:220% 220%;animation:heroShift 16s ease-in-out infinite;}
+@keyframes heroShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero::after{content:"";position:absolute;top:-70px;right:-70px;width:220px;height:220px;
+  background:radial-gradient(circle,rgba(22,163,74,.10),transparent 65%);pointer-events:none;}
+.hero h1{font-size:2.05rem;font-weight:900;letter-spacing:-.02em;margin:0 0 .35rem;color:var(--text);}
+.hero .sub{color:var(--muted);font-size:.97rem;margin:0 0 .95rem;}
+.pills{display:flex;flex-wrap:wrap;gap:.55rem;}
 .pill{background:var(--card-bg);color:var(--brand-dark);border:1px solid var(--brand);
-  border-radius:999px;padding:.3rem .85rem;font-size:.82rem;font-weight:600;}
+  border-radius:999px;padding:.32rem .9rem;font-size:.82rem;font-weight:600;
+  transition:transform .15s ease,box-shadow .15s ease;}
+.pill:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(22,163,74,.18);}
 html[data-theme="dark"] .pill{color:#4ade80;}
 .side-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
   padding:.9rem 1rem;margin-bottom:.8rem;box-shadow:var(--shadow);font-size:.88rem;}
@@ -198,15 +217,18 @@ html[data-theme="dark"] .side-card .t{color:#4ade80;}
 .side-ecosystem{font-size:.86rem;line-height:1.9;}
 .side-ecosystem .ec-title{font-weight:700;color:var(--brand-dark);margin-bottom:.2rem;}
 html[data-theme="dark"] .side-ecosystem .ec-title{color:#4ade80;}
-.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:.6rem 0 1.1rem;}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;margin:.6rem 0 1.1rem;}
 .metric-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
-  padding:.85rem 1rem;box-shadow:var(--shadow);}
+  padding:.9rem 1rem;box-shadow:var(--shadow);transition:transform .15s ease,box-shadow .15s ease;}
+.metric-card:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(16,24,40,.10);}
 .metric-card .m-label{color:var(--muted);font-size:.8rem;font-weight:600;margin-bottom:.3rem;}
-.metric-card .m-value{font-size:1.65rem;font-weight:800;letter-spacing:-.02em;}
+.metric-card .m-value{font-size:1.7rem;font-weight:900;letter-spacing:-.02em;}
 .metric-card .m-value.ok{color:var(--brand);}
 .metric-card .m-value.plus{color:var(--accent);}
 .cite-card{background:var(--card-bg);border:1px solid var(--border);border-left:3px solid var(--brand);
-  border-radius:10px;padding:.6rem .8rem;margin:.45rem 0;box-shadow:var(--shadow);}
+  border-radius:10px;padding:.6rem .8rem;margin:.45rem 0;box-shadow:var(--shadow);
+  transition:border-color .12s ease;}
+.cite-card:hover{border-left-color:var(--accent);}
 .cite-card .head{display:flex;align-items:center;gap:.5rem;margin-bottom:.25rem;}
 .cite-badge{background:var(--brand);color:#fff;border-radius:6px;padding:.05rem .45rem;
   font-size:.78rem;font-weight:700;}
@@ -238,14 +260,15 @@ div[data-testid="stChatInput"]{border:1.5px solid var(--brand);border-radius:14p
 div[data-testid="stChatInput"]:focus-within{box-shadow:0 0 0 3px rgba(22,163,74,.18);}
 div[data-testid="stChatInput"] textarea{font-size:.95rem;}
 div[data-testid="stChatMessage"]{background:var(--card-bg);border:1px solid var(--border);
-  border-radius:16px;padding:.35rem .8rem;margin-bottom:.55rem;box-shadow:var(--shadow);}
+  border-radius:16px;padding:.35rem .8rem;margin-bottom:.55rem;box-shadow:var(--shadow);
+  transition:box-shadow .15s ease;}
+div[data-testid="stChatMessage"]:hover{box-shadow:0 6px 16px rgba(16,24,40,.08);}
 .stButton > button{border-radius:999px;border:1px solid var(--border);background:var(--card-bg);
   font-weight:600;color:var(--text);transition:all .15s ease;}
 .stButton > button:hover{border-color:var(--brand);color:var(--brand);box-shadow:0 0 0 3px rgba(22,163,74,.12);}
 div[data-testid="stTabs"] button[aria-selected="true"]{color:var(--brand);font-weight:700;}
-div[data-testid="stRadio"] label{border-radius:10px;padding:.3rem .6rem;transition:background .12s ease;}
-div[data-testid="stRadio"] label:hover{background:var(--brand-soft);}
-[data-testid="stSidebar"] .stTextInput input{border-radius:10px;border:1px solid var(--border);}
+[data-testid="stSidebar"] [data-testid="stButton"] > button{font-size:.84rem;text-align:left;}
+[data-testid="stSidebar"] [data-testid="stPopover"] > button{border-radius:10px;font-weight:700;color:var(--muted);}
 @media (max-width:900px){.metric-grid{grid-template-columns:repeat(2,1fr);}}
 </style>
 """
@@ -326,7 +349,7 @@ with st.sidebar:
 
     if st.button(L["new_conv"], use_container_width=True):
         cid = f"conv_{len(convs)}"
-        st.session_state.conversations[cid] = {"title": "", "messages": []}
+        st.session_state.conversations[cid] = {"title": "", "messages": [], "pinned": False}
         st.session_state.current_conv = cid
         st.rerun()
 
@@ -334,21 +357,32 @@ with st.sidebar:
         t = convs[cid]["title"]
         return t if t else f"对话 {list(convs).index(cid) + 1}"
 
-    sel = st.radio(
-        "会话", list(convs), index=list(convs).index(cur),
-        format_func=_conv_label, label_visibility="collapsed",
+    # pinned first, then creation order
+    order = sorted(
+        list(convs),
+        key=lambda c: (not convs[c].get("pinned", False), list(convs).index(c)),
     )
-    if sel != cur:
-        st.session_state.current_conv = sel
-        st.rerun()
-
-    c1, c2 = st.columns(2)
-    if c1.button(L["rename_btn"], use_container_width=True):
-        rename_dialog(cur)
-    if len(convs) > 1 and c2.button(L["del_conv"], use_container_width=True):
-        del st.session_state.conversations[cur]
-        st.session_state.current_conv = next(k for k in convs if k != cur)
-        st.rerun()
+    for cid in order:
+        label = _conv_label(cid)
+        marker = "🟢 " if cid == cur else "   "
+        c1, c2 = st.columns([0.78, 0.22], vertical_alignment="center")
+        if c1.button(f"{marker}{label}", use_container_width=True, key=f"conv_{cid}"):
+            if cid != cur:
+                st.session_state.current_conv = cid
+                st.rerun()
+        with c2.popover("⋮", key=f"menu_{cid}"):
+            if st.button("✏️ " + L["rename_btn"], use_container_width=True):
+                rename_dialog(cid)
+            pinned = convs[cid].get("pinned", False)
+            pin_label = ("📌 " + L["unpin_btn"]) if pinned else ("📌 " + L["pin_btn"])
+            if st.button(pin_label, use_container_width=True):
+                convs[cid]["pinned"] = not pinned
+                st.rerun()
+            if len(convs) > 1 and st.button("🗑 " + L["del_conv"], use_container_width=True):
+                del st.session_state.conversations[cid]
+                if cid == cur:
+                    st.session_state.current_conv = next(k for k in convs if k != cid)
+                st.rerun()
 
 # ---------------------------------------------------------------------- hero
 st.markdown(

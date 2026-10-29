@@ -52,7 +52,8 @@ I18N = {
         "tab_chat": "💬 问答",
         "tab_eval": "📊 评测结果",
         "examples": ["高血压人群饮食上应该注意什么？", "每100克鸡蛋含多少蛋白质？",
-                     "反式脂肪酸每天摄入量上限是多少？"],
+                     "反式脂肪酸每天摄入量上限是多少？", "高尿酸人群能吃哪些豆制品？",
+                     "每100克牛奶含多少钙？", "吃鸡蛋要不要弃蛋黄？"],
         "input_ph": "请输入你的饮食营养问题（如：高尿酸人群能吃哪些豆制品？）",
         "side_data": "📦 数据规模",
         "side_data_rows": ["325 种食物 × 32 项营养", "17 段指南 · 342 知识切片"],
@@ -102,6 +103,11 @@ I18N = {
         "th_rag": "RAG覆盖", "th_norag": "无RAG覆盖",
         "caption": "共 {} 条 · 全部 50 条：检索命中 50/50 · 忠实 50/50 · 引用 50/50",
         "eval_missing": "评测报告缺失：未找到 data/eval_report.json",
+        "vis_title": "🧭 评测覆盖总览 · 50 题",
+        "vis_norag": "无 RAG 覆盖 {0} · RAG 补齐 {1}",
+        "vis_ok": "双覆盖（RAG + 无 RAG）",
+        "vis_gain": "RAG 增量补齐（无 RAG 未覆盖）",
+        "vis_hint": "悬停每格查看题目；橙色 = RAG 增量价值所在",
         "footer": "⚠️ 本应用仅供学习研究演示，不构成医疗建议。健康问题请咨询专业医师或注册营养师。",
     },
     "en": {
@@ -116,7 +122,10 @@ I18N = {
         "tab_eval": "📊 Evaluation",
         "examples": ["What should people with hypertension pay attention to in their diet?",
                      "How much protein is in 100g of eggs?",
-                     "What is the daily upper limit for trans fatty acids?"],
+                     "What is the daily upper limit for trans fatty acids?",
+                     "Which soy products can people with high uric acid eat?",
+                     "How much calcium is in 100g of milk?",
+                     "Should I discard the egg yolk when eating eggs?"],
         "input_ph": "Ask a diet & nutrition question (e.g. which soy products can people with high uric acid eat?)",
         "side_data": "📦 Data",
         "side_data_rows": ["325 foods × 32 nutrients", "17 guideline sections · 342 chunks"],
@@ -166,6 +175,11 @@ I18N = {
         "th_rag": "RAG cover", "th_norag": "No-RAG cover",
         "caption": "{} rows · All 50: hit 50/50 · faithful 50/50 · citation 50/50",
         "eval_missing": "Evaluation report missing: data/eval_report.json not found",
+        "vis_title": "🧭 Evaluation Coverage Overview · 50 items",
+        "vis_norag": "No-RAG coverage {0} · RAG recovered {1}",
+        "vis_ok": "Covered both ways (RAG + no-RAG)",
+        "vis_gain": "Recovered by RAG (missed without RAG)",
+        "vis_hint": "Hover a cell to see the question; orange = where RAG adds value",
         "footer": "⚠️ For research/demo purposes only, not medical advice. Consult a doctor or registered dietitian for health issues.",
     },
 }
@@ -272,7 +286,35 @@ div[data-testid="stChatMessage"]:hover{box-shadow:0 6px 16px rgba(16,24,40,.08);
 div[data-testid="stTabs"] button[aria-selected="true"]{color:var(--brand);font-weight:700;}
 [data-testid="stSidebar"] [data-testid="stButton"] > button{font-size:.84rem;text-align:left;}
 [data-testid="stSidebar"] [data-testid="stPopover"] > button{border-radius:10px;font-weight:700;color:var(--muted);}
-@media (max-width:900px){.metric-grid{grid-template-columns:repeat(2,1fr);}}
+.eval-vis{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
+  padding:1rem 1.2rem;margin:.6rem 0 1.1rem;box-shadow:var(--shadow);}
+.vis-title{font-weight:700;margin-bottom:.8rem;font-size:.95rem;}
+.cat-sec{margin-bottom:.85rem;}
+.cat-sec-name{font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:.35rem;}
+.matrix{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;}
+.mcell{aspect-ratio:1.6/1;border-radius:5px;display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;font-weight:700;color:#fff;cursor:help;transition:transform .1s ease;}
+.mcell.ok{background:#15803d;}
+.mcell.gain{background:#d97706;}
+.mcell:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(16,24,40,.25);z-index:2;}
+.vis-legend{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted);
+  margin:.9rem 0 .3rem;flex-wrap:wrap;}
+.vis-hint{font-size:.76rem;color:var(--muted);}
+.lg{width:14px;height:14px;border-radius:4px;display:inline-block;margin-left:.4rem;}
+.lg-ok{background:#15803d;}
+.lg-gain{background:#d97706;}
+.dtable-wrap{overflow-x:auto;border-radius:12px;}
+@media (max-width:900px){
+  .metric-grid{grid-template-columns:repeat(2,1fr);}
+  .matrix{grid-template-columns:repeat(5,1fr);}
+  .mcell{aspect-ratio:1.2/1;}
+  .hero h1{font-size:1.5rem;}
+  .hero{padding:1.1rem 1.2rem;}
+  .pill{font-size:.76rem;padding:.26rem .7rem;}
+  .side-ecosystem{font-size:.8rem;}
+  .dtable{min-width:640px;}
+  .stButton > button{font-size:.76rem;padding:.3rem .5rem;}
+}
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
@@ -460,8 +502,12 @@ with tab_chat:
         with st.chat_message(m["role"]):
             st.markdown(m["content"])
 
-    cols = st.columns(len(EXAMPLES))
-    for col, q in zip(cols, EXAMPLES):
+    cols = st.columns(3)
+    for col, q in zip(cols, EXAMPLES[:3]):
+        if col.button(q, use_container_width=True):
+            ask(q)
+    cols2 = st.columns(3)
+    for col, q in zip(cols2, EXAMPLES[3:]):
         if col.button(q, use_container_width=True):
             ask(q)
 
@@ -485,6 +531,37 @@ with tab_eval:
                 <div class="m-value ok">{s['rag_citation_rate']:.0%}</div></div>
               <div class="metric-card"><div class="m-label">{L['m_ab']}</div>
                 <div class="m-value plus">+{s['ablation_gain']:.0%}</div></div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        # ---- coverage matrix + per-category sections ----
+        cat_keys = ("composition", "guideline", "special")
+        cat_secs = ""
+        for k in cat_keys:
+            sub = [it for it in rep["items"] if it["category"] == k]
+            npct = sum(1 for it in sub if it["gold_covered_norag"]) / len(sub)
+            npct_str, gap_str = f"{npct:.0%}", f"{1 - npct:.0%}"
+            cells = "".join(
+                f'<div class="mcell {"ok" if (it["gold_covered_norag"] and it["gold_covered_rag"]) else "gain"}'
+                f' title="{html.escape(it["id"] + " · " + it["question"])}">{it["id"]}</div>'
+                for it in sub
+            )
+            cat_secs += (
+                f'<div class="cat-sec"><div class="cat-sec-name">{L["cat_names"][k]} · {len(sub)}'
+                f' · {L["vis_norag"].format(npct_str, gap_str)}</div>'
+                f'<div class="matrix">{cells}</div></div>'
+            )
+        st.markdown(
+            f"""
+            <div class="eval-vis">
+              <div class="vis-title">{L['vis_title']}</div>
+              {cat_secs}
+              <div class="vis-legend">
+                <span class="lg lg-ok"></span>{L['vis_ok']}
+                <span class="lg lg-gain"></span>{L['vis_gain']}
+              </div>
+              <div class="vis-hint">{L['vis_hint']}</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -518,8 +595,8 @@ with tab_eval:
             for k in ("composition", "guideline", "special")
         )
         st.markdown(
-            f"<table class='dtable'><tr><th>{L['th_cat']}</th><th>{L['th_hit']}</th>"
-            f"<th>{L['th_faith']}</th></tr>{cat_rows}</table>",
+            f"<div class='dtable-wrap'><table class='dtable'><tr><th>{L['th_cat']}</th><th>{L['th_hit']}</th>"
+            f"<th>{L['th_faith']}</th></tr>{cat_rows}</table></div>",
             unsafe_allow_html=True,
         )
 
@@ -549,7 +626,9 @@ with tab_eval:
                 )
                 + "</table>"
             )
-            st.markdown(detail_html, unsafe_allow_html=True)
+            st.markdown(
+                f"<div class='dtable-wrap'>{detail_html}</div>", unsafe_allow_html=True
+            )
         st.caption(L["caption"].format(len(rows)))
     else:
         st.info(L["eval_missing"])

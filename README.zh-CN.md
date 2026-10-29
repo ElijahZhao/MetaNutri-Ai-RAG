@@ -44,6 +44,20 @@ flowchart TD
 
 试试 *"高血压人群饮食上应该注意什么？"* 或 *"每100克鸡蛋含多少蛋白质？"* —— 每条回答都可展开查看引用来源进行核验。
 
+## 🖼️ 界面截图
+
+**问答界面（中文）** —— 每条回答带 `[n]` 引用编号指向来源切片：
+
+![问答界面（中文）](assets/screenshots/screenshot-chat-zh.png)
+
+**评测面板** —— 50 条评测覆盖矩阵（绿色 = RAG 与无 RAG 均覆盖，橙色 = RAG 增量补齐）：
+
+![评测面板](assets/screenshots/screenshot-eval-zh.png)
+
+**问答界面（英文）** —— 全界面中英切换，回答语言跟随界面语言：
+
+![问答界面（英文）](assets/screenshots/screenshot-chat-en.png)
+
 ## ⚡ 快速开始
 
 ```bash

@@ -40,6 +40,20 @@ Try it live: **[metanutri-ai-rag-question-answering.streamlit.app](https://metan
 
 Ask questions like *"高血压人群饮食上应该注意什么？"* or *"每100克鸡蛋含多少蛋白质？"* — every answer expands to its source citations for verification.
 
+## 🖼️ Screenshots
+
+**Chat** — Chinese interface; every answer carries `[n]` citations to source chunks:
+
+![Chat - Chinese](assets/screenshots/screenshot-chat-zh.png)
+
+**Evaluation dashboard** — 50-case coverage matrix by category (green = covered by both RAG and no-RAG, orange = RAG-only gain):
+
+![Evaluation dashboard](assets/screenshots/screenshot-eval-zh.png)
+
+**Chat** — English interface (full i18n, answers follow the UI language):
+
+![Chat - English](assets/screenshots/screenshot-chat-en.png)
+
 ## ⚡ Quick Start
 
 ```bash

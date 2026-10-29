@@ -121,6 +121,16 @@ Per category — all three at **1.0** (retrieval hit & faithfulness). The ablati
 
 Regenerate the report with: `python3 src/evaluation.py`
 
+**Refusal evaluation (anti-hallucination)** — 10 out-of-scope questions (6 off-topic + 4 not-in-KB foods/scenarios): how often does the system refuse instead of fabricating?
+
+| System | Refusal rate |
+|---|---|
+| **Nutri-RAG (RAG)** | **100%** (10/10) |
+| Bare LLM (no RAG) | 0% (0/10) — fabricates nutrition facts |
+| Bare LLM + "refuse" instruction | 80% (8/10) |
+
+The 100% RAG refusal rate shows that *retrieval + an explicit knowledge-base boundary* — not prompting alone — is what prevents hallucination. Report: `python3 src/eval_refusal.py`
+
 ## 📚 Data Sources
 
 - **China Food Composition Tables** — National Institute for Nutrition and Health, China CDC ([nlc.chinanutri.cn](https://nlc.chinanutri.cn/fq/))

@@ -360,6 +360,9 @@ div[data-testid="stTabs"] button[aria-selected="true"]{color:var(--brand);font-w
   padding:.5rem .75rem;margin:.2rem 0 .6rem;color:var(--text);font-size:.88rem;line-height:1.55;}
 .qa-mini.bad{background:#fdf2f2;border-left-color:#dc2626;}
 .qa-mini.good{background:var(--brand-soft);border-left-color:var(--brand);}
+[data-testid="stChatInput"]{display:none !important;}
+/* 问答 tab（第一个 tab）激活时显示吸底输入框 */
+.stApp:has([data-testid="stTab"]:first-of-type[aria-selected="true"]) [data-testid="stChatInput"]{display:flex !important;}
 @media (max-width:900px){
   .metric-grid{grid-template-columns:repeat(2,1fr);}
   .matrix{grid-template-columns:repeat(5,1fr);}
@@ -568,8 +571,8 @@ with tab_chat:
         if col.button(q, use_container_width=True):
             ask(q)
 
-    if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
-        ask(prompt)
+if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
+    ask(prompt)
 
 with tab_eval:
     st.markdown(f"#### {L['eval_title']}")

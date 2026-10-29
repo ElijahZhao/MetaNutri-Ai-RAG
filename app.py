@@ -175,37 +175,38 @@ CSS = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@400;600;700;900&display=swap');
 :root{
-  --brand:#16a34a; --brand-dark:#166534; --brand-soft:#f0fdf4;
-  --accent:#f59e0b; --card-bg:#ffffff; --text:#1f2937; --muted:#6b7280;
+  --brand:#15803d; --brand-dark:#14532d; --brand-soft:#f3f7f1;
+  --accent:#d97706; --card-bg:#ffffff; --text:#1f2937; --muted:#6b7280;
   --border:#e5e7eb;
   --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
   --font-sans:'Inter','Noto Sans SC',system-ui,sans-serif;
 }
 html[data-theme="dark"]{
-  --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#334155; --brand-soft:#123524;
+  --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#334155; --brand-soft:#122a1d;
 }
 *{font-family:var(--font-sans);}
 .block-container{padding-top:1.6rem;}
 [data-testid="stAppViewContainer"]{
   background:
-    radial-gradient(1100px 520px at 8% -4%, rgba(22,163,74,.07), transparent 60%),
-    radial-gradient(900px 480px at 105% 2%, rgba(245,158,11,.06), transparent 55%),
-    radial-gradient(700px 420px at 50% 108%, rgba(22,163,74,.04), transparent 60%);
+    radial-gradient(1100px 520px at 8% -4%, rgba(21,128,61,.06), transparent 60%),
+    radial-gradient(900px 480px at 105% 2%, rgba(217,119,6,.05), transparent 55%),
+    radial-gradient(700px 420px at 50% 108%, rgba(21,128,61,.04), transparent 60%),
+    linear-gradient(180deg,#fbfaf7 0%,#f6f4ef 100%);
 }
 .hero{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:22px;
   padding:1.5rem 1.7rem;margin:.2rem 0 1rem;box-shadow:var(--shadow);
-  background:linear-gradient(120deg,#ecfdf5 0%,#ffffff 45%,#fffbeb 80%,#f0fdf4 100%);
+  background:linear-gradient(120deg,#eef4ea 0%,#ffffff 42%,#fdf6e8 78%,#f0f5ec 100%);
   background-size:220% 220%;animation:heroShift 16s ease-in-out infinite;}
 @keyframes heroShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hero::after{content:"";position:absolute;top:-70px;right:-70px;width:220px;height:220px;
-  background:radial-gradient(circle,rgba(22,163,74,.10),transparent 65%);pointer-events:none;}
+  background:radial-gradient(circle,rgba(21,128,61,.10),transparent 65%);pointer-events:none;}
 .hero h1{font-size:2.05rem;font-weight:900;letter-spacing:-.02em;margin:0 0 .35rem;color:var(--text);}
 .hero .sub{color:var(--muted);font-size:.97rem;margin:0 0 .95rem;}
 .pills{display:flex;flex-wrap:wrap;gap:.55rem;}
 .pill{background:var(--card-bg);color:var(--brand-dark);border:1px solid var(--brand);
   border-radius:999px;padding:.32rem .9rem;font-size:.82rem;font-weight:600;
   transition:transform .15s ease,box-shadow .15s ease;}
-.pill:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(22,163,74,.18);}
+.pill:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(21,128,61,.18);}
 html[data-theme="dark"] .pill{color:#4ade80;}
 .side-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
   padding:.9rem 1rem;margin-bottom:.8rem;box-shadow:var(--shadow);font-size:.88rem;}
@@ -257,7 +258,7 @@ html[data-theme="dark"] .dtable th{color:#4ade80;}
 .dtable td{padding:.45rem .8rem;border-top:1px solid var(--border);color:var(--text);vertical-align:top;}
 .dtable tr:hover td{background:var(--brand-soft);}
 div[data-testid="stChatInput"]{border:1.5px solid var(--brand);border-radius:14px;box-shadow:var(--shadow);}
-div[data-testid="stChatInput"]:focus-within{box-shadow:0 0 0 3px rgba(22,163,74,.18);}
+div[data-testid="stChatInput"]:focus-within{box-shadow:0 0 0 3px rgba(21,128,61,.18);}
 div[data-testid="stChatInput"] textarea{font-size:.95rem;}
 div[data-testid="stChatMessage"]{background:var(--card-bg);border:1px solid var(--border);
   border-radius:16px;padding:.35rem .8rem;margin-bottom:.55rem;box-shadow:var(--shadow);
@@ -265,7 +266,7 @@ div[data-testid="stChatMessage"]{background:var(--card-bg);border:1px solid var(
 div[data-testid="stChatMessage"]:hover{box-shadow:0 6px 16px rgba(16,24,40,.08);}
 .stButton > button{border-radius:999px;border:1px solid var(--border);background:var(--card-bg);
   font-weight:600;color:var(--text);transition:all .15s ease;}
-.stButton > button:hover{border-color:var(--brand);color:var(--brand);box-shadow:0 0 0 3px rgba(22,163,74,.12);}
+.stButton > button:hover{border-color:var(--brand);color:var(--brand);box-shadow:0 0 0 3px rgba(21,128,61,.12);}
 div[data-testid="stTabs"] button[aria-selected="true"]{color:var(--brand);font-weight:700;}
 [data-testid="stSidebar"] [data-testid="stButton"] > button{font-size:.84rem;text-align:left;}
 [data-testid="stSidebar"] [data-testid="stPopover"] > button{border-radius:10px;font-weight:700;color:var(--muted);}
@@ -284,18 +285,12 @@ if "conversations" not in st.session_state:
 L = I18N[st.session_state.lang]
 
 
-# ---------------------------------------------------------------- rename dialog
-@st.dialog(L["rename_title"])
-def rename_dialog(cid):
-    conv = st.session_state.conversations[cid]
-    new_title = st.text_input(L["rename_ph"], value=conv["title"] or "对话",
-                              label_visibility="collapsed")
-    c1, c2 = st.columns(2)
-    if c1.button(L["save"], use_container_width=True):
-        conv["title"] = new_title.strip()
-        st.rerun()
-    if c2.button("✕", use_container_width=True):
-        st.rerun()
+# ------------------------------------------------------- inline rename (DeepSeek-style)
+def _commit_rename(cid):
+    val = st.session_state.get(f"rename_{cid}", "").strip()
+    if val:
+        st.session_state.conversations[cid]["title"] = val
+    st.session_state.renaming_cid = None
 
 
 # ------------------------------------------------------------------ sidebar
@@ -364,6 +359,12 @@ with st.sidebar:
     )
     for cid in order:
         label = _conv_label(cid)
+        if st.session_state.get("renaming_cid") == cid:
+            st.text_input(
+                L["rename_title"], value=label, key=f"rename_{cid}", label_visibility="collapsed",
+                on_change=_commit_rename, args=(cid,), placeholder=L["rename_ph"],
+            )
+            continue
         marker = "🟢 " if cid == cur else "   "
         c1, c2 = st.columns([0.78, 0.22], vertical_alignment="center")
         if c1.button(f"{marker}{label}", use_container_width=True, key=f"conv_{cid}"):
@@ -372,7 +373,9 @@ with st.sidebar:
                 st.rerun()
         with c2.popover("⋮", key=f"menu_{cid}"):
             if st.button("✏️ " + L["rename_btn"], use_container_width=True):
-                rename_dialog(cid)
+                st.session_state.pop(f"rename_{cid}", None)  # clear stale widget state
+                st.session_state.renaming_cid = cid
+                st.rerun()
             pinned = convs[cid].get("pinned", False)
             pin_label = ("📌 " + L["unpin_btn"]) if pinned else ("📌 " + L["pin_btn"])
             if st.button(pin_label, use_container_width=True):

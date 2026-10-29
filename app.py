@@ -108,6 +108,32 @@ I18N = {
         "vis_ok": "双覆盖（RAG + 无 RAG）",
         "vis_gain": "RAG 增量补齐（无 RAG 未覆盖）",
         "vis_hint": "悬停每格查看题目；橙色 = RAG 增量价值所在",
+        "ref_title": "🛡️ 拒答评测 · 防幻觉（10 条资料外问题）",
+        "ref_sub": "资料不足时，系统正确拒答（明确说“资料未收录”）而不是编造的比例",
+        "ref_col": ["系统", "拒答率"],
+        "ref_rag": "Nutri-RAG（RAG 管线）",
+        "ref_norag": "裸 LLM（无 RAG）",
+        "ref_strict": "裸 LLM + 强制拒答指令",
+        "ref_exp": "查看逐条拒答原文（{} 条）",
+        "ref_q": "问题", "ref_ans": "回答摘录", "ref_ok": "✅ 正确拒答", "ref_bad": "❌ 编造/未拒答",
+        "ref_note": "结论：检索 + 明确的知识库边界才是防幻觉的根本，仅靠提示词不够",
+        "sweep_title": "🔬 超参数消融 · top-k × 相似度阈值（9 组 × 50 题）",
+        "sweep_col": ["top-k", "阈值", "检索命中", "引用", "关键覆盖", "忠实度"],
+        "sweep_opt": "🏆 最优点：top-k = 5、不加阈值（全部 100%）—— 已设为默认",
+        "sweep_note": "top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发遗漏关键信息；阈值在 0.5 以下影响有限",
+        "hyb_title": "🧪 混合检索对比 · BM25 + 向量（RRF 融合）",
+        "hyb_col": ["模式", "检索命中", "引用", "忠实度"],
+        "hyb_vec": "纯向量（当前默认）",
+        "hyb_mix": "混合（BM25 + 向量）",
+        "hyb_note": "检索层无增益（纯向量已饱和），融合上下文偶发诱导越界引用编号 → 保持纯向量默认",
+        "ea_title": "🔍 消融失败案例 · 裸 LLM 为什么答错（6 条）",
+        "ea_hint": "展开查看：同样的 50 题，无 RAG 时这 6 条被 LLM 答错/答偏",
+        "ea_mode": "失败模式",
+        "ea_norag": "裸 LLM（无 RAG）",
+        "ea_rag": "RAG（带引用）",
+        "ea_modes": {"precision": "精度损失", "source": "区域数据错位",
+                     "stance": "立场混合", "framework": "框架/经验替代规范"},
+        "ea_see": "查看完整归因 → docs/error-analysis.md",
         "footer": "⚠️ 本应用仅供学习研究演示，不构成医疗建议。健康问题请咨询专业医师或注册营养师。",
     },
     "en": {
@@ -180,6 +206,32 @@ I18N = {
         "vis_ok": "Covered both ways (RAG + no-RAG)",
         "vis_gain": "Recovered by RAG (missed without RAG)",
         "vis_hint": "Hover a cell to see the question; orange = where RAG adds value",
+        "ref_title": "🛡️ Refusal Evaluation · Anti-hallucination (10 out-of-scope questions)",
+        "ref_sub": "When knowledge is insufficient, how often does the system correctly refuse (\"not in the sources\") instead of fabricating?",
+        "ref_col": ["System", "Refusal rate"],
+        "ref_rag": "Nutri-RAG (RAG pipeline)",
+        "ref_norag": "Bare LLM (no RAG)",
+        "ref_strict": "Bare LLM + forced-refusal instruction",
+        "ref_exp": "View per-item refusal answers ({})",
+        "ref_q": "Question", "ref_ans": "Answer excerpt", "ref_ok": "✅ Correctly refused", "ref_bad": "❌ Fabricated / not refused",
+        "ref_note": "Takeaway: retrieval + an explicit knowledge-base boundary — not prompting alone — prevents hallucination",
+        "sweep_title": "🔬 Hyper-parameter Sweep · top-k × similarity threshold (9 runs × 50 questions)",
+        "sweep_col": ["top-k", "Threshold", "Hit", "Citation", "Coverage", "Faithfulness"],
+        "sweep_opt": "🏆 Sweet spot: top-k = 5, no threshold (all 100%) — now the default",
+        "sweep_note": "top-k=3: 3 source chunks cannot fit in context; top-k=8: longer context, occasional omission; threshold negligible below 0.5",
+        "hyb_title": "🧪 Hybrid Retrieval Comparison · BM25 + vector (RRF fusion)",
+        "hyb_col": ["Mode", "Hit", "Citation", "Faithfulness"],
+        "hyb_vec": "Vector only (current default)",
+        "hyb_mix": "Hybrid (BM25 + vector)",
+        "hyb_note": "No retrieval gain (pure vector already saturated); fused context occasionally induces out-of-range citations → keep vector default",
+        "ea_title": "🔍 Ablation Failure Cases · Why the bare LLM misses (6 items)",
+        "ea_hint": "Expand to compare no-RAG vs RAG answers on the 6 cases a bare LLM gets wrong",
+        "ea_mode": "Failure mode",
+        "ea_norag": "Bare LLM (no RAG)",
+        "ea_rag": "RAG (with citations)",
+        "ea_modes": {"precision": "Precision loss", "source": "Regional data mismatch",
+                     "stance": "Stance blending", "framework": "Framework/habit replacing rule"},
+        "ea_see": "Full error analysis → docs/error-analysis.md",
         "footer": "⚠️ For research/demo purposes only, not medical advice. Consult a doctor or registered dietitian for health issues.",
     },
 }
@@ -304,6 +356,10 @@ div[data-testid="stTabs"] button[aria-selected="true"]{color:var(--brand);font-w
 .lg-ok{background:#15803d;}
 .lg-gain{background:#d97706;}
 .dtable-wrap{overflow-x:auto;border-radius:12px;}
+.qa-mini{background:var(--brand-soft);border-left:3px solid var(--brand);border-radius:8px;
+  padding:.5rem .75rem;margin:.2rem 0 .6rem;color:var(--text);font-size:.88rem;line-height:1.55;}
+.qa-mini.bad{background:#fdf2f2;border-left-color:#dc2626;}
+.qa-mini.good{background:var(--brand-soft);border-left-color:var(--brand);}
 @media (max-width:900px){
   .metric-grid{grid-template-columns:repeat(2,1fr);}
   .matrix{grid-template-columns:repeat(5,1fr);}
@@ -633,5 +689,92 @@ with tab_eval:
         st.caption(L["caption"].format(len(rows)))
     else:
         st.info(L["eval_missing"])
+
+    # ------------------------------------------------------------- 1) refusal eval
+    ref_path = ROOT / "data" / "refusal_report.json"
+    if ref_path.exists():
+        rep_r = json.loads(ref_path.read_text(encoding="utf-8"))
+        rs = rep_r["summary"]
+        pct = lambda x: f"{x*100:.0f}%"
+        st.markdown(f"### {L['ref_title']}")
+        st.caption(L["ref_sub"])
+        rows_r = [
+            (L["ref_rag"], rs["refusal_rate_rag"]),
+            (L["ref_norag"], rs["refusal_rate_norag"]),
+            (L["ref_strict"], rs["refusal_rate_strict_assistant"]),
+        ]
+        tbl_r = f"<table class='dtable'><tr><th>{L['ref_col'][0]}</th><th>{L['ref_col'][1]}</th></tr>"
+        for name, v in rows_r:
+            ok = "✓" if v == 1.0 else ("△" if v >= 0.5 else "✗")
+            tbl_r += f"<tr><td>{name}</td><td>{pct(v)} {ok}</td></tr>"
+        st.markdown(f"<div class='dtable-wrap'>{tbl_r}</table></div>", unsafe_allow_html=True)
+        with st.expander(L["ref_exp"].format(rs["n"])):
+            for it in rep_r["items"]:
+                tag = L["ref_ok"] if it["refused_rag"] else L["ref_bad"]
+                st.markdown(f"**{it['id']} · {it['question']}** — {tag}")
+                st.markdown(f"<div class='qa-mini'>{html.escape(it['answer_rag'][:220])}</div>",
+                            unsafe_allow_html=True)
+        st.caption(f"💡 {L['ref_note']}")
+    else:
+        st.caption("refusal_report.json 缺失")
+
+    # ------------------------------------------------------------- 2) hyper-param sweep
+    sweep_path = ROOT / "data" / "sweep_report.json"
+    if sweep_path.exists():
+        rep_s = json.loads(sweep_path.read_text(encoding="utf-8"))
+        st.markdown(f"### {L['sweep_title']}")
+        tbl_s = f"<table class='dtable'><tr>{''.join(f'<th>{c}</th>' for c in L['sweep_col'])}</tr>"
+        for r_ in rep_s["rows"]:
+            hit = f"{r_['retrieval_hit_rate']*100:.0f}%"
+            cite = f"{r_['citation_rate']*100:.0f}%"
+            cover = f"{r_['gold_cover_rate']*100:.0f}%"
+            faith = f"{r_['faithfulness']*100:.0f}%"
+            hi = " style='font-weight:700;color:var(--brand);'" if (
+                r_["retrieval_hit_rate"] == 1.0 and r_["faithfulness"] == 1.0
+                and r_["citation_rate"] == 1.0 and r_["gold_cover_rate"] == 1.0
+            ) else ""
+            tbl_s += (f"<tr><td{hi}>{r_['top_k']}</td><td>{r_['min_score']}</td>"
+                      f"<td{hi}>{hit}</td><td{hi}>{cite}</td><td{hi}>{cover}</td><td{hi}>{faith}</td></tr>")
+        st.markdown(f"<div class='dtable-wrap'>{tbl_s}</table></div>", unsafe_allow_html=True)
+        st.markdown(f"**{L['sweep_opt']}**")
+        st.caption(L["sweep_note"])
+    else:
+        st.caption("sweep_report.json 缺失")
+
+    # ------------------------------------------------------------- 3) hybrid comparison
+    hyb_path = ROOT / "data" / "hybrid_report.json"
+    if hyb_path.exists():
+        rep_h = json.loads(hyb_path.read_text(encoding="utf-8"))
+        st.markdown(f"### {L['hyb_title']}")
+        tbl_h = f"<table class='dtable'><tr>{''.join(f'<th>{c}</th>' for c in L['hyb_col'])}</tr>"
+        for key, name in (("vector", L["hyb_vec"]), ("hybrid", L["hyb_mix"])):
+            v = rep_h["summary"][key]
+            tbl_h += (f"<tr><td>{name}</td><td>{v['retrieval_hit_rate']*100:.0f}%</td>"
+                      f"<td>{v['citation_rate']*100:.0f}%</td><td>{v['faithfulness']*100:.0f}%</td></tr>")
+        st.markdown(f"<div class='dtable-wrap'>{tbl_h}</table></div>", unsafe_allow_html=True)
+        st.caption(f"💡 {L['hyb_note']}")
+    else:
+        st.caption("hybrid_report.json 缺失")
+
+    # ------------------------------------------------------------- 4) ablation failure cases
+    ea_ids = ("C05", "C09", "C15", "S06", "S09", "S13")
+    ea_modes = {"C05": "precision", "C09": "precision", "C15": "source",
+                "S06": "stance", "S09": "framework", "S13": "framework"}
+    if rep_path.exists():
+        rep_e = json.loads(rep_path.read_text(encoding="utf-8"))
+        cases = [it for it in rep_e["items"] if it["id"] in ea_ids]
+        cases.sort(key=lambda x: ea_ids.index(x["id"]))
+        st.markdown(f"### {L['ea_title']}")
+        st.caption(L["ea_hint"])
+        for it in cases:
+            mode = L["ea_modes"][ea_modes[it["id"]]]
+            with st.expander(f"{it['id']} · {it['question']} — [{L['ea_mode']}：{mode}]"):
+                st.markdown(f"**{L['ea_norag']}**")
+                st.markdown(f"<div class='qa-mini bad'>{html.escape(it['answer_norag'][:260])}</div>",
+                            unsafe_allow_html=True)
+                st.markdown(f"**{L['ea_rag']}**")
+                st.markdown(f"<div class='qa-mini good'>{html.escape(it['answer_rag'][:260])}</div>",
+                            unsafe_allow_html=True)
+        st.caption(L["ea_see"])
 
 st.markdown(f'<div class="footer">{L["footer"]}</div>', unsafe_allow_html=True)

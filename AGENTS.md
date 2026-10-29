@@ -20,7 +20,7 @@ MetaNutri 生态的 RAG 研究应用模块：健康饮食问答系统。
 
 ## 常用命令
 - 安装依赖：`uv sync`
-- 构建向量库：`python -m src.scripts.build_kb`
+- 构建向量库：`python3 src/kb.py`
 - 运行评测：`pytest tests/`（检索命中率、生成忠实度）
 - 启动 demo：`streamlit run app.py`
 - 可选 API：`uvicorn src.api:app --reload`

@@ -17,3 +17,8 @@
 ## 3. 切片产物
 - data/kb_foods.txt：307 条食物，每食物一段（按知识点切片）
 - data/kb_guidelines.txt：8 准则 + 准则六详细版，每准则一段
+
+## 4. 向量库恢复
+- 备份：`data/chroma_db.tar.gz`（316 chunks，ChromaDB `nutri_kb` 集合）
+- 恢复：`tar -xzf data/chroma_db.tar.gz -C data/`
+- 重建：`python3 src/kb.py`（需在 `.env` 配置 `DASHSCOPE_API_KEY`，阿里百炼 text-embedding-v3，OpenAI 兼容端点）

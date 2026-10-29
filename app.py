@@ -584,18 +584,17 @@ def ask(question):
 # answers and the input box live only inside the chat view, so switching to
 # the eval view shows a clean page (no input box, no leaked conversation).
 st.session_state.setdefault("tab", "chat")
-tab_now = st.session_state.tab
 
 _tab_sel = st.segmented_control(
     "",
     [L["tab_chat"], L["tab_eval"]],
-    default=L["tab_chat"] if tab_now == "chat" else L["tab_eval"],
+    default=L["tab_chat"] if st.session_state.tab == "chat" else L["tab_eval"],
     key="tab_sel",
     label_visibility="collapsed",
 )
-if _tab_sel and _tab_sel != tab_now:
-    st.session_state.tab = "chat" if _tab_sel == L["tab_chat"] else "eval"
-    st.rerun()
+# widget 值是权威：点击后 Streamlit 自带 rerun，这里直接取最新值
+tab_now = "eval" if _tab_sel == L["tab_eval"] else "chat"
+st.session_state["tab"] = tab_now
 
 if tab_now == "chat":
     conv = st.session_state.conversations[st.session_state.current_conv]

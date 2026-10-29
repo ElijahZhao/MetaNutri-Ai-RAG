@@ -360,7 +360,36 @@ div[data-testid="stTabs"] button[aria-selected="true"]{color:var(--brand);font-w
   padding:.5rem .75rem;margin:.2rem 0 .6rem;color:var(--text);font-size:.88rem;line-height:1.55;}
 .qa-mini.bad{background:#fdf2f2;border-left-color:#dc2626;}
 .qa-mini.good{background:var(--brand-soft);border-left-color:var(--brand);}
+/* 自定义 tab（segmented control）突出样式 —— 仅主区，不影响侧边栏语言组 */
+.stMain [data-testid="stButtonGroup"] {
+  width: 100%;
+  gap: .35rem;
+  background: var(--brand-soft);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: .25rem;
+}
+.stMain [data-testid="stButtonGroup"] button {
+  font-size: 1.02rem;
+  font-weight: 650;
+  padding: .5rem 1.1rem;
+  border-radius: 9px;
+  transition: all .15s ease;
+}
+.stMain [data-testid="stButtonGroup"] button[aria-checked="true"] {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+  box-shadow: 0 2px 8px rgba(23, 132, 98, .28);
+}
+.stMain [data-testid="stButtonGroup"] button:not([aria-checked="true"]):hover {
+  background: #fff;
+  border-color: var(--brand);
+  color: var(--brand);
+}
 @media (max-width:900px){
+  .stMain [data-testid="stButtonGroup"]{padding:.15rem;gap:.2rem;}
+  .stMain [data-testid="stButtonGroup"] button{font-size:.85rem;padding:.35rem .45rem;}
   .metric-grid{grid-template-columns:repeat(2,1fr);}
   .matrix{grid-template-columns:repeat(5,1fr);}
   .mcell{aspect-ratio:1.2/1;}
@@ -557,14 +586,15 @@ def ask(question):
 st.session_state.setdefault("tab", "chat")
 tab_now = st.session_state.tab
 
-_tb1, _tb2 = st.columns(2)
-if _tb1.button(L["tab_chat"], key="tbar_chat", use_container_width=True,
-               type="primary" if tab_now == "chat" else "secondary"):
-    st.session_state.tab = "chat"
-    st.rerun()
-if _tb2.button(L["tab_eval"], key="tbar_eval", use_container_width=True,
-               type="primary" if tab_now == "eval" else "secondary"):
-    st.session_state.tab = "eval"
+_tab_sel = st.segmented_control(
+    "",
+    [L["tab_chat"], L["tab_eval"]],
+    default=L["tab_chat"] if tab_now == "chat" else L["tab_eval"],
+    key="tab_sel",
+    label_visibility="collapsed",
+)
+if _tab_sel and _tab_sel != tab_now:
+    st.session_state.tab = "chat" if _tab_sel == L["tab_chat"] else "eval"
     st.rerun()
 
 if tab_now == "chat":

@@ -20,14 +20,14 @@ if os.environ.get("DASHSCOPE_API_KEY") is None:
     try:
         if st.secrets.get("DASHSCOPE_API_KEY"):
             os.environ["DASHSCOPE_API_KEY"] = st.secrets["DASHSCOPE_API_KEY"]
-    except Exception:
+    except Exception:  # nosec B110
         pass
 
 # 2) restore vector store from tarball if missing (repo ignores chroma_db/)
 db_dir = ROOT / "data" / "chroma_db"
 if not db_dir.exists():
     with tarfile.open(ROOT / "data" / "chroma_db.tar.gz", "r:gz") as tf:
-        tf.extractall(ROOT / "data")
+        tf.extractall(ROOT / "data", filter="data")  # reject unsafe tar members
 
 sys.path.insert(0, str(ROOT))
 

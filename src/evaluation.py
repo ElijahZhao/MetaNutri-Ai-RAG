@@ -44,12 +44,16 @@ def key_value(n: str) -> str:
     return re.sub(r"\.0(?=[a-zA-Z%])", "", n)  # 96.0g -> 96g
 
 
+# "100g" is the per-100g denominator in composition golds, not a key value
+STOP_KEYS = {"100g"}
+
+
 def gold_key_values(gold: str) -> set:
-    return {key_value(n) for n in NUM_RE.findall(norm(gold))}
+    return {k for k in (key_value(n) for n in NUM_RE.findall(norm(gold))) if k not in STOP_KEYS}
 
 
 def answer_key_values(answer: str) -> set:
-    return {key_value(n) for n in NUM_RE.findall(norm(answer))}
+    return {k for k in (key_value(n) for n in NUM_RE.findall(norm(answer))) if k not in STOP_KEYS}
 
 
 def has_key_info(answer: str, gold: str, kw: str = "", gold_key: str = "") -> bool:

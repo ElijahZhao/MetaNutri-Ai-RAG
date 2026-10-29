@@ -65,7 +65,7 @@ def main():
         try:
             db.delete_collection(COLLECTION)
             print("old collection deleted")
-        except Exception:
+        except Exception:  # nosec B110
             pass
     col = db.get_or_create_collection(
         COLLECTION, metadata={"hnsw:space": "cosine"}

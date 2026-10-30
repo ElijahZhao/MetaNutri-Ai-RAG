@@ -82,7 +82,7 @@ I18N = {
         "cite_exp": "📎 引用来源（{} 条）",
         "cite_food": "食物",
         "cite_guide": "指南",
-        "eval_title": "离线评测指标 · 50 条评测集 · qwen-plus",
+        "eval_title": "离线评测指标 · 160 条评测集 · qwen-plus",
         "m_hit": "🎯 检索命中率",
         "m_faith": "✅ 生成忠实度",
         "m_cite": "📚 引用溯源率",
@@ -101,15 +101,15 @@ I18N = {
         "filter_cats": {"composition": "成分", "guideline": "指南", "special": "禁忌"},
         "th_id": "ID", "th_q": "问题", "th_hit2": "命中", "th_cite2": "引用有效",
         "th_rag": "RAG覆盖", "th_norag": "无RAG覆盖",
-        "caption": "共 {} 条 · 全部 50 条：检索命中 50/50 · 忠实 50/50 · 引用 50/50",
+        "caption": "共 {} 条 · 检索命中 / 忠实度 / 引用率见上方指标卡（v1.0.0 基线 160 题）",
         "eval_missing": "评测报告缺失：未找到 data/eval_report.json",
         "err_api": "服务暂时不可用，请稍后重试；若持续失败请检查 API 配置。",
-        "vis_title": "🧭 评测覆盖总览 · 50 题",
+        "vis_title": "🧭 评测覆盖总览 · 160 题",
         "vis_norag": "无 RAG 覆盖 {0} · RAG 补齐 {1}",
         "vis_ok": "双覆盖（RAG + 无 RAG）",
         "vis_gain": "RAG 增量补齐（无 RAG 未覆盖）",
         "vis_hint": "悬停每格查看题目；橙色 = RAG 增量价值所在",
-        "ref_title": "🛡️ 拒答评测 · 防幻觉（10 条资料外问题）",
+        "ref_title": "🛡️ 拒答评测 · 防幻觉（40 条资料外问题）",
         "ref_sub": "资料不足时，系统正确拒答（明确说“资料未收录”）而不是编造的比例",
         "ref_col": ["系统", "拒答率"],
         "ref_rag": "Nutri-RAG（RAG 管线）",
@@ -118,6 +118,14 @@ I18N = {
         "ref_exp": "查看逐条拒答原文（{} 条）",
         "ref_q": "问题", "ref_ans": "回答摘录", "ref_ok": "✅ 正确拒答", "ref_bad": "❌ 编造/未拒答",
         "ref_note": "结论：检索 + 明确的知识库边界才是防幻觉的根本，仅靠提示词不够",
+        "x3_title": "📊 NutriQA 跨模型对比 · 论文基准（v1.0.0）",
+        "x3_sub": "三模型 160 题生成评测 + 40 题拒答评测（论文 Table 3/4 · 混合检索 top_k=8）",
+        "x3_judge": "⚖️ 判官一致性闸门（论文 Table 5 · docs/eval-benchmark-spec.md §9.3）",
+        "x3_judge_note": "确定性规则 0.949 优于通用 LLM judge 0.846——规则口径更贴人工标注",
+        "x3_bd": "⚠️ boundary 子类（库外食物×数值诱饵 · 论文 Table 6）——裸 LLM 100% 编造数值，RAG 拒答 100%",
+        "x3_h_mdl": "模型", "x3_h_hit": "检索命中", "x3_h_faith": "忠实度", "x3_h_cite": "引用",
+        "x3_h_gain": "RAG增益", "x3_h_rr": "RAG", "x3_h_rn": "无RAG", "x3_h_rs": "Strict",
+        "x3_h_prot": "判定口径", "x3_h_agr": "一致率", "x3_h_fab": "编造率", "x3_h_ref": "拒答率",
         "sweep_title": "🔬 超参数消融 · top-k × 相似度阈值（9 组 × 50 题）",
         "sweep_col": ["top-k", "阈值", "检索命中", "引用", "关键覆盖", "忠实度"],
         "sweep_opt": "🏆 最优点：top-k = 5、不加阈值（全部 100%）—— 已设为默认",
@@ -183,7 +191,7 @@ I18N = {
         "cite_exp": "📎 Sources ({} items)",
         "cite_food": "Food",
         "cite_guide": "Guideline",
-        "eval_title": "Offline evaluation · 50 questions · qwen-plus",
+        "eval_title": "Offline evaluation · 160 questions · qwen-plus",
         "m_hit": "🎯 Retrieval Hit Rate",
         "m_faith": "✅ Faithfulness",
         "m_cite": "📚 Citation Rate",
@@ -202,15 +210,15 @@ I18N = {
         "filter_cats": {"composition": "Composition", "guideline": "Guideline", "special": "Cautions"},
         "th_id": "ID", "th_q": "Question", "th_hit2": "Hit", "th_cite2": "Citation",
         "th_rag": "RAG cover", "th_norag": "No-RAG cover",
-        "caption": "{} rows · All 50: hit 50/50 · faithful 50/50 · citation 50/50",
+        "caption": "{} rows · see metric cards above (v1.0.0 baseline: 160 items)",
         "eval_missing": "Evaluation report missing: data/eval_report.json not found",
         "err_api": "Service temporarily unavailable — please retry shortly; if it persists, check the API configuration.",
-        "vis_title": "🧭 Evaluation Coverage Overview · 50 items",
+        "vis_title": "🧭 Evaluation Coverage Overview · 160 items",
         "vis_norag": "No-RAG coverage {0} · RAG recovered {1}",
         "vis_ok": "Covered both ways (RAG + no-RAG)",
         "vis_gain": "Recovered by RAG (missed without RAG)",
         "vis_hint": "Hover a cell to see the question; orange = where RAG adds value",
-        "ref_title": "🛡️ Refusal Evaluation · Anti-hallucination (10 out-of-scope questions)",
+        "ref_title": "🛡️ Refusal Evaluation · Anti-hallucination (40 out-of-scope questions)",
         "ref_sub": "When knowledge is insufficient, how often does the system correctly refuse (\"not in the sources\") instead of fabricating?",
         "ref_col": ["System", "Refusal rate"],
         "ref_rag": "Nutri-RAG (RAG pipeline)",
@@ -219,6 +227,14 @@ I18N = {
         "ref_exp": "View per-item refusal answers ({})",
         "ref_q": "Question", "ref_ans": "Answer excerpt", "ref_ok": "✅ Correctly refused", "ref_bad": "❌ Fabricated / not refused",
         "ref_note": "Takeaway: retrieval + an explicit knowledge-base boundary — not prompting alone — prevents hallucination",
+        "x3_title": "📊 NutriQA cross-model comparison · paper benchmark (v1.0.0)",
+        "x3_sub": "160-item generation + 40-item refusal across 3 models (paper Tables 3–4 · hybrid retrieval, top_k=8)",
+        "x3_judge": "⚖️ Automated-judgment agreement gate (paper Table 5 · docs/eval-benchmark-spec.md §9.3)",
+        "x3_judge_note": "Deterministic rules reach 0.949 vs generic LLM judge 0.846 — closer to human annotation",
+        "x3_bd": "⚠️ Boundary subclass (out-of-KB foods × numeric baits · paper Table 6) — bare LLMs fabricate 100%; RAG refuses 100%",
+        "x3_h_mdl": "Model", "x3_h_hit": "Retrieval hit", "x3_h_faith": "Faithfulness", "x3_h_cite": "Citation",
+        "x3_h_gain": "RAG gain", "x3_h_rr": "RAG", "x3_h_rn": "NoRAG", "x3_h_rs": "Strict",
+        "x3_h_prot": "Protocol", "x3_h_agr": "Agreement", "x3_h_fab": "Fabrication", "x3_h_ref": "Refusal",
         "sweep_title": "🔬 Hyper-parameter Sweep · top-k × similarity threshold (9 runs × 50 questions)",
         "sweep_col": ["top-k", "Threshold", "Hit", "Citation", "Coverage", "Faithfulness"],
         "sweep_opt": "🏆 Sweet spot: top-k = 5, no threshold (all 100%) — now the default",
@@ -742,6 +758,59 @@ else:
         st.caption(L["caption"].format(len(rows)))
     else:
         st.info(L["eval_missing"])
+
+    # ------------------------------------------------------------- 0) NutriQA v1.0.0 cross-model comparison
+    st.markdown(f"### {L['x3_title']}")
+    st.caption(L["x3_sub"])
+    mdls = [("qwen-plus", "eval_report.json", "refusal_report.json"),
+            ("deepseek-chat", "eval_report_deepseek.json", "refusal_report_deepseek.json"),
+            ("glm-5.3-flash", "eval_report_glm.json", "refusal_report_glm.json")]
+    x3_rows = ""
+    for name, ef, rf in mdls:
+        p = ROOT / "data" / ef
+        if p.exists():
+            s = json.loads(p.read_text(encoding="utf-8"))["summary"]
+            x3_rows += (f"<tr><td>{name}</td><td>{s['retrieval_hit_rate']:.0%}</td>"
+                        f"<td>{s['faithfulness']:.0%}</td><td>{s['rag_citation_rate']:.0%}</td>"
+                        f"<td>+{s['ablation_gain']*100:.1f}%</td></tr>")
+    if x3_rows:
+        st.markdown(f"<div class='dtable-wrap'><table class='dtable'><tr><th>{L['x3_h_mdl']}</th>"
+                    f"<th>{L['x3_h_hit']}</th><th>{L['x3_h_faith']}</th><th>{L['x3_h_cite']}</th>"
+                    f"<th>{L['x3_h_gain']}</th></tr>{x3_rows}</table></div>", unsafe_allow_html=True)
+    x3_ref = ""
+    for name, ef, rf in mdls:
+        p = ROOT / "data" / rf
+        if p.exists():
+            rs = json.loads(p.read_text(encoding="utf-8"))["summary"]
+            x3_ref += (f"<tr><td>{name}</td><td>{rs['refusal_rate_rag']:.0%}</td>"
+                       f"<td>{rs['refusal_rate_norag']:.0%}</td>"
+                       f"<td>{rs['refusal_rate_strict_assistant']:.0%}</td></tr>")
+    if x3_ref:
+        st.markdown(f"<div class='dtable-wrap'><table class='dtable'><tr><th>{L['x3_h_mdl']}</th>"
+                    f"<th>{L['x3_h_rr']}</th><th>{L['x3_h_rn']}</th><th>{L['x3_h_rs']}</th></tr>"
+                    f"{x3_ref}</table></div>", unsafe_allow_html=True)
+    st.markdown(f"**{L['x3_judge']}**")   # judge numbers from docs/eval-benchmark-spec.md §9.3 (fig5 hardcodes same)
+    st.caption(L["x3_judge_note"])
+    st.markdown(f"<div class='dtable-wrap'><table class='dtable'><tr><th>{L['x3_h_prot']}</th><th>{L['x3_h_agr']}</th></tr>"
+                f"<tr><td>Rule-based vs human</td><td>0.949 (37/39)</td></tr>"
+                f"<tr><td>Generic LLM judge vs human</td><td>0.846 (33/39)</td></tr>"
+                f"<tr><td>Rules vs LLM judge</td><td>0.850 (34/40)</td></tr>"
+                f"</table></div>", unsafe_allow_html=True)
+    st.markdown(f"**{L['x3_bd']}**")
+    x3_bd = ""
+    for name, ef, rf in mdls:
+        p = ROOT / "data" / rf
+        if p.exists():
+            rp = json.loads(p.read_text(encoding="utf-8"))
+            bd = [it for it in rp["items"] if it["id"].startswith("R3")]
+            if bd:
+                fab = sum(1 for it in bd if it.get("answer_norag")) / len(bd)
+                ref = sum(1 for it in bd if it.get("refused_rag")) / len(bd)
+                x3_bd += f"<tr><td>{name}</td><td>{fab:.0%}</td><td>{ref:.0%}</td></tr>"
+    if x3_bd:
+        st.markdown(f"<div class='dtable-wrap'><table class='dtable'><tr><th>{L['x3_h_mdl']}</th>"
+                    f"<th>{L['x3_h_fab']}</th><th>{L['x3_h_ref']}</th></tr>{x3_bd}</table></div>",
+                    unsafe_allow_html=True)
 
     # ------------------------------------------------------------- 1) refusal eval
     ref_path = ROOT / "data" / "refusal_report.json"

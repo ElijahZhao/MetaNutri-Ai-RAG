@@ -54,6 +54,22 @@ Ask questions like *"高血压人群饮食上应该注意什么？"* or *"每100
 |---|---|
 | <img src="assets/screenshots/screenshot-eval-zh.png" width="100%" alt="Evaluation dashboard" /> | <img src="assets/screenshots/screenshot-eval-research-en.png" width="100%" alt="Evaluation research dashboard" /> |
 
+## 📊 Paper figures (NutriQA)
+
+Figures from the *NutriQA* paper (git tag `v1.0.0`), regenerable with `docs/figures/make_figures.py` (data read from `data/eval_report*.json` / `data/refusal_report*.json`):
+
+| Fig 1 · NutriQA evaluation pipeline | Fig 2 · RQ1 retrieval ablation (hit rate) |
+|---|---|
+| <img src="docs/figures/fig1_pipeline.png" width="100%" alt="Fig 1 - pipeline" /> | <img src="docs/figures/fig2_retrieval_ablation.png" width="100%" alt="Fig 2 - retrieval ablation" /> |
+
+| Fig 3 · RQ2 faithfulness by category | Fig 4 · RQ3 refusal under three protocols |
+|---|---|
+| <img src="docs/figures/fig3_faithfulness_by_category.png" width="100%" alt="Fig 3 - faithfulness" /> | <img src="docs/figures/fig4_refusal_protocols.png" width="100%" alt="Fig 4 - refusal" /> |
+
+| Fig 5 · RQ4 judgment agreement | Fig 6 · RQ5 boundary hallucination |
+|---|---|
+| <img src="docs/figures/fig5_judge_agreement.png" width="100%" alt="Fig 5 - judge agreement" /> | <img src="docs/figures/fig6_boundary_hallucination.png" width="100%" alt="Fig 6 - boundary hallucination" /> |
+
 ## ⚡ Quick Start
 
 ```bash

@@ -1,0 +1,2784 @@
+{
+  "summary": {
+    "retrieval_hit_rate": 1.0,
+    "faithfulness": 0.9938,
+    "rag_citation_rate": 1.0,
+    "gold_cover_rag": 0.9938,
+    "gold_cover_norag": 0.7688,
+    "ablation_gain": 0.225
+  },
+  "by_category": {
+    "composition": {
+      "retrieval_hit_rate": 1.0,
+      "faithfulness": 1.0
+    },
+    "guideline": {
+      "retrieval_hit_rate": 1.0,
+      "faithfulness": 1.0
+    },
+    "special": {
+      "retrieval_hit_rate": 1.0,
+      "faithfulness": 0.98
+    }
+  },
+  "items": [
+    {
+      "id": "C01",
+      "category": "composition",
+      "question": "小米每100克含有多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "小米每100克可食部含能量1530kJ[1]。",
+      "answer_norag": "小米每100克（生重）约含 **361千卡** 能量，约合 **1510千焦**。具体数值因品种和产地略有差异。"
+    },
+    {
+      "id": "C02",
+      "category": "composition",
+      "question": "每100克鸡蛋含有多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "每100克鸡蛋（均值）含蛋白质13.3克[1]。",
+      "answer_norag": "每100克鸡蛋约含13克蛋白质。"
+    },
+    {
+      "id": "C03",
+      "category": "composition",
+      "question": "每100克苹果的碳水化合物含量是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        3,
+        4,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "资料中列出了多个苹果品种的碳水化合物含量（每100克可食部）：\n\n- 红玉苹果：14.7g [1]\n- 苹果（均值）：13.5g [2]\n- 红星苹果：14.3g [3]\n- 香玉苹果：15.7g [4]\n\n如果您指的是\"苹果（均值）\"，则每100克可食部碳水化合物含量为13.5g [2]。",
+      "answer_norag": "每100克苹果的碳水化合物含量约为13.5克，其中糖约10克、膳食纤维约2.4克。具体数值因品种和成熟度略有差异。"
+    },
+    {
+      "id": "C04",
+      "category": "composition",
+      "question": "杏仁每100克含多少脂肪？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "资料中列出了三种杏仁相关食物的脂肪含量（均以每100克可食部计）：\n\n- 杏仁(炒)：脂肪 51.0g [1]\n- 杏仁：脂肪 45.4g [2]\n- 杏仁(大)：脂肪 42.9g [3]\n\n三种数值不同，取决于杏仁的具体种类和加工方式。",
+      "answer_norag": "每100克杏仁约含脂肪50克左右（具体因品种和加工方式略有差异，通常在49–51克之间）。"
+    },
+    {
+      "id": "C05",
+      "category": "composition",
+      "question": "每100克牛奶的钙含量是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        4
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "每100克牛奶（乳品，牛乳，均值）的钙含量为104mg[4]。",
+      "answer_norag": "每100克牛奶的钙含量约为104毫克（常见全脂牛奶的参考值，不同品牌和类型略有差异，大致在100–120毫克之间）。"
+    },
+    {
+      "id": "C06",
+      "category": "composition",
+      "question": "菠菜每100克含多少铁？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "菠菜每100克可食部含铁 **2.9 mg**[1]。",
+      "answer_norag": "菠菜每100克约含2.7毫克铁（生重，数据因品种和来源略有差异）。需要注意，菠菜中的铁是非血红素铁，且含草酸，吸收率较低。"
+    },
+    {
+      "id": "C07",
+      "category": "composition",
+      "question": "香蕉每100克含多少钾？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "香蕉每100克可食部含钾 **256mg**[1]。",
+      "answer_norag": "香蕉每100克约含钾358毫克。"
+    },
+    {
+      "id": "C08",
+      "category": "composition",
+      "question": "橙子每100克含多少维生素C？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "橙子每100克可食部含维生素C 33.0mg[7]。",
+      "answer_norag": "橙子每100克约含维生素C 53毫克。不同品种和成熟度会有差异，一般在50毫克左右。"
+    },
+    {
+      "id": "C09",
+      "category": "composition",
+      "question": "猪里脊每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "猪里脊每100克可食部含蛋白质20.2克[2]。",
+      "answer_norag": "猪里脊每100克约含蛋白质20克左右（生重，因部位和肥瘦略有差异，通常在19–21克之间）。"
+    },
+    {
+      "id": "C10",
+      "category": "composition",
+      "question": "核桃每100克含多少脂肪？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "核桃的脂肪含量因状态不同而不同（均以每100克可食部计）：\n\n- 核桃（鲜）：脂肪29.9g[1]\n- 核桃（干）[胡桃]：脂肪58.8g[2]\n\n如需比较，干核桃的脂肪含量明显高于鲜核桃。",
+      "answer_norag": "核桃每100克约含脂肪65克，其中以不饱和脂肪酸为主。具体数值因品种和加工方式略有差异。"
+    },
+    {
+      "id": "C11",
+      "category": "composition",
+      "question": "豆腐每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "豆腐每100克可食部含蛋白质8.1g[1]。",
+      "answer_norag": "豆腐每100克约含蛋白质8克，具体因豆腐种类而异：北豆腐（老豆腐）约12克，南豆腐（嫩豆腐）约6克，内酯豆腐约5克。"
+    },
+    {
+      "id": "C12",
+      "category": "composition",
+      "question": "鸡肉每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，鸡肉（均值）每100克可食部含能量 **698kJ**[2]。",
+      "answer_norag": "鸡肉每100克的能量因部位和烹饪方式不同而有差异，以常见生肉可食部计：\n\n- 鸡胸肉：约 118–133 千卡\n- 鸡腿肉（去皮）：约 120–140 千卡\n- 鸡翅：约 190–200 千卡\n- 带皮鸡肉：能量更高，约 200–250 千卡\n\n以上为近似值，具体以食物成分表或包装营养标签为准。"
+    },
+    {
+      "id": "C13",
+      "category": "composition",
+      "question": "带鱼每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "带鱼每100克可食部含蛋白质 **17.7g**[1]。",
+      "answer_norag": "带鱼每100克约含蛋白质17.7克（可食部计）。不同来源数据略有差异，一般在17–19克之间。"
+    },
+    {
+      "id": "C14",
+      "category": "composition",
+      "question": "秋黄瓜每100克含多少水分？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "秋黄瓜每100克可食部含水分96.0g[1]。",
+      "answer_norag": "秋黄瓜每100克约含水分95～96克。"
+    },
+    {
+      "id": "C15",
+      "category": "composition",
+      "question": "红薯每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "红薯（甘薯，红心）每100克可食部含能量432kJ[1]。",
+      "answer_norag": "红薯每100克约含86千卡（约360千焦）能量。具体数值因品种和烹饪方式略有差异，蒸煮红薯通常在此范围。"
+    },
+    {
+      "id": "C16",
+      "category": "composition",
+      "question": "燕麦片每100克含多少膳食纤维？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "燕麦片每100克可食部含膳食纤维 **13.20g**[1]。",
+      "answer_norag": "燕麦片每100克约含10克膳食纤维，具体因加工精度和品牌略有差异，即食燕麦通常略低。"
+    },
+    {
+      "id": "C17",
+      "category": "composition",
+      "question": "黄豆每100克含多少铁？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "黄豆每100克可食部含铁 **8.2 mg**[1]。",
+      "answer_norag": "黄豆每100克约含铁8.2毫克。具体数值因品种和检测方式略有差异，一般在7～9毫克之间。"
+    },
+    {
+      "id": "C18",
+      "category": "composition",
+      "question": "西兰花每100克含多少维生素C？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "西兰花每100克可食部含维生素C 51.0mg[1]。",
+      "answer_norag": "西兰花每100克约含维生素C 51毫克（生重，数据因品种和检测来源略有差异，常见范围约50–90毫克）。"
+    },
+    {
+      "id": "C19",
+      "category": "composition",
+      "question": "豆浆每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "豆浆每100克可食部含蛋白质1.8g[1]。",
+      "answer_norag": "豆浆每100克约含3克蛋白质，具体数值因浓度和制作方式略有差异。"
+    },
+    {
+      "id": "C20",
+      "category": "composition",
+      "question": "羊肉每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        3,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "羊肉（肥瘦，均值）每100克可食部含能量 **845 kJ**[1]。\n\n资料中还收录了另外两种羊肉部位/制品，供参考：\n- 羊肉（里脊）：每100克可食部含能量 **435 kJ**[3]\n- 腊羊肉：每100克可食部含能量 **1031 kJ**[2]",
+      "answer_norag": "羊肉每100克的能量因部位和肥瘦不同差异较大，大致范围如下：\n\n- **瘦羊肉**：约118千卡（约494千焦）\n- **肥瘦羊肉（常见）**：约203千卡（约849千焦）\n- **羊腿肉**：约111千卡\n- **羊排（带肥）**：约200千卡以上\n\n一般来说，脂肪含量越高，能量越高。日常参考可记作：瘦羊肉约120千卡/100克，肥瘦相间约200千卡/100克。"
+    },
+    {
+      "id": "C21",
+      "category": "composition",
+      "question": "荞麦每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "荞麦每100克可食部含蛋白质9.3g[1]。",
+      "answer_norag": "荞麦每100克约含蛋白质13克左右（因品种和加工方式略有差异，常见范围11–14克）。"
+    },
+    {
+      "id": "C22",
+      "category": "composition",
+      "question": "绿豆每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "绿豆（干）每100克可食部含蛋白质 **21.6g**[1]。",
+      "answer_norag": "绿豆每100克约含蛋白质21.6克（干绿豆，因品种和产地略有差异）。"
+    },
+    {
+      "id": "C23",
+      "category": "composition",
+      "question": "腐竹每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "腐竹每100克可食部含蛋白质 **44.6g**[1]。",
+      "answer_norag": "腐竹每100克约含44～45克蛋白质，是豆制品中蛋白质含量较高的一种。"
+    },
+    {
+      "id": "C24",
+      "category": "composition",
+      "question": "芸豆每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "资料中收录了三种干芸豆的蛋白质含量（每100克可食部）：\n\n- 芸豆（干，白）：蛋白质 23.4g [1]\n- 芸豆（干，虎皮）：蛋白质 22.5g [2]\n- 芸豆（干，红）：蛋白质 21.4g [3]\n\n三种芸豆的蛋白质含量在 21.4g～23.4g 之间，具体数值因品种而异。",
+      "answer_norag": "芸豆（干）每100克约含蛋白质20–22克；煮熟后因吸水，每100克约含7–9克蛋白质。"
+    },
+    {
+      "id": "C25",
+      "category": "composition",
+      "question": "马铃薯每100克含多少碳水化合物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "马铃薯（土豆、洋芋）每100克可食部含碳水化合物17.2g[1]。",
+      "answer_norag": "马铃薯每100克约含17克碳水化合物，具体数值因品种和烹饪方式略有差异。"
+    },
+    {
+      "id": "C26",
+      "category": "composition",
+      "question": "玉米面每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "玉米面（白）每100克可食部含能量1489kJ[1]；玉米面（黄）每100克可食部含能量1488kJ[2]。",
+      "answer_norag": "玉米面每100克约含 **350–370 千卡**（约1460–1550千焦）能量，具体数值因玉米品种、加工粗细和含水量略有差异。"
+    },
+    {
+      "id": "C27",
+      "category": "composition",
+      "question": "胡萝卜每100克含多少胡萝卜素？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料：\n\n- 胡萝卜（红）每100克可食部含胡萝卜素 **4130.0 μg**[1]。\n- 胡萝卜（黄）每100克可食部含胡萝卜素 **4010.0 μg**[2]。\n\n两者品种不同，含量略有差异。",
+      "answer_norag": "胡萝卜每100克约含胡萝卜素 **4毫克** 左右（常见数据为 3.6～4.1 毫克），其中以 β-胡萝卜素为主。具体含量会因品种、成熟度和种植条件有所差异。"
+    },
+    {
+      "id": "C28",
+      "category": "composition",
+      "question": "芹菜茎每100克含多少钾？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "芹菜茎每100克可食部含钾206mg[1]。",
+      "answer_norag": "芹菜茎每100克约含钾260毫克（因品种和种植条件不同，一般在200–300毫克之间）。"
+    },
+    {
+      "id": "C29",
+      "category": "composition",
+      "question": "番茄每100克含多少维生素C？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "番茄每100克可食部含维生素C 19.0mg[1]。",
+      "answer_norag": "番茄每100克约含14毫克维生素C，具体数值因品种、成熟度和种植条件略有差异。"
+    },
+    {
+      "id": "C30",
+      "category": "composition",
+      "question": "茄子每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "茄子因品种不同，每100克可食部的能量如下：\n\n- 茄子（均值）：98 kJ [1]\n- 茄子（圆）：133 kJ [2]\n- 茄子（紫皮，长）：95 kJ [3]\n\n以上数值均以“每100克可食部”计。",
+      "answer_norag": "茄子每100克约含23千卡能量（生茄子，可食部）。"
+    },
+    {
+      "id": "C31",
+      "category": "composition",
+      "question": "黄瓜每100克含多少水分？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "黄瓜（鲜）每100克可食部含水分95.8克[1]。",
+      "answer_norag": "黄瓜每100克约含水分95～96克。"
+    },
+    {
+      "id": "C32",
+      "category": "composition",
+      "question": "大白菜每100克含多少维生素C？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "大白菜（均值）每100克可食部含维生素C 31.0mg[1]。",
+      "answer_norag": "大白菜每100克约含维生素C 20～30毫克，具体数值因品种、产地和储存条件略有差异。"
+    },
+    {
+      "id": "C33",
+      "category": "composition",
+      "question": "韭菜每100克含多少铁？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "韭菜每100克可食部含铁 **1.6mg**[1]。",
+      "answer_norag": "韭菜每100克约含铁1.7毫克。"
+    },
+    {
+      "id": "C34",
+      "category": "composition",
+      "question": "柠檬每100克含多少维生素C？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "柠檬每100克可食部含维生素C 22.0mg[1]。",
+      "answer_norag": "柠檬每100克约含22毫克维生素C。不同品种和成熟度会有差异，常见范围约20–53毫克。"
+    },
+    {
+      "id": "C35",
+      "category": "composition",
+      "question": "南瓜每100克含多少碳水化合物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        3,
+        3,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "资料中涉及“南瓜”的有两种，碳水化合物含量（每100克可食部）分别为：\n\n- 南瓜粉：碳水化合物 79.6 g[1]\n- 南瓜（栗面）：碳水化合物 8.8 g[3]\n\n如果您指的是新鲜南瓜（栗面），则为 8.8 g/100克可食部[3]；南瓜粉是脱水制品，数值明显更高[1]。",
+      "answer_norag": "南瓜每100克约含碳水化合物 5～7 克，具体因品种和成熟度略有差异。"
+    },
+    {
+      "id": "C36",
+      "category": "composition",
+      "question": "冬瓜每100克含多少水分？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "冬瓜每100克可食部含水分96.6克[1]。",
+      "answer_norag": "冬瓜每100克约含水分96克左右，含水量很高，热量低，适合清淡饮食。"
+    },
+    {
+      "id": "C37",
+      "category": "composition",
+      "question": "洋葱每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "洋葱（葱头，鲜）每100克可食部含能量171kJ[1]。",
+      "answer_norag": "洋葱每100克约含40千卡能量（生洋葱，可食部分）。不同品种和烹饪方式会略有差异。"
+    },
+    {
+      "id": "C38",
+      "category": "composition",
+      "question": "梨每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，梨（均值）每100克可食部含能量212kJ[5]。",
+      "answer_norag": "梨每100克约含44千卡能量（可食部分）。"
+    },
+    {
+      "id": "C39",
+      "category": "composition",
+      "question": "桃每100克含多少维生素C？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "桃（均值）每100克可食部含维生素C 7.0mg[7]。",
+      "answer_norag": "桃每100克约含维生素C 7毫克左右（不同品种和成熟度略有差异）。"
+    },
+    {
+      "id": "C40",
+      "category": "composition",
+      "question": "葡萄每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "葡萄（均值）每100克可食部含能量187kJ[1]。",
+      "answer_norag": "葡萄每100克约含43—45千卡能量，具体因品种和成熟度略有差异。"
+    },
+    {
+      "id": "C41",
+      "category": "composition",
+      "question": "草莓每100克含多少维生素C？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "草莓每100克可食部含维生素C 47.0mg[1]。",
+      "answer_norag": "草莓每100克约含维生素C 47毫克。不同品种和成熟度会有差异，常见范围约40–60毫克。"
+    },
+    {
+      "id": "C42",
+      "category": "composition",
+      "question": "西瓜每100克含多少水分？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "西瓜每100克可食部含水分93.3g[1]。",
+      "answer_norag": "西瓜每100克约含水分91～92克，含水量约91%～92%。"
+    },
+    {
+      "id": "C43",
+      "category": "composition",
+      "question": "大米每100克含多少碳水化合物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "大米（参考资料中为“香大米”）每100克可食部含碳水化合物72.4g[1]。",
+      "answer_norag": "大米每100克约含碳水化合物77–78克（生大米，因品种和含水量略有差异）。"
+    },
+    {
+      "id": "C44",
+      "category": "composition",
+      "question": "牛肉里脊每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "牛肉里脊每100克可食部含蛋白质22.2克[1]。",
+      "answer_norag": "牛肉里脊每100克约含蛋白质20～22克，具体数值因部位和烹饪方式略有差异。"
+    },
+    {
+      "id": "C45",
+      "category": "composition",
+      "question": "猪肝每100克含多少铁？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "猪肝每100克可食部含铁 **22.6 mg**[1]。",
+      "answer_norag": "猪肝每100克约含铁22.6毫克，属于铁含量很高的食物，且以血红素铁为主，吸收率较好。具体数值因猪品种、饲养方式和检测方法会有差异，常见数据在20～25毫克/100克之间。"
+    },
+    {
+      "id": "C46",
+      "category": "composition",
+      "question": "鸭肉每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "鸭肉（鸭，均值）每100克可食部含蛋白质15.5克[5]。",
+      "answer_norag": "鸭肉每100克约含15–20克蛋白质，具体因部位和烹饪方式而异：鸭胸肉约19–20克，带皮鸭肉约15–16克。"
+    },
+    {
+      "id": "C47",
+      "category": "composition",
+      "question": "鹅肉每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "鹅肉每100克可食部含蛋白质17.9g[5]。",
+      "answer_norag": "鹅肉每100克约含蛋白质17.9克（因部位和烹饪方式略有差异）。"
+    },
+    {
+      "id": "C48",
+      "category": "composition",
+      "question": "鲤鱼每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "鲤鱼每100克可食部含蛋白质17.6克[1]。",
+      "answer_norag": "鲤鱼每100克可食部分约含蛋白质17～18克，具体数值因品种和生长环境略有差异。"
+    },
+    {
+      "id": "C49",
+      "category": "composition",
+      "question": "鲈鱼每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "鲈鱼每100克可食部含蛋白质18.6g[1]。",
+      "answer_norag": "鲈鱼每100克可食部分约含蛋白质18.6克（不同品种和养殖方式略有差异，一般在18–20克之间）。"
+    },
+    {
+      "id": "C50",
+      "category": "composition",
+      "question": "虾每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        3,
+        5,
+        7,
+        1,
+        3,
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，虾的蛋白质含量因种类不同而有所差异（均以每100克可食部计）：\n\n- **海虾**：蛋白质16.8g[1]\n- **河虾**：蛋白质16.4g[3]\n- **虾虎**：蛋白质11.6g[5]\n- **虾皮**：蛋白质30.7g[7]\n\n其中海虾与河虾的蛋白质含量较为接近，虾皮因经过干制，蛋白质含量明显更高[1][3][7]。",
+      "answer_norag": "虾每100克约含16—20克蛋白质，具体因品种和烹饪方式略有差异。"
+    },
+    {
+      "id": "C51",
+      "category": "composition",
+      "question": "蛤蜊每100克含多少钙？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "蛤蜊（均值）每100克可食部含钙 **133mg**[1]。",
+      "answer_norag": "蛤蜊每100克约含130毫克钙（可食部，因品种和产地略有差异）。"
+    },
+    {
+      "id": "C52",
+      "category": "composition",
+      "question": "鸭蛋每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "参考资料中未收录“鸭蛋（全蛋）”的独立条目，因此无法直接给出鸭蛋每100克可食部的蛋白质含量。\n\n资料中与鸭蛋相关的条目为鸭蛋白和鸭蛋黄，其蛋白质含量分别为：\n- 鸭蛋白：每100克可食部含蛋白质9.9g[1]\n- 鸭蛋黄：每100克可食部含蛋白质14.5g[2]\n\n如需鸭蛋（全蛋）的蛋白质数值，资料中未收录。",
+      "answer_norag": "鸭蛋每100克约含蛋白质12.6克。"
+    },
+    {
+      "id": "C53",
+      "category": "composition",
+      "question": "鸡蛋白每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "鸡蛋白每100克可食部含蛋白质 **11.6g**[1]。",
+      "answer_norag": "鸡蛋白每100克约含11克蛋白质。"
+    },
+    {
+      "id": "C54",
+      "category": "composition",
+      "question": "酸奶每100克含多少钙？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "不同种类酸奶每100克可食部的钙含量如下：\n\n- 酸奶（调味）：钙160mg [1]\n- 酸奶（果粒）：钙61mg [2]\n- 乳品（酸奶，均值）：钙118mg [3]\n- 酸奶（脱脂）：钙146mg [4]\n\n以上数值均以每100克可食部计。",
+      "answer_norag": "普通酸奶每100克约含钙 **100～120毫克**，具体因品牌、原料奶和是否强化钙而异；强化钙酸奶可更高，需看营养成分表。"
+    },
+    {
+      "id": "C55",
+      "category": "composition",
+      "question": "腰果每100克含多少脂肪？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "腰果每100克可食部含脂肪36.7g[1]。",
+      "answer_norag": "腰果每100克约含脂肪44克，其中以不饱和脂肪酸为主。不同来源数据略有差异，一般在43–46克之间。"
+    },
+    {
+      "id": "C56",
+      "category": "composition",
+      "question": "豆腐干每100克含多少钙？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "豆腐干（均值）每100克可食部含钙 **308mg**[1]。",
+      "answer_norag": "豆腐干每100克约含钙300毫克左右，具体因加工工艺和凝固剂不同而有差异，传统卤水或石膏点制的豆腐干钙含量较高。"
+    },
+    {
+      "id": "C57",
+      "category": "composition",
+      "question": "干香菇每100克含多少蛋白质？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "干香菇每100克可食部含蛋白质20.0克[1]。",
+      "answer_norag": "干香菇每100克约含蛋白质20克左右（因品种和干燥程度略有差异，通常在18–22克之间）。"
+    },
+    {
+      "id": "C58",
+      "category": "composition",
+      "question": "紫菜每100克含多少铁？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "紫菜（干）每100克可食部含铁 **54.9 mg**[1]。",
+      "answer_norag": "紫菜每100克含铁约54.9毫克（干紫菜，因品种和产地不同会有差异）。"
+    },
+    {
+      "id": "C59",
+      "category": "composition",
+      "question": "海带每100克含多少能量？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "海带[江白菜]（鲜）每100克可食部含能量55kJ[1]。",
+      "answer_norag": "海带每100克约含13千卡能量（鲜海带，可食部）。"
+    },
+    {
+      "id": "C60",
+      "category": "composition",
+      "question": "方便面每100克含多少碳水化合物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "方便面每100克可食部含碳水化合物61.6克[1]。",
+      "answer_norag": "方便面每100克碳水化合物含量通常在 **55～65克** 左右，具体因品牌、面饼油炸或非油炸、调料包配比不同而有差异。一般包装营养成分表上标注的数值最准确，建议以实际产品标签为准。"
+    },
+    {
+      "id": "G01",
+      "category": "guideline",
+      "question": "成年人每天摄入食盐不超过多少克？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "成年人每天摄入食盐不超过 **5g**[1]。",
+      "answer_norag": "成年人每天摄入食盐不应超过5克。"
+    },
+    {
+      "id": "G02",
+      "category": "guideline",
+      "question": "每天烹调油摄入量建议是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，成年人每天烹调油摄入量建议为 **25~30g**[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，成年人每天烹调油摄入量建议为 **25～30克**。"
+    },
+    {
+      "id": "G03",
+      "category": "guideline",
+      "question": "添加糖每天摄入量建议控制在多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》，添加糖的摄入建议为：\n\n- 每天添加糖摄入量**不超过50g**，**最好控制在25g以下**[1]。\n\n补充要点：\n- 不喝或少喝含糖饮料[1]；建议用白水或茶水替代含糖饮料，白水不增加能量，可避免“添加糖”带来的健康风险[5]。\n- 含糖饮料的主要成分是水和添加糖，营养价值、营养素密度低，过多摄入可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[5]。\n\n以上为资料中与添加糖控制直接相关的数值和建议。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》和世界卫生组织建议，添加糖每天摄入量应控制在 **25克以下**，最多不超过 **50克**。添加糖包括白砂糖、红糖、蜂蜜、糖浆及含糖饮料中的糖等。"
+    },
+    {
+      "id": "G04",
+      "category": "guideline",
+      "question": "每天应摄入多少新鲜蔬菜？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，每天应摄入**不少于300g的新鲜蔬菜**，其中**深色蔬菜应占1/2**[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，成年人每天应摄入新鲜蔬菜300～500克，其中深色蔬菜（如菠菜、西兰花、胡萝卜、紫甘蓝等）应占一半以上。"
+    },
+    {
+      "id": "G05",
+      "category": "guideline",
+      "question": "每天应摄入多少新鲜水果？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》，每天应摄入**200~350g的新鲜水果**，并且果汁不能代替鲜果[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，成年人每天应摄入新鲜水果 **200～350克**，相当于1～2个中等大小的水果（如1个苹果加1个橙子）。果汁不能替代新鲜水果。"
+    },
+    {
+      "id": "G06",
+      "category": "guideline",
+      "question": "每天谷类食物摄入量建议是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》，每天谷类食物的摄入建议为：\n\n- **谷类食物每天200~300g**，其中应包含**全谷物和杂豆类50~150g**[1]。\n- 此外，**薯类每天50~100g**[1]。\n\n同时，指南建议坚持谷类为主的平衡膳食模式，经常吃全谷物[1][2]。\n\n（资料中未收录其他关于谷类摄入量的数值建议。）",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，成年人每天谷类食物建议摄入量为 **200～300克**，其中全谷物和杂豆类 **50～150克**，薯类 **50～100克**。"
+    },
+    {
+      "id": "G07",
+      "category": "guideline",
+      "question": "平均每天应摄入多少种食物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，平均每天应摄入**12种以上食物**，每周**25种以上**，并合理搭配[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，建议平均每天摄入**12种以上**食物，每周**25种以上**。这里说的“种”指不同食材类别，如谷类、蔬菜、水果、畜禽肉、鱼虾、蛋、奶、豆类、坚果等，不包括同一种食物的不同做法。"
+    },
+    {
+      "id": "G08",
+      "category": "guideline",
+      "question": "奶制品摄入量相当于每天多少毫升液态奶？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "奶制品摄入量应相当于每天**300ml以上液态奶**[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，推荐成年人每天摄入相当于 **300～500毫升液态奶** 的奶制品。"
+    },
+    {
+      "id": "G09",
+      "category": "guideline",
+      "question": "每周蛋类摄入量建议是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        3,
+        3,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》准则四，**每周蛋类摄入量建议为300~350g**[3]。\n\n同时，该准则还建议鱼、禽、蛋类和瘦肉平均每天摄入120~200g[3]；并特别提示“鸡蛋营养丰富，吃鸡蛋不弃蛋黄”[3]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，成年人每周蛋类摄入量建议为 **280～350克**，约相当于 **每天1个鸡蛋**（不弃蛋黄）。"
+    },
+    {
+      "id": "G10",
+      "category": "guideline",
+      "question": "每周最好吃鱼几次或多少克？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》，**每周最好吃鱼2次或300~500g**[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，建议成年人每周吃鱼 **2次**，或总量 **300～500克**（净重，约每次150～250克）。"
+    },
+    {
+      "id": "G11",
+      "category": "guideline",
+      "question": "成年人如饮酒，一天饮用的酒精量不超过多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        6,
+        6
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "成年人如饮酒，一天饮用的酒精量不超过 **15g**[6]。\n\n补充说明：儿童青少年、孕妇、乳母以及慢性病患者不应饮酒[6]。",
+      "answer_norag": "成年人如饮酒，一天饮用的酒精量不超过15克。"
+    },
+    {
+      "id": "G12",
+      "category": "guideline",
+      "question": "成年男性每天喝水多少毫升？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        3,
+        2,
+        1,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "在温和气候条件下、低身体活动水平的成年男性，每天水的适宜摄入量为 **1700ml**[1][2][3]。\n\n饮水方式建议：主动喝水、少量多次，每次1杯、每杯约200ml，可早、晚各饮1杯水，其他时间每1~2小时喝一杯水；建议饮水适宜温度为10~40℃[2]。首选白水或茶水，少喝或不喝含糖饮料，不用饮料代替白水[1][3]。",
+      "answer_norag": "成年男性每天建议饮水约 **1700毫升**（中国居民膳食指南推荐量），这是指直接饮用的水，不包括食物中的水分。若运动量大、出汗多或天气炎热，应适当增加。"
+    },
+    {
+      "id": "G13",
+      "category": "guideline",
+      "question": "成年女性每天喝水多少毫升？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        3,
+        2,
+        1,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "在温和气候条件下、低身体活动水平的成年女性，每天水的适宜摄入量为 **1500ml**[1][2][3]。\n\n饮水方式建议：主动喝水、少量多次，每次约1杯（约200ml），可早、晚各饮1杯，其他时间每1~2小时喝一杯；建议饮水温度在10~40℃[2]。首选白水或茶水，少喝或不喝含糖饮料，不用饮料代替白水[1][3]。",
+      "answer_norag": "成年女性每天建议饮水约1500毫升（约7–8杯）。若运动量大、天气炎热或哺乳期，应适当增加。"
+    },
+    {
+      "id": "G14",
+      "category": "guideline",
+      "question": "每周应进行多少中等强度身体活动？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "每周至少进行5天中等强度身体活动，累计150分钟以上[1]。",
+      "answer_norag": "成年人每周应进行至少150分钟中等强度有氧身体活动，或75分钟高强度有氧身体活动，也可将两者按等量原则组合。中等强度活动可分散在一周内进行，每次持续10分钟以上更有益。"
+    },
+    {
+      "id": "G15",
+      "category": "guideline",
+      "question": "每天主动身体活动最好达到多少步？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "每天主动身体活动最好达到**6 000步**[1]。",
+      "answer_norag": "每天主动身体活动最好达到 **6000～10000步**，其中至少 **6000步** 可视为中等强度活动的基本目标；条件允许时达到 **8000～10000步** 更有益健康。关键是结合快走等中等强度活动，不必只追求步数。"
+    },
+    {
+      "id": "G16",
+      "category": "guideline",
+      "question": "每天膳食中全谷物和杂豆类应摄入多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，每天摄入谷类食物200~300g，其中应包含全谷物和杂豆类50~150g[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，每天膳食中全谷物和杂豆类应摄入 **50～150克**（生重），其中全谷物和杂豆可搭配食用，建议占谷物总量的1/3左右。"
+    },
+    {
+      "id": "G17",
+      "category": "guideline",
+      "question": "每天薯类摄入量建议是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》，每天薯类摄入量建议为 **50~100g**[2]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，建议每天摄入薯类50～100克。薯类包括马铃薯、红薯、山药、芋头等，可作为主食的一部分，注意与谷类搭配、替代部分精米白面，并采用蒸、煮等少油烹调方式。"
+    },
+    {
+      "id": "G18",
+      "category": "guideline",
+      "question": "平均每周应摄入多少种以上食物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，平均**每周应摄入25种以上食物**，同时平均每天摄入12种以上食物，合理搭配[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，建议平均每周摄入**25种以上**食物（不包括烹调油和调味品），以保证营养均衡。"
+    },
+    {
+      "id": "G19",
+      "category": "guideline",
+      "question": "每周中等强度身体活动累计应达到多少分钟？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "每周中等强度身体活动应累计达到 **150分钟以上**，并且每周至少进行 **5天** [1]。",
+      "answer_norag": "每周中等强度身体活动累计应达到至少150分钟。"
+    },
+    {
+      "id": "G20",
+      "category": "guideline",
+      "question": "建议每周进行几天抗阻运动？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "建议每周进行2~3天抗阻运动[1]。",
+      "answer_norag": "建议每周进行 **2～3天** 抗阻运动，最好隔天进行，覆盖主要肌群，并保证同一肌群之间有至少48小时恢复时间。"
+    },
+    {
+      "id": "G21",
+      "category": "guideline",
+      "question": "如何减少久坐时间？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "资料中关于减少久坐时间的明确建议为：**减少久坐时间，每小时起来动一动**[1]。\n\n此外，资料中与身体活动相关的推荐还包括：各年龄段人群都应天天进行身体活动、保持健康体重；食不过量，保持能量平衡；每周至少进行5天中等强度身体活动，累计150分钟以上；主动身体活动最好每天6 000步；鼓励适当进行高强度有氧运动，加强抗阻运动，每周2~3天[1]。\n\n关于久坐的具体危害、每次起身活动应持续多久等内容，资料中未收录。",
+      "answer_norag": "减少久坐可以从“打断”和“替代”两方面入手：\n\n1. **定时打断**：每坐30–60分钟起身活动2–3分钟，设闹钟或用手环提醒；接水、上厕所、伸展都算。\n2. **能站不坐**：打电话、看短会、刷手机时站起来；用升降桌或把电脑垫高，站坐交替。\n3. **把活动嵌入日常**：走楼梯代替电梯、提前一站下车步行、饭后散步10分钟、把水杯换小以增加接水次数。\n4. **会议与工作方式**：短会改成站立会或边走边谈；用无线耳机边走边听；把打印机、垃圾桶放远一点。\n5. **通勤与娱乐**：通勤尽量多走路或骑车；看电视时广告时间起身活动，或做简单拉伸。\n6. **记录与激励**：用手机/手环看久坐提醒和步数，给自己设“每小时至少动一次”的小目标。\n\n关键是**频繁、短时、低强度**地打断久坐，比一次性长时间运动更容易坚持，也更有效。"
+    },
+    {
+      "id": "G22",
+      "category": "guideline",
+      "question": "蔬菜摄入中深色蔬菜应占多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》，餐餐有蔬菜，保证每天摄入不少于300g的新鲜蔬菜，**深色蔬菜应占1/2**[1]。",
+      "answer_norag": "深色蔬菜应占蔬菜总摄入量的**一半以上**。"
+    },
+    {
+      "id": "G23",
+      "category": "guideline",
+      "question": "果汁能否代替鲜果？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        2,
+        1,
+        4,
+        5,
+        3,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "**不能。果汁不能代替鲜果。**\n\n依据《中国居民膳食指南（2022）》准则三的明确推荐：**“天天吃水果，保证每天摄入200~350g的新鲜水果，果汁不能代替鲜果”**[2]。\n\n**原因与相关建议：**\n\n1. **应吃新鲜水果**：指南建议每天摄入200~350g新鲜水果，并明确果汁不能替代鲜果[2]。\n2. **果汁饮料营养价值低**：以酸枣果汁饮料为例，每100克可食部能量仅116kJ、蛋白质0.1g、碳水化合物6.7g，水分高达93.0g，维生素A为0.0μg、维生素E为0.00mg、硒为0.00μg[1]，属于营养素密度低的饮料。\n3. **少喝含糖饮料**：指南建议少喝或不喝含糖饮料，不用饮料代替白水；含糖饮料主要成分是水和添加糖，营养价值、营养素密度低，过多摄入可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[4][5]。\n4. **零食选择**：非正餐零食应选择营养素密度高的食物，如新鲜蔬菜水果等[3]。\n\n**结论**：日常应直接食用新鲜水果（每天200~350g），果汁（尤其是果汁饮料）不能代替鲜果[2]。",
+      "answer_norag": "不能。果汁不能完全代替鲜果，主要原因有：\n\n1. **膳食纤维损失**：榨汁过程会破坏水果细胞结构，大部分膳食纤维被滤除，不利于肠道健康和血糖控制。\n2. **糖分浓缩、升糖快**：一杯果汁往往需要多个水果，糖分摄入更集中，且缺少纤维缓冲，血糖上升更快。\n3. **维生素氧化流失**：榨汁和存放过程中，维生素C等营养素易被氧化破坏。\n4. **饱腹感差**：喝果汁比吃整果更容易过量摄入热量。\n\n建议：**优先吃完整鲜果**；果汁可作为偶尔的补充，且最好现榨、不滤渣、不加糖，并控制分量（如每天不超过150毫升）。"
+    },
+    {
+      "id": "G24",
+      "category": "guideline",
+      "question": "应适量吃哪类食物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，应适量吃的食物主要是**鱼、禽、蛋、瘦肉**，具体建议如下：\n\n- 鱼、禽、蛋类和瘦肉摄入要适量，平均每天120~200g[1]。\n- 每周最好吃鱼2次或300~500g，蛋类300~350g，畜禽肉300~500g[1]。\n- 少吃深加工肉制品；优先选择鱼，少吃肥肉、烟熏和腌制肉制品[1]。\n- 鸡蛋营养丰富，吃鸡蛋不弃蛋黄[1]。\n\n此外，资料中“适量吃坚果”也属于适量摄入的提示，但未给出具体摄入量[2]。",
+      "answer_norag": "应适量吃以下几类食物：\n\n1. **油盐糖**：烹调油、食盐、添加糖要控制用量，少吃高油高盐高糖的加工食品。\n2. **肉类**：畜禽肉适量，优先选择鱼虾等水产品，减少肥肉和加工肉制品。\n3. **精制主食**：白米白面可适量，注意搭配全谷物和杂豆。\n4. **水果**：水果虽好也要适量，避免用果汁代替鲜果。\n5. **坚果**：营养丰富但热量高，每天一小把即可。\n\n总体原则是食物多样、均衡搭配，任何单一食物都不宜过量。"
+    },
+    {
+      "id": "G25",
+      "category": "guideline",
+      "question": "应经常吃哪类谷物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》平衡膳食八准则，应**经常吃全谷物**（同时经常吃大豆制品、适量吃坚果）[7]。\n\n资料中未收录\"全谷物\"的具体定义、每日推荐摄入量或具体谷物名单，也未收录哪些具体品种属于全谷物，因此无法据此进一步说明。",
+      "answer_norag": "建议经常吃**全谷物**，如燕麦、糙米、全麦、玉米、小米、荞麦、藜麦等，尽量替代部分精白米面。全谷物保留麸皮和胚芽，富含膳食纤维、B族维生素和矿物质，有助于控制血糖、血脂和体重。日常可做到粗细搭配，全谷物占主食的1/3左右。"
+    },
+    {
+      "id": "G26",
+      "category": "guideline",
+      "question": "平均每天鱼禽蛋瘦肉摄入量建议是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》，鱼、禽、蛋类和瘦肉摄入要适量，**平均每天120~200g**[1]。\n\n与之配套的每周建议为：每周最好吃鱼2次或300~500g，蛋类300~350g，畜禽肉300~500g[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，建议平均每天摄入鱼、禽、蛋、瘦肉合计 **120～200克**，其中：\n\n- 每周最好吃鱼 **2次**（约300～500克）\n- 蛋类 **300～350克**（约每天1个鸡蛋）\n- 畜禽肉 **300～500克/周**\n\n注意：这些是生重（可食部分），并尽量分散到各餐，避免集中一餐大量摄入。"
+    },
+    {
+      "id": "G27",
+      "category": "guideline",
+      "question": "每周畜禽肉摄入量建议是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，每周畜禽肉摄入量建议为 **300~500g**[1]。",
+      "answer_norag": "根据《中国居民膳食指南（2022）》，成年人每周畜禽肉摄入量建议为 **300～500克**，平均每天约 **40～75克**。建议优先选择瘦肉，少吃肥肉和加工肉制品。"
+    },
+    {
+      "id": "G28",
+      "category": "guideline",
+      "question": "应少吃哪类肉制品？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，应少吃**深加工肉制品**，同时**少吃肥肉、烟熏和腌制肉制品**[1]。\n\n参考资料中与\"少吃肉制品\"直接相关的建议为：\n- 少吃深加工肉制品[1]。\n- 优先选择鱼，少吃肥肉、烟熏和腌制肉制品[1]。\n\n资料中未收录\"深加工肉制品\"的具体定义或分类清单。",
+      "answer_norag": "应少吃**加工肉制品**，如香肠、火腿、培根、腊肉、午餐肉、肉罐头等。这类肉制品通常含盐量高，并可能含亚硝酸盐等添加剂，长期大量摄入会增加高血压、心血管疾病和结直肠癌等风险。建议优先选择新鲜瘦肉，少吃烟熏、腌制和深加工肉制品。"
+    },
+    {
+      "id": "G29",
+      "category": "guideline",
+      "question": "动物性食物应优先选择什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，动物性食物应**优先选择鱼**，少吃肥肉、烟熏和腌制肉制品[1]。",
+      "answer_norag": "动物性食物应优先选择**鱼、禽类**，其次为**蛋类、瘦肉**，并尽量减少**肥肉、烟熏和腌制肉制品**的摄入。具体建议：\n\n- **鱼类**：富含优质蛋白和多不饱和脂肪酸，建议每周吃鱼2次或300~500克。\n- **禽类**：脂肪含量相对较低，优先于红肉。\n- **蛋类**：营养丰富，一般人群每天1个鸡蛋。\n- **瘦肉**：适量摄入，控制总量。\n- **少吃**：肥肉、加工肉制品（如香肠、腊肉、培根）及烟熏腌制肉类。\n\n总体原则是“**优先鱼禽、适量蛋瘦肉、少肥肉和加工肉**”。"
+    },
+    {
+      "id": "G30",
+      "category": "guideline",
+      "question": "应少吃哪些肉制品？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，应少吃的肉制品主要有：\n\n1. **深加工肉制品**：应少吃深加工肉制品[1]。\n2. **肥肉、烟熏和腌制肉制品**：应少吃肥肉、烟熏和腌制肉制品[1]。\n\n此外，在肉类选择上，资料建议优先选择鱼[1]。",
+      "answer_norag": "应少吃的肉制品主要有以下几类：\n\n1. **加工肉制品**：如香肠、火腿、培根、腊肉、午餐肉等，通常含较多盐、亚硝酸盐和饱和脂肪，长期大量摄入不利于健康。\n2. **腌制、熏制肉类**：如咸肉、熏肉、腊肠等，盐分高，熏制过程可能产生有害物质。\n3. **高脂肉制品**：如肥肉较多的肉丸、肉饼、炸鸡块等，脂肪和热量较高。\n4. **重加工调味肉制品**：如酱卤肉、肉干、肉松等，部分产品含盐、糖和添加剂较多。\n\n建议优先选择新鲜瘦肉、禽肉和鱼类，减少加工肉制品的摄入频率和量。"
+    },
+    {
+      "id": "G31",
+      "category": "guideline",
+      "question": "含糖饮料应该怎么喝？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        5,
+        4,
+        6,
+        4,
+        4,
+        6,
+        4,
+        4,
+        5,
+        1,
+        2,
+        3,
+        8
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "**核心建议：少喝或不喝含糖饮料，首选白水。**\n\n**1. 总体原则**\n- 推荐喝白水或茶水，少喝或不喝含糖饮料，不用饮料代替白水[5]。\n- 建议用白水或茶水替代含糖饮料；白水廉价易得、安全卫生、不增加能量，建议首选白水[4]。\n- 不喝或少喝含糖饮料[6]。\n\n**2. 为什么少喝**\n- 含糖饮料的主要成分是水和添加糖，营养价值、营养素密度低；过多摄入可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[4]。\n- 应少选购或不选购含糖饮料，家里不储存含糖饮料；日常中不把饮料当作水分的主要来源[4]。\n\n**3. 添加糖限量（关键数字）**\n- 控制添加糖的摄入量，每天不超过50g，最好控制在25g以下[6]。\n\n**4. 替代喝法**\n- 不喜欢白水味道的人（尤其儿童），可在水中加入1~2片新鲜柠檬片、3~4片薄荷叶等增加色彩和味道；也可自制绿豆汤、酸梅汤等传统饮品，注意不要添加糖[4]。\n- 除白水外，也可以选择喝淡茶水[4]。\n\n**5. 足量饮水的推荐量（关键数字）**\n- 足量饮水、少量多次；温和气候条件下，低身体活动水平成年男性每天喝水1700ml，成年女性每天喝水1500ml[5]。\n\n**6. 参考资料中几种饮料的成分参考（每100克可食部）**\n- 橙汁饮料（光明牌）：能量187kJ，碳水化合物10.2g，维生素C 32.0mg[1]。\n- 酸枣果汁饮料：能量116kJ，碳水化合物6.7g[2]。\n- 椰子汁饮料：能量213kJ，脂肪2.4g，碳水化合物6.6g[3]。\n- 棒冰（可乐冰）：能量311kJ，碳水化合物17.1g[8]。\n\n**7. 资料中未收录的内容**\n- 上述饮料的具体添加糖含量、单次饮用量上限、饮用频率建议等，资料中未收录。\n- 含糖饮料对儿童、孕妇等特定人群的专门建议，资料中未收录。",
+      "answer_norag": "含糖饮料最好少喝或不喝。如果实在想喝，建议：\n\n1. **控制量**：偶尔小杯解馋，不要天天喝、大量喝。\n2. **选低糖**：优先选无糖或低糖版本，看清营养成分表的糖含量。\n3. **别当水喝**：日常补水以白开水、淡茶为主。\n4. **注意时机**：避免空腹大量喝，运动后也别用含糖饮料代替补水。\n5. **特殊人群更谨慎**：儿童、糖尿病患者、肥胖人群尽量不喝。\n\n简单说：能不喝就不喝，要喝就少量、偶尔、选低糖。"
+    },
+    {
+      "id": "G32",
+      "category": "guideline",
+      "question": "应少吃哪类食品？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        2,
+        2,
+        5,
+        7,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，应少吃的食品主要有以下几类：\n\n1. **高盐食品和油炸食品**：应培养清淡饮食习惯，少吃高盐和油炸食品[1]。\n\n2. **含糖饮料**：应不喝或少喝含糖饮料[1]。\n\n3. **深加工肉制品**：应少吃深加工肉制品[2]。\n\n4. **肥肉、烟熏和腌制肉制品**：应优先选择鱼，少吃肥肉、烟熏和腌制肉制品[2]。\n\n5. **油炸或膨化食品（作为零食时）**：选择零食时应少选油炸或膨化食品[5]。\n\n6. **煎炸食品和含脂肪高的菜肴（在外就餐时）**：应尽量选择用蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴，以免摄入过多油脂[7]。\n\n此外，资料中还提到反式脂肪酸每天摄入量不超过2g[1]，但未收录具体应少吃的含反式脂肪酸食品种类。",
+      "answer_norag": "应少吃高盐、高糖、高脂肪食品，以及加工肉制品、油炸食品、含糖饮料和精制碳水。"
+    },
+    {
+      "id": "G33",
+      "category": "guideline",
+      "question": "应坚持哪种膳食模式？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1,
+        4,
+        7,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，应坚持**谷类为主的平衡膳食模式**[1]。\n\n具体要点如下：\n\n- **膳食模式**：坚持谷类为主的平衡膳食模式[1]。\n- **食物多样性**：每天的膳食应包括谷薯类、蔬菜水果、畜禽鱼蛋奶和豆类食物；平均每天摄入12种以上食物，每周25种以上，合理搭配[1]。\n- **谷薯类摄入量**：每天摄入谷类食物200~300g，其中包含全谷物和杂豆类50~150g；薯类50~100g[1]。\n\n此外，平衡膳食还强调多吃蔬果、奶类、全谷、大豆[4]，适量吃鱼、禽、蛋、瘦肉[7]，以及吃动平衡、保持健康体重[2]。",
+      "answer_norag": "建议以**平衡膳食模式**为主，可参考《中国居民膳食指南》的核心原则：\n\n1. **食物多样，谷类为主**：每天摄入12种以上、每周25种以上食物；主食粗细搭配，适量全谷物、杂豆和薯类。\n2. **多吃蔬果、奶类、大豆**：餐餐有蔬菜，天天有水果；每天相当于300ml液态奶；常吃豆制品。\n3. **适量吃鱼、禽、蛋、瘦肉**：优先鱼禽，少吃肥肉、烟熏和腌制肉。\n4. **少盐少油，控糖限酒**：成人每天食盐不超过5g，烹调油25–30g，添加糖最好控制在25g以下。\n5. **规律进餐，足量饮水**：三餐定时定量，每天饮水1500–1700ml。\n6. **吃动平衡**：每周至少5天中等强度运动，累计150分钟以上，保持健康体重。\n\n特殊人群（孕妇、儿童、老人、慢性病患者）需在医生或营养师指导下调整。"
+    },
+    {
+      "id": "G34",
+      "category": "guideline",
+      "question": "是否应该每天吃早餐？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        6,
+        3,
+        3,
+        3,
+        1,
+        1,
+        2,
+        3,
+        6
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "**应该每天吃早餐。**\n\n- 《中国居民膳食指南（2022）》准则六明确推荐：合理安排一日三餐，定时定量，不漏餐，**每天吃早餐**[2][6]。\n- 早餐时间建议安排在**6:30—8:30**，两餐间隔以**4~6小时**为宜[3]。\n- 早餐提供的能量应占全天总能量的**25%~30%**[3]。\n- 早餐用餐时间建议为**15~20分钟**，并应细嚼慢咽、相对专注，不宜边进餐边看电视、看手机等[3]。\n- 早餐食物应包括**谷薯类、蔬菜水果、动物性食物、奶豆坚果等4类食物**[1]。\n\n综上，资料明确支持每天吃早餐，并对早餐的时间、能量占比、用餐时长和食物构成给出了具体建议[1][2][3][6]。",
+      "answer_norag": "是的，通常建议每天吃早餐。规律早餐有助于稳定血糖、提供上午所需能量、改善注意力和代谢健康，并可能降低暴饮暴食风险。建议选择富含蛋白质、膳食纤维和复合碳水的食物，如鸡蛋、全谷物、奶类或豆制品、水果蔬菜，少选高糖高油加工食品。若因特殊情况不吃早餐，也应保证全天营养均衡；有糖尿病、胃病等特殊情况可咨询医生或营养师个体化调整。"
+    },
+    {
+      "id": "G35",
+      "category": "guideline",
+      "question": "一日三餐应做到什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        6,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，一日三餐应做到以下几点：\n\n**1. 定时定量，规律进餐**\n- 两餐间隔以4~6小时为宜；早餐安排在6:30—8:30，午餐11:30—13:30，晚餐18:00—20:00为宜[1]。\n- 合理安排一日三餐，定时定量，不漏餐，每天吃早餐；不暴饮暴食、不偏食挑食、不过度节食[2]。\n\n**2. 控制用餐时间，细嚼慢咽**\n- 早餐用餐时间建议15~20分钟，午、晚餐20~30分钟；用餐时间不宜过短也不宜太长[1]。\n- 应细嚼慢咽，营造轻松愉快的进餐氛围；进餐时相对专注，不宜边吃边看电视、看手机[1]。\n\n**3. 合理分配三餐食物量（能量占比）**\n- 早餐提供的能量应占全天总能量的25%~30%，午餐占30%~40%，晚餐占30%~35%[1]。\n\n**4. 足量饮水（与进餐相关的日常饮水建议）**\n- 少量多次饮水；温和气候条件下、低身体活动水平成年男性每天喝水1 700ml，成年女性每天喝水1 500ml；推荐喝白水或茶水，少喝或不喝含糖饮料，不用饮料代替白水[2]。\n\n**5. 在外就餐时的注意事项**\n- 选择食品安全状况良好、卫生信誉度在B级及以上的餐饮服务单位；点餐注意食物多样、荤素搭配，不铺张浪费、适量而止；尽量选择蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴；可先吃少量主食，再吃蔬菜、肉类等，增加蔬菜摄入，肉类菜肴要适量，食量适度[6]。\n\n（学龄前儿童除每日三次正餐外，还应安排两次零点[1]。）",
+      "answer_norag": "一日三餐应做到：\n\n1. **定时定量**：规律进餐，不暴饮暴食，不漏餐。\n2. **营养均衡**：主食粗细搭配，保证优质蛋白（肉、蛋、奶、豆），多吃蔬菜水果，适量健康脂肪。\n3. **早餐吃好**：包含主食、蛋白质和蔬果，不空腹。\n4. **午餐吃饱**：荤素搭配，主食适量，保证下午能量。\n5. **晚餐吃少**：清淡易消化，避免过晚、过饱，减少高油高盐。\n6. **少油少盐少糖**：控制烹调油、盐和添加糖摄入。\n7. **足量饮水**：少喝含糖饮料。\n8. **细嚼慢咽**：有助消化和控制食量。"
+    },
+    {
+      "id": "G36",
+      "category": "guideline",
+      "question": "是否可以经常漏餐？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        2,
+        5,
+        5,
+        5,
+        2,
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "**不建议经常漏餐。**\n\n根据《中国居民膳食指南（2022）》，规律进餐的核心推荐明确要求：合理安排一日三餐，定时定量，**不漏餐**，每天吃早餐[2]。同时应规律进餐、饮食适度，不暴饮暴食、不偏食挑食、不过度节食[2]。\n\n在具体实践上，资料还给出了以下相关要点：\n\n- **餐次间隔**：一日三餐，两餐的间隔以4~6小时为宜[5]。\n- **三餐时间**：早餐安排在6:30—8:30，午餐11:30—13:30，晚餐18:00—20:00为宜[5]。\n- **三餐能量分配**：早餐提供的能量应占全天总能量的25%~30%，午餐占30%~40%，晚餐占30%~35%[5]。\n\n因此，经常漏餐不符合规律进餐、定时定量的推荐，建议按时吃好一日三餐[2][5]。",
+      "answer_norag": "不建议经常漏餐。偶尔因特殊情况漏一餐通常问题不大，但长期或频繁漏餐可能带来以下问题：\n\n1. **血糖波动**：容易出现低血糖、头晕、乏力，尤其对糖尿病患者风险更高。\n2. **暴饮暴食**：过度饥饿后下一餐容易吃多，增加胃肠负担和体重管理难度。\n3. **营养摄入不足**：长期漏餐可能导致蛋白质、维生素、矿物质等摄入不均衡。\n4. **影响代谢和胃肠功能**：不规律进食可能干扰代谢节律，诱发胃炎、胆结石等问题。\n5. **注意力与情绪下降**：大脑供能不足，影响工作和学习效率。\n\n建议尽量规律三餐；如果确实无法按时吃饭，可提前准备坚果、酸奶、水果等健康加餐，避免长时间空腹。"
+    },
+    {
+      "id": "G37",
+      "category": "guideline",
+      "question": "是否可以过度节食？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        3,
+        1,
+        1,
+        5,
+        1,
+        1,
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "**不可以过度节食。**\n\n根据《中国居民膳食指南（2022）》的资料：\n\n1. **明确不建议过度节食**：规律进餐、饮食适度，应做到不暴饮暴食、不偏食挑食、不过度节食[2][3]。\n\n2. **过度节食的风险**：要避免采取过度节食或不科学的方式减轻或控制体重；一旦发现由于过度节食导致的营养不良，要及早就医，需要时在医生和营养师的指导下进行矫正和治疗[1]。\n\n3. **正确的做法**：应建立正确的健康观，合理安排一日三餐和身体活动[1]。在平衡膳食的原则下，适度节食有助于控制体重[5]；为恢复正常体重的适度节食，应在营养师指导下进行，基本原则是在相对低能量摄入的前提下，满足机体各种营养素的需要[1]。\n\n**小结**：不应过度节食；如需通过节食控制体重，应采取\"适度节食\"，并在营养师指导下保证营养素充足[1][5]。",
+      "answer_norag": "不可以。过度节食会对身体造成多方面伤害：\n\n1. **营养不良**：蛋白质、维生素、矿物质摄入不足，导致免疫力下降、贫血、脱发、皮肤变差。\n2. **代谢紊乱**：长期低热量摄入会使基础代谢率下降，反而更容易反弹；还可能引起内分泌失调，女性可能出现月经紊乱甚至闭经。\n3. **肌肉流失**：身体会分解肌肉供能，导致力量下降、体能变差。\n4. **器官负担**：可能引发胆结石、心律不齐、低血糖等问题，严重时危及生命。\n5. **心理影响**：易诱发暴食、情绪低落、进食障碍。\n\n健康减重应循序渐进，一般建议每周减重0.5–1公斤，保证蛋白质、蔬果和主食的合理搭配，必要时咨询营养师或医生。"
+    },
+    {
+      "id": "G38",
+      "category": "guideline",
+      "question": "是否可以偏食挑食？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        3,
+        6,
+        1,
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "**不可以偏食挑食。**\n\n根据《中国居民膳食指南（2022）》准则六，核心推荐明确要求“规律进餐、饮食适度，不暴饮暴食、不偏食挑食、不过度节食”[3][6]。\n\n为防止偏食挑食，资料建议采取以下措施[1]：\n1. 充分认识偏食挑食对营养素摄入及健康的危害；\n2. 尝试吃原来不吃的食物；\n3. 变换烹调方式。\n\n此外，安排午餐和晚餐时应遵照平衡膳食要求，做到食物品种丰富，例如主食粗细搭配，搭配2~3种蔬菜、1~2种动物性食物、1种豆制品和1份水果[5]，这也有助于避免偏食挑食。",
+      "answer_norag": "不建议偏食挑食。长期偏食会导致营养摄入不均衡，可能引起某些营养素缺乏（如蛋白质、维生素、矿物质、膳食纤维不足），影响免疫力、生长发育和代谢健康，还会增加肥胖、贫血、骨质疏松等风险。建议食物多样化，谷物、蔬菜水果、优质蛋白、奶类等合理搭配；如有特殊饮食需求或食物过敏，应咨询医生或营养师进行个体化调整。"
+    },
+    {
+      "id": "G39",
+      "category": "guideline",
+      "question": "应推荐喝什么饮品？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        6,
+        6,
+        6,
+        1,
+        2,
+        1,
+        2,
+        6,
+        6,
+        6
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，推荐如下：\n\n**首选：白水**\n- 推荐喝白水或茶水，少喝或不喝含糖饮料，不用饮料代替白水[1][2]。\n- 白水廉价易得、安全卫生、不增加能量，不用担心\"添加糖\"带来的健康风险，建议首选白水[6]。\n- 白水包括自来水、经过滤净化处理后的直饮水、经煮沸的白水、桶装水以及包装饮用纯净水、天然矿泉水、天然泉水等各种类型饮用水[6]。\n\n**次选：淡茶水**\n- 除了白水，也可以选择喝淡茶水[6]。\n\n**饮水量（温和气候、低身体活动水平成年人）**\n- 成年男性每天喝水1700ml，成年女性每天喝水1500ml，足量饮水、少量多次[1][2]。\n\n**不推荐的饮品**\n- 少喝或不喝含糖饮料，不用饮料代替白水[1][2]。\n- 含糖饮料营养价值、营养素密度低，过多摄入可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[6]。\n- 日常中不把饮料当作水分的主要来源[6]。\n\n**小贴士（针对不爱喝白水的人）**\n- 可在水中加入1~2片新鲜柠檬片、3~4片薄荷叶等增加水的色彩和味道；也可自制绿豆汤、酸梅汤等传统饮品，注意不要添加糖[6]。\n\n（注：资料中未收录关于咖啡、酒精饮品等其他饮品的推荐内容。）",
+      "answer_norag": "推荐以下健康饮品：\n\n1. **白开水**——首选，每天1500~1700毫升。\n2. **淡茶水**——绿茶、红茶等，不加糖。\n3. **无糖咖啡**——适量，每天1~2杯。\n4. **纯牛奶/无糖酸奶**——补充蛋白质和钙。\n5. **无糖豆浆**——植物蛋白来源。\n\n**少喝或不喝**：含糖饮料、果汁饮料、奶茶、能量饮料、过量酒精。\n\n核心原则：**首选白水，无糖为主，控制总量**。"
+    },
+    {
+      "id": "G40",
+      "category": "guideline",
+      "question": "是否可以用饮料代替白水？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        5,
+        7,
+        6,
+        6,
+        6,
+        5,
+        7,
+        6,
+        6,
+        1,
+        4,
+        8,
+        1,
+        5,
+        6,
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "**不建议用饮料代替白水。**\n\n**1. 指南的明确建议**\n- 推荐喝白水或茶水，少喝或不喝含糖饮料，不用饮料代替白水[5][7]。\n- 日常中不把饮料当作水分的主要来源，不用饮料代替白水[6]。\n\n**2. 为什么首选白水**\n- 白水廉价易得、安全卫生，不增加能量，不用担心\"添加糖\"带来的健康风险，建议首选白水[6]。\n- 含糖饮料的主要成分是水和添加糖，营养价值、营养素密度低；过多摄入可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[6]。\n\n**3. 足量饮水的推荐量**\n- 在温和气候条件下，低身体活动水平成年男性每天喝水1700ml，成年女性每天喝水1500ml，并做到少量多次[5][7]。\n\n**4. 不爱喝白水时的替代做法**\n- 可在水中加入1~2片新鲜柠檬片、3~4片薄荷叶等增加水的色彩和味道；也可自制绿豆汤、酸梅汤等传统饮品，注意不要添加糖[6]。\n- 除白水外，也可以选择喝淡茶水[6]。\n\n**5. 关于参考资料中的饮料数据**\n资料[1]~[4]、[8]仅列出橙汁饮料、酸枣果汁饮料、椰子汁饮料、白葡萄酒、江米酒每100克可食部的营养成分（如橙汁饮料每100克可食部含碳水化合物10.2g、能量187kJ[1]），**资料中未收录**这些饮料与白水替代关系的直接结论，也未收录其添加糖含量，故不能据此判断其是否属于含糖饮料。\n\n**结论：** 应以白水为主，茶水可作为补充；含糖饮料应少喝或不喝，不能用饮料代替白水[5][6][7]。",
+      "answer_norag": "不建议用饮料代替白水。含糖饮料会增加糖分和热量摄入，提升肥胖、糖尿病等风险；果汁虽含维生素，但糖分高、纤维少；无糖饮料中的甜味剂长期大量摄入的影响仍有争议。白水是最安全、最经济的补水方式，日常应以白水为主，饮料偶尔饮用即可。"
+    },
+    {
+      "id": "G41",
+      "category": "guideline",
+      "question": "应学会做什么来合理选择食品？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        3,
+        4,
+        6,
+        5,
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，合理选择食品应学会以下几方面：\n\n1. **学会阅读食品标签**：认识食物，选择新鲜的、营养素密度高的食物；学会阅读食品标签，合理选择预包装食品[1]。\n\n2. **学会在外就餐时合理点餐**：选择食品安全状况良好、卫生信誉度在B级及以上的餐饮服务单位；点餐注意食物多样、荤素搭配，不铺张浪费、适量而止；尽量选择用蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴；进食可先吃少量主食，再吃蔬菜、肉类等，增加蔬菜摄入，肉类菜肴要适量[3]。\n\n3. **学会选择和食用零食**：选择营养素密度高的食物，如鸡蛋、牛奶、豆制品等，还可选择新鲜蔬菜水果以及坚果等；少选油炸或膨化食品；吃零食的量不宜多，以不影响正餐为宜，更不应代替正餐；两餐之间可适当吃些零食，睡前1小时不宜吃零食[4]。\n\n4. **学会安排午餐和晚餐**：午餐主食做到粗细搭配，搭配2~3种蔬菜、1~2种动物性食物、1种豆制品、1份水果；晚餐不宜过于丰盛、油腻，清淡少油少盐，多采用蒸、煮、炖、清炒等，少用炸、煎等烹调方法，且至少在睡觉前2小时进食[6]。\n\n5. **学会看标签之外的食物选择原则**：少吃深加工肉制品，优先选择鱼，少吃肥肉、烟熏和腌制肉制品[5]；选择新鲜卫生的食物，不食用野生动物，食物制备生熟分开[7]。\n\n以上内容均来自参考资料；资料中未收录其他选择食品的方法。",
+      "answer_norag": "合理选择食品，应学会以下几件事：\n\n1. **看食品标签**：关注配料表和营养成分表，了解能量、蛋白质、脂肪、碳水化合物、钠等含量，配料按含量从高到低排列。\n\n2. **识别营养声称**：如“低脂”“无糖”“高钙”等有国家标准，需对照具体数值判断，不轻信包装宣传。\n\n3. **区分加工度**：优先选择新鲜、少加工的食物，减少高盐、高糖、高油及含反式脂肪的加工食品。\n\n4. **看保质期与储存条件**：确认生产日期、保质期和保存方式，避免购买临期或储存不当的食品。\n\n5. **关注食品类别与来源**：选择正规渠道、有生产许可的产品，留意产地和认证标志。\n\n6. **结合自身需求**：根据年龄、健康状况（如高血压、糖尿病）和膳食指南，控制盐、糖、油摄入，做到食物多样、均衡搭配。\n\n7. **比较同类产品**：同类食品对比营养成分，选择更健康的选项，如低钠、低糖、高纤维产品。\n\n核心是养成“看标签、比成分、重均衡”的习惯。"
+    },
+    {
+      "id": "G42",
+      "category": "guideline",
+      "question": "应选择什么类型的食物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        6,
+        1,
+        3,
+        3,
+        5,
+        8,
+        4,
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "关于“应选择什么类型的食物”，参考资料中的建议可归纳为以下几类：\n\n**一、总体原则**\n- 认识食物，选择**新鲜的、营养素密度高的食物**[2]。\n- 坚持谷类为主的平衡膳食模式；每天的膳食应包括谷薯类、蔬菜水果、畜禽鱼蛋奶和豆类食物[6]。\n\n**二、零食的选择**\n- 选择营养素密度高的食物，如鸡蛋、牛奶、豆制品等，还可选择新鲜蔬菜水果以及坚果等；**少选油炸或膨化食品**[1]。\n\n**三、午餐和晚餐的选择**\n- 主食可选米或面制品，做到粗细搭配；搭配2~3种蔬菜，1~2种动物性食物（如鱼虾等水产品、鸡肉、瘦猪肉、牛羊肉），1种豆制品，1份水果[3]。\n- 晚餐主食可选富含膳食纤维的食物，如小米、薏米、荞麦、红薯等；多采用蒸、煮、炖、清炒等，少用炸、煎等烹调方法[3]。\n\n**四、早餐的选择**\n- 早餐应包括谷薯类、蔬菜水果、动物性食物、奶豆坚果等4类食物[5]。\n\n**五、动物性食物的选择**\n- 优先选择鱼，少吃肥肉、烟熏和腌制肉制品；少吃深加工肉制品；吃鸡蛋不弃蛋黄[8]。\n\n**六、在外就餐的选择**\n- 选择食品安全状况良好、卫生信誉度在B级及以上的餐饮服务单位；尽量选择用蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴[4]。\n\n**七、其他**\n- 选择新鲜卫生的食物，不食用野生动物[7]。\n\n以上内容均来自参考资料；资料中未收录的具体食物种类清单（如各类食物的详细名录）未在资料中给出。",
+      "answer_norag": "选择食物时，建议以**均衡、多样、天然**为原则，可参考以下类型：\n\n1. **全谷物和杂豆**：如糙米、燕麦、全麦、红豆、绿豆，替代部分精米白面。\n2. **优质蛋白质**：鱼、禽、蛋、瘦肉、豆制品、低脂奶类，适量摄入。\n3. **新鲜蔬菜水果**：深色蔬菜占一半以上，水果适量，种类多样。\n4. **健康脂肪**：坚果、种子、橄榄油、深海鱼等，控制总量。\n5. **少加工食品**：减少高糖、高盐、高油食品及含糖饮料。\n\n同时注意**控制总热量、规律进餐、少油少盐少糖**，并根据年龄、健康状况和活动量调整。"
+    },
+    {
+      "id": "G43",
+      "category": "guideline",
+      "question": "食物制备应做到什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        4,
+        3,
+        2,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "食物制备应做到以下几点：\n\n1. **生熟分开**：食物制备过程中，生食与熟食要分开处理，避免交叉污染[1]。\n2. **熟食二次加热要热透**：熟食再次食用前进行二次加热时，必须彻底热透[1]。\n3. **选择新鲜卫生的食物**：制备食物应选用新鲜、卫生的食材，不食用野生动物[1]。\n4. **烹调方式**：多采用蒸、煮、炖、清炒等方法，少用炸、煎等烹调方法[4]；在外就餐时也尽量选择用蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴[3]。\n\n此外，资料还提到应学习烹饪、传承传统饮食，享受食物天然美味[2]，以及讲究卫生、从分餐公筷做起[1]。",
+      "answer_norag": "食物制备应做到以下几点：\n\n1. **清洁卫生**：制备前洗手，保持器具、台面清洁，生熟分开，避免交叉污染。\n2. **食材新鲜**：选用新鲜、无变质的食材，清洗干净。\n3. **生熟分开**：生食和熟食使用不同的刀具、砧板和容器。\n4. **彻底加热**：食物要烧熟煮透，尤其是肉类、蛋类和海鲜。\n5. **合理烹调**：少油、少盐、少糖，尽量采用蒸、煮、炖等健康方式，减少煎炸。\n6. **现做现吃**：避免长时间存放，剩饭菜应妥善冷藏并彻底加热后再食用。\n7. **注意温度**：熟食保持在安全温度，避免在室温下长时间放置。"
+    },
+    {
+      "id": "G44",
+      "category": "guideline",
+      "question": "熟食二次食用前应如何处理？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "熟食二次食用前应**加热至热透**。[1]\n\n依据《中国居民膳食指南（2022）》准则八“公筷分餐，杜绝浪费”的核心推荐，食物制备应生熟分开，熟食二次加热要热透。[1]\n\n资料中未收录“热透”的具体温度或时间标准。",
+      "answer_norag": "熟食二次食用前应彻底加热，确保中心温度达到70℃以上并保持几分钟，以杀灭可能滋生的细菌。加热前应冷藏保存（2小时内放入冰箱，冷藏不超过3-4天），食用前检查有无异味、变色或黏液，若有异常应丢弃。不建议反复多次加热。"
+    },
+    {
+      "id": "G45",
+      "category": "guideline",
+      "question": "不应食用什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        4,
+        2,
+        2,
+        2,
+        1,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，与“不应食用/不应喝”直接相关的内容如下：\n\n1. **不食用野生动物**[4]。\n2. **儿童青少年、孕妇、乳母以及慢性病患者不应饮酒**[2]。\n3. **不喝或少喝含糖饮料**[2]。\n\n此外，资料中还有“少吃”“少选”类的限制性建议（不属于“不应”）：少吃高盐和油炸食品[2]；选零食时少选油炸或膨化食品[1]；在外就餐避免煎炸食品和含脂肪高的菜肴[3]。\n\n关于其他具体食物是否“不应食用”，资料中未收录。",
+      "answer_norag": "不应食用的主要包括以下几类：\n\n1. **变质或发霉食物**：如霉变粮食、坚果（可能含黄曲霉毒素）、过期食品。\n2. **未煮熟的高风险食物**：生肉、生蛋、生鱼片（除非符合生食标准）、未煮熟的豆角/四季豆。\n3. **高糖、高盐、高脂加工食品**：含糖饮料、油炸食品、腌制肉类、过多零食。\n4. **反式脂肪多的食物**：部分人造奶油、起酥点心、反复油炸食品。\n5. **酒精**：尤其孕妇、儿童、肝病患者应避免。\n6. **过烫食物和饮品**：长期食用增加食管癌风险。\n7. **不明野生菌、野菜**：避免误食中毒。\n8. **含非法添加物或来源不明的食品**。\n\n特殊人群（孕妇、婴幼儿、老人、慢性病患者）还需遵医嘱避开相应禁忌食物。"
+    },
+    {
+      "id": "G46",
+      "category": "guideline",
+      "question": "备餐应坚持什么原则？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        4,
+        5,
+        5,
+        4,
+        1,
+        1,
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "备餐应坚持的原则，根据参考资料可归纳为以下几点：\n\n1. **按需备餐、珍惜食物、分餐不浪费**：珍惜食物，按需备餐，提倡分餐不浪费[4]。\n\n2. **保证食物多样、合理搭配**：每天的膳食应包括谷薯类、蔬菜水果、畜禽鱼蛋奶和豆类食物；平均每天摄入12种以上食物，每周25种以上，合理搭配[5]。坚持谷类为主的平衡膳食模式[5]。\n\n3. **注意食品安全与卫生**：选择新鲜卫生的食物，不食用野生动物；食物制备生熟分开，熟食二次加热要热透；讲究卫生，从分餐公筷做起[4]。\n\n4. **控制油盐、选择健康烹调方式**（在外就餐/点餐时同样适用）：尽量选择用蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴，以免摄入过多油脂[1]。\n\n5. **食量适度、不铺张浪费**：点餐/备餐时不铺张浪费，适量而止，食量要适度[1]。\n\n6. **合理安排三餐，不过度节食**：合理安排一日三餐和身体活动，避免采取过度节食或不科学的方式减轻或控制体重[7]。\n\n以上原则中，资料未收录针对\"备餐\"的专门操作规范（如备餐份量、储存时间等具体数值），如需此类细节，资料中未收录。",
+      "answer_norag": "备餐应坚持以下原则：\n\n1. **营养均衡**：主食、蛋白质、蔬菜合理搭配，参考“膳食宝塔”比例。\n2. **食材多样**：每周摄入尽量多种类的食物，避免长期单一。\n3. **安全卫生**：生熟分开、充分加热、及时冷藏（2小时内入冰箱），冷藏不超过3天。\n4. **控制份量**：按人按餐分装，避免反复解冻和浪费。\n5. **少油少盐少糖**：烹饪以蒸、煮、炖、凉拌为主。\n6. **易储存耐加热**：优先选择适合复热的菜品，绿叶菜现做现吃。\n7. **计划性**：提前规划菜单和采购清单，按保质期先后使用。"
+    },
+    {
+      "id": "G47",
+      "category": "guideline",
+      "question": "就餐卫生提倡什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        4,
+        4,
+        4,
+        4,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，就餐卫生提倡以下内容：\n\n- **讲究卫生，从分餐公筷做起**，提倡分餐[4]。\n- **选择新鲜卫生的食物**，不食用野生动物[4]。\n- **食物制备生熟分开**，熟食二次加热要热透[4]。\n- **珍惜食物，按需备餐**，提倡分餐不浪费[4]。\n\n此外，在外就餐时应选择食品安全状况良好、卫生信誉度在B级及以上的餐饮服务单位[3]。",
+      "answer_norag": "就餐卫生提倡“三要三不要”：  \n- **要洗手**：餐前便后用流动水和肥皂洗手。  \n- **要分餐**：提倡分餐制、使用公筷公勺。  \n- **要清洁**：餐具洁净消毒，食物烧熟煮透，生熟分开。  \n- **不要吃变质食物**。  \n- **不要喝生水**。  \n- **不要在就餐时大声喧哗、随地吐痰**。"
+    },
+    {
+      "id": "G48",
+      "category": "guideline",
+      "question": "应吃各种各样的什么食物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        3,
+        3,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，应吃各种各样的以下食物：\n\n- **蔬菜水果**：餐餐有蔬菜，每天摄入不少于300g新鲜蔬菜，深色蔬菜应占1/2；天天吃水果，每天摄入200~350g新鲜水果，果汁不能代替鲜果[1]。\n- **奶制品**：吃各种各样的奶制品，摄入量相当于每天300ml以上液态奶[1]。\n- **全谷物、大豆制品**：经常吃全谷物、大豆制品，适量吃坚果[1]。\n- **谷薯类**：每天摄入谷类食物200~300g，其中包含全谷物和杂豆类50~150g；薯类50~100g[3]。\n- **动物性食物**：每天的膳食应包括畜禽鱼蛋奶和豆类食物[3]。\n\n总体而言，每天的膳食应包括谷薯类、蔬菜水果、畜禽鱼蛋奶和豆类食物，平均每天摄入12种以上食物，每周25种以上，合理搭配[3]。",
+      "answer_norag": "应吃各种各样的**天然、营养丰富的食物**，主要包括：\n\n1. **谷薯类**：全谷物（燕麦、糙米、全麦）、杂豆、薯类（红薯、土豆）。\n2. **蔬菜水果**：深色蔬菜、十字花科蔬菜、各种颜色的水果。\n3. **优质蛋白**：鱼、禽、蛋、瘦肉、豆制品、奶及奶制品。\n4. **健康脂肪**：坚果、种子、橄榄油、深海鱼。\n5. **充足饮水**。\n\n核心原则：**食物多样、粗细搭配、荤素均衡**，少油少盐少糖，避免过度加工食品。"
+    },
+    {
+      "id": "G49",
+      "category": "guideline",
+      "question": "水果摄入应坚持什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        2,
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，水果摄入应坚持以下要点：\n\n1. **天天吃水果**，保证每天摄入**200~350g**的新鲜水果[2]。\n2. **果汁不能代替鲜果**[2]。\n3. 水果属于平衡膳食的组成部分，每天的膳食应包括蔬菜水果等食物[1]。\n\n此外，蔬果总体摄入上还应做到餐餐有蔬菜、每天新鲜蔬菜不少于300g（深色蔬菜占1/2），可与水果摄入配合执行[2]。",
+      "answer_norag": "水果摄入应坚持“**适量、多样、新鲜、整果优先**”：\n\n1. **适量**：每天建议摄入**200～350克**水果，约1～2个中等大小水果，不宜过量。\n2. **多样**：不同颜色、种类轮换吃，营养更全面。\n3. **新鲜**：优先选新鲜水果，少选果汁、果干、罐头等加工品。\n4. **整果优先**：直接吃完整水果，尽量不榨汁，以保留膳食纤维、增强饱腹感。\n5. **合理安排**：可作为两餐间加餐，避免饭后大量立即食用；控糖人群注意总量和种类选择。"
+    },
+    {
+      "id": "G50",
+      "category": "guideline",
+      "question": "哪些是平衡膳食的重要组成部分？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，蔬菜水果、全谷物和奶制品是平衡膳食的重要组成部分[1]。此外，参考资料还指出，每天的膳食应包括谷薯类、蔬菜水果、畜禽鱼蛋奶和豆类食物[2]。",
+      "answer_norag": "平衡膳食的重要组成部分包括：\n\n1. **谷薯类**：米饭、面条、全谷物、杂豆、薯类，提供碳水化合物和膳食纤维。\n2. **蔬菜和水果**：富含维生素、矿物质和膳食纤维。\n3. **畜禽鱼蛋奶类**：提供优质蛋白质、脂肪和多种营养素。\n4. **大豆和坚果**：提供植物蛋白、不饱和脂肪酸。\n5. **烹调油和盐**：需适量控制。\n\n同时要保证**食物多样、比例合理、三餐规律**，并足量饮水。"
+    },
+    {
+      "id": "S01",
+      "category": "special",
+      "question": "高血压人群在饮食上应该注意什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        5,
+        1,
+        5,
+        5,
+        5,
+        4,
+        4,
+        2,
+        4,
+        8,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "# 高血压人群饮食注意事项\n\n需要先说明：**参考资料中未收录专门针对高血压人群的饮食指导内容**，以下仅整理资料中与血压管理相关的通用膳食原则，供参考。\n\n## 一、控盐（最关键）\n\n- 培养清淡饮食习惯，少吃高盐食品；**成年人每天摄入食盐不超过5g**[5]。\n- 在外就餐时尽量选择蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴，以免摄入过多油脂[1]。\n\n## 二、控油、控糖、限酒\n\n- 烹调油每天**25~30g**；添加糖每天**不超过50g，最好控制在25g以下**；反式脂肪酸每天**不超过2g**[5]。\n- 不喝或少喝含糖饮料[5]。\n- 成年人如饮酒，一天饮用的酒精量**不超过15g**；慢性病患者不应饮酒[5]。\n\n## 三、规律进餐、饮食有度\n\n- 合理安排一日三餐，定时定量，不漏餐，每天吃早餐[4]。\n- 饮食适度，不暴饮暴食、不偏食挑食、不过度节食[4]；尽量在家吃饭、少聚餐，享受美食的同时注意饮食有度有节[2]。\n\n## 四、足量饮水\n\n- 少量多次饮水；温和气候、低身体活动水平下，成年男性每天喝水**1 700ml**，成年女性每天喝水**1 500ml**；推荐喝白水或茶水，不用饮料代替白水[4]。\n\n## 五、保持健康体重\n\n- 食不过量，保持能量平衡；每周至少进行**5天**中等强度身体活动，累计**150分钟以上**，主动身体活动最好每天**6 000步**；减少久坐，每小时起来动一动[8]。\n\n## 六、在外就餐要点\n\n- 选择卫生信誉度**B级及以上**的餐饮单位；注意食物多样、荤素搭配、适量而止；可先吃少量主食，再吃蔬菜、肉类，增加蔬菜摄入，肉类菜肴适量[1]。\n\n---\n\n**再次提示**：资料中未收录高血压人群的具体膳食建议（如钠钾摄入目标、DASH饮食等），建议咨询医生或临床营养师获取针对性指导。",
+      "answer_norag": "高血压人群饮食注意以下几点：\n\n1. **严格控盐**：每日食盐不超过5克，少吃咸菜、腌制品、加工肉、酱油等高钠食物。\n2. **多吃富钾食物**：如新鲜蔬菜、水果、豆类、薯类，有助于平衡钠钾。\n3. **控制脂肪**：少用动物油和油炸食品，选择植物油，适量吃鱼、瘦肉。\n4. **限制饮酒**：尽量不饮酒，酒精会升高血压。\n5. **少喝含糖饮料**：控制体重，避免肥胖加重血压。\n6. **规律饮食**：定时定量，避免暴饮暴食，多吃全谷物和膳食纤维。\n7. **戒烟**：吸烟会损伤血管、升高血压。\n\n总体遵循“低盐、低脂、高纤维、均衡营养”的原则，配合医生治疗和适量运动。"
+    },
+    {
+      "id": "S02",
+      "category": "special",
+      "question": "糖尿病患者应该控制什么摄入？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        2,
+        3,
+        3,
+        2,
+        2,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "糖尿病患者应重点控制的摄入如下（依据参考资料）：\n\n1. **添加糖**：控制添加糖的摄入量，每天不超过50g，最好控制在25g以下[2]。同时应少喝或不喝含糖饮料[2]。\n\n2. **含糖饮料**：建议用白水或茶水替代含糖饮料；过多摄入含糖饮料可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[3]。日常中不把饮料当作水分的主要来源，不用饮料代替白水[3]。\n\n3. **盐和油**：成年人每天摄入食盐不超过5g，烹调油25~30g[2]。\n\n4. **反式脂肪酸**：每天摄入量不超过2g[2]。\n\n5. **酒精**：慢性病患者不应饮酒[2]。\n\n补充说明：关于糖尿病患者具体的能量、碳水化合物总量或其他个体化控制指标，资料中未收录。",
+      "answer_norag": "糖尿病患者应重点控制以下摄入：\n\n1. **精制碳水化合物**：如白米饭、白面包、糕点，应适量替换为全谷物。\n2. **添加糖**：含糖饮料、甜点、糖果等应尽量避免。\n3. **总热量**：控制体重，避免过量进食。\n4. **饱和脂肪和反式脂肪**：少吃油炸食品、肥肉、加工零食。\n5. **钠盐**：每日食盐不超过5克，预防高血压。\n6. **酒精**：尽量不饮酒，尤其避免空腹饮酒。\n\n同时注意定时定量、均衡饮食，具体方案应遵医嘱或营养师指导。"
+    },
+    {
+      "id": "S03",
+      "category": "special",
+      "question": "儿童青少年可以饮酒吗？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "儿童青少年**不应饮酒**。\n\n根据《中国居民膳食指南（2022）》，儿童青少年、孕妇、乳母以及慢性病患者不应饮酒[1]。",
+      "answer_norag": "不可以。儿童青少年正处于生长发育阶段，身体各器官（尤其是肝脏和大脑）尚未发育成熟，对酒精的代谢能力弱，饮酒会带来多方面危害：\n\n1. **影响大脑发育**：酒精会损害神经系统，影响记忆力、注意力和学习能力，可能导致认知功能下降。\n2. **损害肝脏等器官**：未成年人肝脏解毒功能不完善，饮酒更易造成肝损伤。\n3. **影响生长发育**：酒精会干扰营养吸收和激素分泌，影响身高、体重及性发育。\n4. **增加意外和成瘾风险**：饮酒会降低判断力和自控力，增加意外伤害风险，且越早饮酒，成年后酒精依赖的风险越高。\n\n我国相关法律也明确禁止向未成年人出售酒类。因此，儿童青少年应做到**滴酒不沾**。"
+    },
+    {
+      "id": "S04",
+      "category": "special",
+      "question": "孕妇和乳母能饮酒吗？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，**孕妇和乳母不应饮酒**。\n\n《中国居民膳食指南（2022）》准则五明确提出：儿童青少年、孕妇、乳母以及慢性病患者不应饮酒[1]。\n\n**要点：**\n- 孕妇：不应饮酒[1]。\n- 乳母：不应饮酒[1]。\n- 作为对比，成年人如饮酒，一天饮用的酒精量不超过15g[1]；但该限量不适用于孕妇和乳母，这两类人群应完全禁酒[1]。\n\n资料中未收录孕妇、乳母饮酒的具体危害机制或安全阈值等内容。",
+      "answer_norag": "不能。酒精可通过胎盘影响胎儿，导致胎儿酒精谱系障碍，增加流产、早产和出生缺陷风险；乳母饮酒后酒精会进入母乳，影响婴儿睡眠、发育和运动能力。孕期和哺乳期应完全避免饮酒，包括啤酒、红酒和含酒精饮品。"
+    },
+    {
+      "id": "S05",
+      "category": "special",
+      "question": "想控制体重的人应该怎么做？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        1,
+        1,
+        1,
+        3,
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "想控制体重的人，可参考《中国居民膳食指南（2022）》的相关建议，从以下几方面入手：\n\n**1. 吃动平衡，保持能量平衡**\n- 各年龄段人群都应天天进行身体活动，保持健康体重；食不过量，保持能量平衡[2]。\n- 坚持日常身体活动，每周至少进行5天中等强度身体活动，累计150分钟以上；主动身体活动最好每天6 000步[2]。\n- 鼓励适当进行高强度有氧运动，加强抗阻运动，每周2~3天[2]。\n- 减少久坐时间，每小时起来动一动[2]。\n\n**2. 规律进餐，不暴饮暴食**\n- 规律三餐有助于控制体重，降低超重肥胖和糖尿病的发生风险[4]。\n- 暴饮暴食、经常在外就餐会增加超重肥胖的发生风险[4]。\n\n**3. 适度节食，但不过度节食**\n- 在平衡膳食的原则下，适度节食有助于控制体重[4]。\n- 要避免采取过度节食或不科学的方式减轻或控制体重，应建立正确的健康观，合理安排一日三餐和身体活动[1]。\n- 为恢复正常体重的适度节食，应在营养师指导下进行；基本原则是在相对低能量摄入的前提下，满足机体各种营养素的需要[1]。\n- 一旦发现由于过度节食导致的营养不良，要及早就医；需要时在医生和营养师的指导下进行矫正和治疗[1]。\n\n**4. 清淡饮食，控糖限酒**\n- 成年人每天摄入食盐不超过5g，烹调油25~30g[3]。\n- 控制添加糖的摄入量，每天不超过50g，最好控制在25g以下[3]。\n- 反式脂肪酸每天摄入量不超过2g[3]。\n- 不喝或少喝含糖饮料；成年人如饮酒，一天饮用的酒精量不超过15g[3]。\n\n**5. 少喝含糖饮料，首选白水**\n- 过多摄入含糖饮料可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[4]。\n- 建议用白水或茶水替代含糖饮料，首选白水；不把饮料当作水分的主要来源，不用饮料代替白水[4]。\n\n**6. 合理选择零食**\n- 选择营养素密度高的食物，如鸡蛋、牛奶、豆制品等，",
+      "answer_norag": "控制体重核心是**能量平衡**：摄入略低于消耗，同时保证营养。可这样做：\n\n1. **控制总热量**：减少高油、高糖、精制零食和含糖饮料；主食适量，优先全谷物、杂豆、薯类。\n2. **调整餐盘**：一半蔬菜，四分之一优质蛋白（鱼、蛋、瘦肉、豆制品），四分之一主食；少油少盐烹饪。\n3. **规律进餐**：三餐定时，细嚼慢咽，避免暴饮暴食和夜间加餐。\n4. **增加活动**：每周至少150分钟中等强度有氧运动，配合2—3次力量训练；减少久坐。\n5. **保证睡眠、管理压力**：睡眠不足和压力大易导致食欲增加。\n6. **循序渐进**：每周减重0.5—1公斤较合理，避免极端节食；定期监测体重和腰围。\n\n如有慢性病或特殊健康状况，建议咨询医生或注册营养师。"
+    },
+    {
+      "id": "S06",
+      "category": "special",
+      "question": "胆固醇偏高的人吃鸡蛋要丢掉蛋黄吗？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        5,
+        5,
+        3,
+        1,
+        2,
+        3,
+        4,
+        5,
+        5,
+        6,
+        8
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "**结论：不需要丢掉蛋黄。** 胆固醇偏高的人吃鸡蛋不必弃蛋黄，但要注意总量。\n\n**依据与要点：**\n\n1. **指南明确建议不弃蛋黄**：《中国居民膳食指南（2022）》准则四提出“鸡蛋营养丰富，吃鸡蛋不弃蛋黄”[5]。\n\n2. **蛋类推荐量**：每周蛋类建议摄入300~350g[5]。按资料中“蛋（鸡蛋，均值）”每100克可食部计[3]，可据此换算每周鸡蛋的大致数量，但资料未给出按“个”计的具体折算，故不估算个数。\n\n3. **蛋黄确实胆固醇高**：每100克可食部，鸡蛋黄粉胆固醇2850mg[1]、鸭蛋黄1576mg[2]、全蛋（均值）585mg[3]、鸡蛋白未列出胆固醇[4]。蛋黄是鸡蛋胆固醇的主要来源，这也是“要不要丢蛋黄”疑问的由来；但指南仍建议吃蛋不弃蛋黄[5]。\n\n4. **配套饮食原则**：适量吃鱼、禽、蛋、瘦肉，平均每天120~200g[5]；选择营养素密度高的食物（如鸡蛋、牛奶、豆制品）作为零食，且零食量不宜多、睡前1小时不宜吃零食[6]；在外就餐尽量选蒸、炖、煮，避免煎炸和高脂菜肴[8]。\n\n**说明**：胆固醇偏高者具体的每日胆固醇摄入上限、以及鸡蛋摄入量与血脂的个体化建议，资料中未收录。",
+      "answer_norag": "不需要完全丢掉蛋黄，但需要控制量。\n\n- **蛋黄确实含胆固醇**（约200mg/个），但膳食胆固醇对血胆固醇的影响远小于饱和脂肪和反式脂肪。\n- **建议**：胆固醇偏高者每天不超过1个蛋黄，或隔天1个；蛋白可自由吃。\n- **更关键**：少吃肥肉、油炸食品、糕点（含反式脂肪），多吃蔬菜、全谷物、豆类。\n- **注意**：若同时有糖尿病或心血管疾病，建议咨询医生个体化调整。"
+    },
+    {
+      "id": "S07",
+      "category": "special",
+      "question": "含糖饮料喝多了有什么健康风险？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        3,
+        3,
+        3,
+        3,
+        4,
+        5,
+        4
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，含糖饮料喝多了主要有以下健康风险：\n\n**一、主要健康风险**\n\n过多摄入含糖饮料可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[3]。\n\n**二、原因说明**\n\n含糖饮料的主要成分是水和添加糖，营养价值、营养素密度低[3]。\n\n**三、相关建议**\n\n1. 建议用白水或茶水替代含糖饮料；白水廉价易得、安全卫生、不增加能量，不用担心\"添加糖\"带来的健康风险，建议首选白水[3]。\n2. 应少选购或不选购含糖饮料，家里不储存含糖饮料；日常中不把饮料当作水分的主要来源，不用饮料代替白水[3]。\n3. 推荐喝白水或茶水，少喝或不喝含糖饮料，不用饮料代替白水[4]。\n4. 控制添加糖的摄入量，每天不超过50g，最好控制在25g以下；不喝或少喝含糖饮料[5]。\n\n**四、足量饮水参考量**\n\n在温和气候条件下，低身体活动水平成年男性每天喝水1 700ml，成年女性每天喝水1 500ml，足量饮水、少量多次[4]。\n\n**五、资料中未收录的内容**\n\n关于含糖饮料具体的每日摄入上限（以饮料克数或毫升数计）以及各类风险的具体量化程度，资料中未收录。",
+      "answer_norag": "含糖饮料喝多了主要有以下健康风险：\n\n1. **体重增加和肥胖**：含糖饮料热量高且饱腹感弱，容易导致热量摄入过多。\n2. **2型糖尿病风险升高**：长期大量摄入添加糖会增加胰岛素抵抗。\n3. **龋齿**：糖分被口腔细菌分解产酸，腐蚀牙釉质。\n4. **心血管疾病风险增加**：可能引起血脂异常、血压升高。\n5. **非酒精性脂肪肝**：过量果糖在肝脏代谢，促进脂肪堆积。\n6. **痛风风险升高**：果糖代谢会升高尿酸水平。\n7. **骨质疏松风险**：部分饮料（如可乐）含磷酸，可能影响钙吸收。\n\n建议以白水、淡茶替代，若饮用注意控制量，成人添加糖摄入最好每天不超过25克。"
+    },
+    {
+      "id": "S08",
+      "category": "special",
+      "question": "如何判断身体是否缺水？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据《中国居民膳食指南（2022）》，判断机体是否缺水可采用简便易行的方法，主要从以下三方面观察[1]：\n\n**1. 口渴**\n出现口渴已经是身体明显缺水的信号。因此要避免出现口渴现象，应主动喝水[1]。\n\n**2. 排尿次数和排尿量**\n当机体排尿次数和尿液量比平时减少时，提示水分摄入过少，机体可能出现缺水状态[1]。\n\n**3. 尿液颜色**\n- 水分摄入充足时，正常尿液颜色为透明黄色或浅黄色[1]；\n- 尿液颜色加深、呈现黄色时，机体可能摄入水分较少，存在脱水状态[1]；\n- 呈现较深黄色和深黄色时，提示机体水分不足或缺少水分，处于脱水状态[1]。\n\n**补充参考（日常饮水量）**：在温和气候条件下，低身体活动水平成年男性每天水的适宜摄入量为1700ml，女性为1500ml；应主动喝水、少量多次，每次1杯、每杯约200ml[2][3]。\n\n关于不同尿液颜色对应的具体水合状态分级图，资料中仅提及\"见图1\"，未收录图内详细分级内容。",
+      "answer_norag": "判断身体是否缺水，主要看以下几个信号：\n\n1. **尿液颜色**：最直观的指标。淡黄色说明水分充足；深黄色或琥珀色提示缺水；无色可能喝水过多。\n2. **口渴感**：口渴已是轻度缺水的表现，不要等到渴了才喝。\n3. **皮肤弹性**：轻捏手背皮肤，松开后恢复慢，可能提示缺水。\n4. **口腔和嘴唇**：口干、嘴唇干裂。\n5. **疲劳、头晕、注意力不集中**：轻度缺水就可能出现。\n6. **便秘、尿量减少**：排尿次数明显减少、尿液少而浓。\n7. **心跳加快、头痛**：缺水较明显时的表现。\n\n日常可参考：健康成人每天饮水约1500–1700毫升（约7–8杯），运动、高温、出汗多时需增加。注意个体差异，肾病、心衰等患者应遵医嘱控制饮水量。"
+    },
+    {
+      "id": "S09",
+      "category": "special",
+      "question": "减重期间晚餐应该怎么安排？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        4,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2,
+        3,
+        6,
+        4
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "减重期间晚餐安排，参考资料中可依据的内容如下：\n\n**1. 晚餐总体原则**\n- 晚餐不宜过于丰盛、油腻，应确保食物品种丰富，并考虑早、午餐的进餐情况，适当调整晚餐摄入量，保证全天营养平衡；同时做到清淡少油少盐[1]。\n- 规律进餐、饮食适度，不暴饮暴食、不偏食挑食、不过度节食[4]。\n\n**2. 晚餐食物选择**\n- 主食可选富含膳食纤维的食物，如小米、薏米、荞麦、红薯等，既能增加饱腹感，又可以促进肠胃蠕动；搭配蔬菜、水果、适量动物性食物和豆制品[1]。\n- 烹调多采用蒸、煮、炖、清炒等，少用炸、煎等方法[1]。\n\n**3. 晚餐时间与用餐时长**\n- 晚餐安排在18:00—20:00为宜，两餐间隔以4~6小时为宜[2]。\n- 晚餐时间不要太晚，至少在睡觉前2小时进食[1]。\n- 晚餐用餐时间建议20~30分钟，应细嚼慢咽[2]。\n\n**4. 晚餐能量占比**\n- 晚餐提供的能量应占全天总能量的30%~35%[2]。\n\n**5. 关于减重本身**\n- 应避免采取过度节食或不科学的方式减轻或控制体重；为恢复正常体重的适度节食，应在营养师指导下进行，基本原则是在相对低能量摄入的前提下，满足机体各种营养素的需要[3]。\n\n**6. 其他相关提示**\n- 睡前1小时不宜吃零食[6]。\n- 足量饮水，少量多次；温和气候、低身体活动水平下成年男性每天喝水1700ml、成年女性1500ml，推荐喝白水或茶水，少喝或不喝含糖饮料[4]。\n\n**资料中未收录**：减重期间晚餐的具体食谱、食物克数或能量数值，以及针对减重的晚餐专项推荐量。",
+      "answer_norag": "减重期间晚餐建议：控制总热量，主食选粗粮（如糙米、燕麦）约一拳头，蛋白质选瘦肉、鱼虾、豆制品约一掌心，蔬菜占一半以上；少油少盐、清淡烹饪，避免油炸和高糖食物；晚餐时间尽量在睡前3小时，七分饱即可。"
+    },
+    {
+      "id": "S10",
+      "category": "special",
+      "question": "在外就餐应该注意什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "在外就餐应注意以下几点：\n\n1. **选择安全的就餐单位**：应选择食品安全状况良好、卫生信誉度在B级及以上的餐饮服务单位[3]。\n\n2. **点餐注意食物多样、荤素搭配**：点餐时要注意食物多样，荤素搭配；不铺张浪费，适量而止[3]。\n\n3. **优选烹调方式**：尽量选择用蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴，以免摄入过多油脂[3]。\n\n4. **注意进食顺序**：可以先吃少量主食，再吃蔬菜、肉类等[3]。\n\n5. **增加蔬菜、控制肉类**：增加蔬菜摄入，肉类菜肴要适量；食量要适度[3]。\n\n6. **不忘适量与平衡**：在外就餐，不忘适量与平衡[4]。\n\n此外，防止暴饮暴食的相关措施中也提到，尽量在家吃饭、少聚餐，享受美食的同时注意饮食有度有节[5]。",
+      "answer_norag": "在外就餐注意以下几点：\n\n1. **控制油盐糖**：少点油炸、红烧、干锅类菜肴，多选清蒸、白灼、凉拌、炖煮；主动要求少油少盐，酱料蘸着吃而非浇在菜上。\n\n2. **荤素搭配**：保证蔬菜占一半以上，优先深色蔬菜；蛋白质选鱼、虾、去皮禽肉、豆制品，少选肥肉和加工肉制品。\n\n3. **主食适量**：米饭减半或选杂粮饭、玉米、红薯；避免炒饭、炒面、油饼等高油主食。\n\n4. **警惕隐形热量**：少喝含糖饮料和果汁，用白水、淡茶代替；汤选清汤，不喝浓白汤和油汤；少吃勾芡菜和坚果类凉菜。\n\n5. **控制份量**：按需点菜，避免暴饮暴食；先吃蔬菜和汤，再吃主食和肉，有助于控制食量。\n\n6. **注意卫生与安全**：选卫生条件好的餐厅，生食（刺身、凉菜）谨慎，肉类彻底熟透；剩菜及时冷藏，隔夜菜充分加热。\n\n7. **饮酒有度**：尽量不饮酒，若饮则限量，不空腹饮酒。\n\n8. **特殊需求主动沟通**：有慢性病或过敏时，提前告知服务员，要求少盐、去辣、避开过敏原。"
+    },
+    {
+      "id": "S11",
+      "category": "special",
+      "question": "吃零食应该注意什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        7,
+        8
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，吃零食应注意以下几点：\n\n1. **选对种类**：选择营养素密度高的食物，如鸡蛋、牛奶、豆制品等，还可选择新鲜蔬菜水果以及坚果等；少选油炸或膨化食品[1]。\n\n2. **控制量**：吃零食的量不宜多，以不影响正餐为宜，更不应该代替正餐[1]。\n\n3. **注意时间**：两餐之间可适当吃些零食，睡前1小时不宜吃零食[1]。\n\n**说明**：资料中未收录零食的具体摄入量上限数值，也未收录各类零食的详细营养数据（仅收录了凉粉、干栗子两种食物的成分数据，与零食选择建议无直接对应关系）[7][8]。",
+      "answer_norag": "吃零食应注意以下几点：\n\n1. **控制总量**：零食热量应计入每日总摄入，避免影响正餐，建议不超过每日总热量的10%—20%。\n\n2. **选对种类**：优先选择水果、坚果、酸奶、全谷物等天然、低加工食品；少吃高糖、高盐、高油及深加工零食（如薯片、糖果、含糖饮料）。\n\n3. **把握时间**：最好在两餐之间吃，避免睡前吃零食，以免影响睡眠和牙齿健康。\n\n4. **注意份量**：坚果等健康零食热量也高，需限量；购买小包装有助于控制食量。\n\n5. **看营养标签**：关注糖、钠、脂肪含量，选择低糖低盐低脂产品。\n\n6. **特殊人群注意**：儿童、糖尿病患者、减重人群等应根据自身情况选择，必要时咨询医生或营养师。"
+    },
+    {
+      "id": "S12",
+      "category": "special",
+      "question": "暴饮暴食会增加什么健康风险？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        1,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "暴饮暴食会增加超重肥胖的发生风险[2]。此外，防止暴饮暴食的前提之一是认识暴饮暴食对健康的危害[1]。\n\n资料中未收录暴饮暴食与龋齿、2型糖尿病、血脂异常等其他疾病风险之间关系的直接说明（资料中这些风险是针对过多摄入含糖饮料而言的[2]）。",
+      "answer_norag": "暴饮暴食会增加以下健康风险：\n\n1. **消化系统问题**：胃胀、胃痛、消化不良，严重时可诱发急性胰腺炎。\n2. **体重增加与肥胖**：长期热量摄入过多导致脂肪堆积。\n3. **代谢紊乱**：增加患2型糖尿病、高血脂、脂肪肝的风险。\n4. **心血管负担**：短期大量进食可加重心脏负荷，长期增加高血压、冠心病风险。\n5. **血糖剧烈波动**：尤其对糖尿病患者危险。\n6. **心理问题**：与暴食障碍、焦虑、抑郁相关。\n\n建议规律进餐、控制份量，如有反复暴食行为应寻求专业帮助。"
+    },
+    {
+      "id": "S13",
+      "category": "special",
+      "question": "营养充足的早餐应包括哪几类食物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "营养充足的早餐应包括以下4类食物：谷薯类、蔬菜水果、动物性食物、奶豆坚果等[1]。",
+      "answer_norag": "营养充足的早餐通常应包括以下四类食物：\n\n1. **谷薯类**：如全麦面包、燕麦、杂粮粥、红薯等，提供碳水化合物和膳食纤维。\n2. **优质蛋白质类**：如鸡蛋、牛奶、酸奶、豆浆、瘦肉、鱼虾等，帮助维持饱腹感和肌肉健康。\n3. **蔬菜水果类**：如新鲜蔬菜、苹果、香蕉、橙子等，提供维生素、矿物质和膳食纤维。\n4. **健康脂肪类**：如坚果、种子、牛油果或少量植物油，适量摄入有助于营养均衡。\n\n简单说，早餐尽量做到“主食+蛋白质+蔬果+适量健康脂肪”搭配，比只吃单一食物更营养充足。"
+    },
+    {
+      "id": "S14",
+      "category": "special",
+      "question": "反式脂肪酸每天摄入量上限是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "反式脂肪酸每天摄入量不超过2g[2]。",
+      "answer_norag": "根据世界卫生组织（WHO）建议，反式脂肪酸每日摄入量应低于总能量摄入的1%。以每日2000千卡为例，约相当于不超过2.2克。"
+    },
+    {
+      "id": "S15",
+      "category": "special",
+      "question": "蛋白质摄入不足的人应多吃哪几类食物？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        6,
+        1,
+        2,
+        6,
+        3,
+        4,
+        5,
+        4
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，蛋白质摄入不足的人可重点关注以下几类食物：\n\n1. **蛋类**：蛋类属于动物性食物，是优质蛋白质来源。膳食指南建议蛋类每周摄入300~350g，并强调“吃鸡蛋不弃蛋黄”[6]。资料中蛋类食物的蛋白质含量（每100克可食部）为：鹅蛋白8.9g[1]、鸭蛋白9.9g[2]。\n\n2. **鱼、禽、瘦肉**：与蛋类同属“鱼、禽、蛋、瘦肉”一类，建议平均每天摄入120~200g，优先选择鱼，少吃肥肉、烟熏和腌制肉制品[6]。\n\n3. **奶类及奶制品（含大豆制品）**：奶类和大豆制品是平衡膳食的重要组成部分，建议每天摄入相当于300ml以上液态奶的奶制品，并经常吃大豆制品[3]。\n\n4. **谷薯类**：谷类为主是平衡膳食模式的基础，每天摄入谷类200~300g（其中全谷物和杂豆类50~150g）、薯类50~100g[4]。\n\n此外，早餐应包含谷薯类、蔬菜水果、动物性食物、奶豆坚果等4类食物[5]；日常膳食应做到食物多样，平均每天摄入12种以上食物、每周25种以上[4]。\n\n需要说明的是：资料中未收录“蛋白质摄入不足”的具体判定标准及针对性的蛋白质补充量建议；上述内容为膳食指南中富含蛋白质食物类别的推荐摄入量，供参考。",
+      "answer_norag": "蛋白质摄入不足的人可优先多吃以下几类食物：\n\n1. **瘦肉、禽类和鱼类**：如鸡胸肉、牛肉、猪瘦肉、鱼虾，蛋白质含量高且吸收好。\n2. **蛋类**：鸡蛋、鸭蛋等，尤其是蛋清，优质蛋白丰富。\n3. **奶及奶制品**：牛奶、酸奶、奶酪，兼补蛋白质和钙。\n4. **大豆及豆制品**：黄豆、豆腐、豆浆、豆干，是优质植物蛋白来源。\n5. **坚果和种子**：花生、杏仁、核桃、芝麻等，可作补充，但注意适量。\n6. **全谷物和杂豆**：燕麦、藜麦、红豆、绿豆等，搭配食用可提高蛋白质利用率。\n\n建议每餐都安排一种优质蛋白来源，荤素搭配，比单次大量摄入更有效。"
+    },
+    {
+      "id": "S16",
+      "category": "special",
+      "question": "学龄前儿童除三次正餐外还应安排几次零食？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "学龄前儿童除每日三次正餐外，还应安排**两次零点（零食）**[1]。",
+      "answer_norag": "学龄前儿童除三次正餐外，建议安排 **2次** 加餐（零食），一般放在上午和下午各一次，以补充能量和营养，同时避免影响正餐食欲。"
+    },
+    {
+      "id": "S17",
+      "category": "special",
+      "question": "出现口渴说明机体处于什么状态？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "出现口渴说明身体已经处于明显缺水的信号状态，应避免出现口渴现象，主动喝水[1]。",
+      "answer_norag": "出现口渴通常说明机体已处于**轻度缺水（水分不足）**状态，即体液容量或有效循环血量下降、血浆渗透压升高，刺激下丘脑口渴中枢产生渴感。此时应适量补充水分，最好少量多次饮用白水；不要等到明显口渴才喝水。若口渴伴多尿、乏力、意识异常等，需警惕疾病因素并及时就医。"
+    },
+    {
+      "id": "S18",
+      "category": "special",
+      "question": "过多摄入含糖饮料会增加哪些疾病风险？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "过多摄入含糖饮料可增加以下疾病风险：\n\n- 龋齿[1]\n- 超重肥胖[1]\n- 2型糖尿病[1]\n- 血脂异常[1]\n\n此外，含糖饮料的主要成分是水和添加糖，营养价值、营养素密度低，日常不应把饮料当作水分的主要来源，也不应用饮料代替白水[1]。",
+      "answer_norag": "过多摄入含糖饮料会增加以下疾病风险：\n\n1. **肥胖**：含糖饮料热量高，易导致能量摄入过剩。\n2. **2型糖尿病**：长期高糖摄入可引发胰岛素抵抗。\n3. **心血管疾病**：增加高血压、血脂异常及动脉粥样硬化风险。\n4. **非酒精性脂肪肝**：果糖在肝脏代谢，过量易致脂肪堆积。\n5. **龋齿**：糖分被口腔细菌利用产酸，腐蚀牙釉质。\n6. **痛风**：果糖代谢升高尿酸水平。\n7. **骨质疏松**：部分饮料（如可乐）含磷酸，可能影响钙吸收。\n\n建议以白水、淡茶替代含糖饮料，控制添加糖摄入。"
+    },
+    {
+      "id": "S19",
+      "category": "special",
+      "question": "建议饮水的适宜温度是多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "建议饮水的适宜温度在 **10~40℃**[1]。",
+      "answer_norag": "日常建议饮用温水，适宜温度一般为 **10–40℃**，接近体温或略低更舒适。  \n- 一般饮水：**10–40℃** 较适宜。  \n- 运动后或天气炎热：可饮 **10–20℃** 左右的水，避免过冰。  \n- 不建议长期饮用 **超过 65℃** 的热饮，以免烫伤食管。  \n- 冰水并非人人适合，胃肠敏感者宜选常温或温水。"
+    },
+    {
+      "id": "S20",
+      "category": "special",
+      "question": "儿童不喜欢喝白水时可以加入什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "儿童不喜欢喝没有味道的白水时，可以在水中加入以下物品来增加水的色彩和味道：\n\n- **1~2片新鲜柠檬片**[1]\n- **3~4片薄荷叶**[1]\n\n此外，也可以自制一些传统饮品，如**绿豆汤、酸梅汤**等，但要注意**不要添加糖**[1]。\n\n需要说明的是，资料中未收录除上述内容之外的其他可添加物。",
+      "answer_norag": "儿童不喜欢喝白水时，可以尝试加入以下健康选项：\n\n1. **新鲜水果片**：如柠檬、橙子、草莓、黄瓜片，增加自然风味。\n2. **薄荷叶**：少量薄荷叶可增添清新口感。\n3. **少量蜂蜜**：1岁以上儿童可加微量蜂蜜（注意1岁以下婴儿禁用）。\n4. **水果泡水**：将水果（如苹果、梨）切块泡水，自然调味。\n5. **无糖气泡水**：少量无糖气泡水混合白水，增加口感趣味。\n\n**注意**：避免加糖、果汁饮料或人工甜味剂；水果片需清洗干净；蜂蜜仅限1岁以上儿童。"
+    },
+    {
+      "id": "S21",
+      "category": "special",
+      "question": "除白水外还可以选择喝什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        2,
+        7,
+        1,
+        1,
+        1,
+        2,
+        7
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "除白水外，可以选择喝**淡茶水**，也可以用白水加少量天然食材调味[1]。\n\n具体建议：\n\n- **淡茶水**：资料明确建议“除了白水，也可以选择喝淡茶水”[1]；核心推荐也提到“推荐喝白水或茶水”[2][7]。\n- **白水加天然食材调味**：若不喜欢白水的味道，可在水中加入**1~2片新鲜柠檬片、3~4片薄荷叶**等增加水的色彩和味道[1]。\n- **自制传统饮品**：可自制绿豆汤、酸梅汤等，但**注意不要添加糖**[1]。\n\n同时，资料强调应少喝或不喝含糖饮料，不用饮料代替白水[1][2][7]。",
+      "answer_norag": "除白水外，可选择：\n\n- **淡茶**：绿茶、红茶、乌龙茶等，不加糖。\n- **黑咖啡**：不加糖和奶。\n- **无糖气泡水**：注意选择无糖、无甜味剂版本。\n- **柠檬水**：白水加新鲜柠檬片，不加糖。\n- **淡蜂蜜水**：少量蜂蜜，不宜多喝。\n- **牛奶/无糖酸奶**：补充蛋白质和钙。\n- **自制果蔬水**：如黄瓜片、薄荷叶泡水，不额外加糖。\n- **汤类**：清淡的蔬菜汤、菌菇汤，少盐。\n\n避免含糖饮料、果汁饮料和过量咖啡因。"
+    },
+    {
+      "id": "S22",
+      "category": "special",
+      "question": "在外就餐应选择卫生信誉什么级别及以上的单位？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "在外就餐应选择食品安全状况良好、卫生信誉度在**B级及以上**的餐饮服务单位[1]。",
+      "answer_norag": "在外就餐应选择卫生信誉 **B级及以上**（即B级或A级）的单位。A级为优秀、B级为良好，C级为一般。"
+    },
+    {
+      "id": "S23",
+      "category": "special",
+      "question": "睡前多久不宜吃零食？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "睡前1小时不宜吃零食[1]。",
+      "answer_norag": "一般建议睡前 **1～2小时** 内不宜吃零食，尤其避免高糖、高脂、辛辣或含咖啡因的食物。若确实饿，可在睡前1小时左右少量吃易消化的清淡食物，如一小杯温牛奶或几片全麦饼干。"
+    },
+    {
+      "id": "S24",
+      "category": "special",
+      "question": "进餐时不宜做什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        2,
+        8,
+        8,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，进餐时不宜做的事情主要有：\n\n1. **不宜边进餐边看电视、看手机等**，进餐时应相对专注[2]。\n\n2. **用餐时间不宜过短，也不宜太长**：建议早餐用餐时间为15~20分钟，午、晚餐用餐时间为20~30分钟[2]。\n\n3. **晚餐不宜过于丰盛、油腻**，应清淡少油少盐[8]。\n\n4. **晚餐时间不要太晚**，至少在睡觉前2小时进食[8]。\n\n此外，资料还提到应细嚼慢咽、营造轻松愉快的进餐氛围[2]，但未收录其他关于进餐时禁忌行为的更多内容。",
+      "answer_norag": "进餐时不宜做以下几件事：\n\n1. **不宜边吃边看手机/电视**：容易分散注意力，导致进食过快、过量。\n2. **不宜大声说笑或打闹**：可能呛咳，食物误入气管。\n3. **不宜剧烈运动后立即进食**：影响消化，建议休息20~30分钟再吃。\n4. **不宜边吃边喝大量水或饮料**：稀释胃液，影响消化；汤水适量即可。\n5. **不宜吃得太快、狼吞虎咽**：加重胃肠负担，建议细嚼慢咽。\n6. **不宜边吃边吸烟、饮酒**：刺激消化道，增加健康风险。\n7. **不宜情绪激动时进食**：影响食欲和消化功能。\n8. **不宜吃过烫的食物**：损伤食管黏膜，增加食管癌风险。\n9. **不宜饭后立即剧烈运动或洗澡**：影响消化，建议饭后休息30分钟以上。\n\n简言之：专心、慢吃、适量、情绪平稳，是健康进餐的基本原则。"
+    },
+    {
+      "id": "S25",
+      "category": "special",
+      "question": "为恢复体重的适度节食应在什么指导下进行？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "为恢复正常体重的适度节食，应在**营养师指导下**进行；基本原则是在相对低能量摄入的前提下，满足机体各种营养素的需要[1]。\n\n此外，资料还提示：应避免采取过度节食或不科学的方式减轻或控制体重；一旦发现由于过度节食导致营养不良，要及早就医，需要时在医生和营养师的指导下进行矫正和治疗[1]。",
+      "answer_norag": "适度节食恢复体重应在医生或注册营养师指导下进行，必要时结合个体健康状况、用药和运动方案调整。"
+    },
+    {
+      "id": "S26",
+      "category": "special",
+      "question": "过度节食导致营养不良应怎么办？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        2,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，过度节食导致营养不良时应按以下要点处理：\n\n1. **及早就医**：一旦发现由于过度节食导致的营养不良，要及早就医；需要时，在医生和营养师的指导下进行矫正和治疗[1]。\n\n2. **在专业人员指导下适度节食**：为恢复正常体重的适度节食，应在营养师指导下进行；基本原则是在相对低能量摄入的前提下，满足机体各种营养素的需要[1]。\n\n3. **建立正确的健康观**：应避免采取过度节食或不科学的方式减轻或控制体重，合理安排一日三餐和身体活动[1]。\n\n4. **日常饮食保持规律**：合理安排一日三餐，定时定量，不漏餐，每天吃早餐；规律进餐、饮食适度，不暴饮暴食、不偏食挑食、不过度节食[2][3]。\n\n补充说明：资料中未收录针对营养不良的具体营养素补充剂量或治疗方案，此类内容需遵医嘱。",
+      "answer_norag": "过度节食导致营养不良，应尽快科学恢复，不要继续节食，也不要突然暴食。建议：\n\n1. **停止极端节食**：逐步增加能量摄入，先从规律三餐开始，必要时少量多餐，避免一次吃太多加重胃肠负担。\n2. **均衡补充营养**：保证优质蛋白（鱼、蛋、奶、瘦肉、豆制品）、主食、蔬菜水果和适量健康脂肪；缺铁、缺钙、缺维生素等应在医生指导下补充，不要自行大剂量服用。\n3. **及时就医评估**：出现明显消瘦、乏力、头晕、脱发、月经紊乱、免疫力下降、心慌等，应到医院营养科或内科就诊，查血常规、肝肾功能、电解质、维生素等，必要时接受营养支持。\n4. **排查进食障碍**：如果存在强烈怕胖、催吐、暴食后补偿等行为，建议寻求心理或精神科帮助。\n5. **循序渐进恢复体重**：每周体重增长不宜过快，避免“再喂养综合征”，尤其长期严重营养不良者需医生监测。\n6. **规律作息和适度运动**：保证睡眠，避免高强度运动，待营养状况改善后再逐步恢复。\n\n核心是：**停止节食、均衡饮食、医学评估、缓慢恢复**。"
+    },
+    {
+      "id": "S27",
+      "category": "special",
+      "question": "进餐时可以放什么营造轻松氛围？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "进餐时可以放点轻音乐，并谈论轻松的话题，以营造轻松、愉快的进餐氛围[1]。",
+      "answer_norag": "进餐时营造轻松氛围，可以从以下几方面入手：\n\n- **音乐**：播放轻柔的背景音乐，如轻爵士、古典乐或自然白噪音，音量不宜过大。\n- **灯光**：使用暖色调、柔和或可调暗的灯光，避免刺眼白光。\n- **桌面布置**：简洁清爽，可放一小瓶鲜花或绿植，减少杂物。\n- **香氛**：淡淡的柑橘、薄荷等清新气味有助于放松，但避免过浓干扰食物香气。\n- **减少干扰**：关掉电视、放下手机，专注用餐和交流。\n- **温度与通风**：保持室内舒适温度和空气流通。\n- **餐具与色彩**：选用令人愉悦的餐具，搭配柔和桌布，色彩不宜过于杂乱。\n\n核心是让环境安静、舒适、少干扰，帮助放松身心、细嚼慢咽。"
+    },
+    {
+      "id": "S28",
+      "category": "special",
+      "question": "慢性病患者可以饮酒吗？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，慢性病患者**不应饮酒**。\n\n《中国居民膳食指南（2022）》准则五明确推荐：儿童青少年、孕妇、乳母以及**慢性病患者不应饮酒**；成年人如饮酒，一天饮用的酒精量不超过15g[1]。\n\n需要说明的是，上述15g/d的限量仅针对成年人，并不适用于慢性病患者，慢性病患者应遵循“不应饮酒”的建议[1]。\n\n关于各类酒的具体酒精含量及不同慢性病患者的个体化饮酒禁忌，资料中未收录。",
+      "answer_norag": "慢性病患者一般不建议饮酒，具体要看病种和病情：\n\n- **高血压**：酒精会升高血压、影响降压药效果，建议不喝。\n- **糖尿病**：酒精易引起低血糖（尤其空腹），并干扰血糖控制，尽量不喝。\n- **肝病**（脂肪肝、肝炎、肝硬化）：酒精直接损伤肝脏，应严格禁酒。\n- **心脏病、脑卒中**：饮酒增加复发和心律失常风险，不建议。\n- **痛风**：啤酒和烈酒会升高尿酸、诱发发作，应避免。\n- **正在服药者**：很多药物与酒精相互作用（如头孢类、镇静药、降糖药），可能危险。\n\n总体原则：能不喝就不喝；若病情稳定、医生允许，也需严格限量并避开空腹和服药时间。具体请咨询主治医生。"
+    },
+    {
+      "id": "S29",
+      "category": "special",
+      "question": "在哪些阶段都应做好健康膳食规划？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，**在生命的各个阶段都应做好健康膳食规划**[1]。",
+      "answer_norag": "健康膳食规划应贯穿以下阶段：\n\n1. **婴幼儿期**：母乳或配方奶为主，逐步添加辅食，保证营养均衡。\n2. **儿童青少年期**：满足生长发育需求，保证蛋白质、钙、铁、维生素等摄入。\n3. **成年期**：均衡饮食，控制能量摄入，预防慢性病。\n4. **孕期及哺乳期**：增加叶酸、铁、钙、优质蛋白等，满足母婴需求。\n5. **中老年期**：注重钙、维生素D、膳食纤维，控制盐、糖、脂肪，预防骨质疏松和心血管疾病。\n6. **患病或康复期**：根据疾病调整膳食，如糖尿病、高血压等需个性化规划。\n\n总之，各年龄段和生理阶段都应做好健康膳食规划。"
+    },
+    {
+      "id": "S30",
+      "category": "special",
+      "question": "早餐建议安排在什么时段？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "早餐建议安排在 **6:30—8:30** 为宜[1]。",
+      "answer_norag": "早餐建议安排在起床后1小时内、7:00—9:00之间，最好在上午9点前完成。规律吃早餐有助于稳定血糖和食欲。"
+    },
+    {
+      "id": "S31",
+      "category": "special",
+      "question": "喝水建议每次喝多少？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "资料中给出的喝水建议是：每次1杯，每杯约200ml[1]。同时建议主动喝水、少量多次，可早、晚各饮1杯水，其他时间里每1~2小时喝一杯水[1]。",
+      "answer_norag": "一般建议每次喝水 **100～200毫升**，小口慢饮，不要一次猛灌。日常可每隔 **1～2小时** 喝一次，全天饮水量约 **1500～1700毫升**（约7～8杯），具体根据气温、运动量和身体状况调整。运动后或出汗多时可适当增加，分次补充。"
+    },
+    {
+      "id": "S32",
+      "category": "special",
+      "question": "除白水外，早晚可以各饮多少水？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1,
+        3,
+        5,
+        2,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，除白水外（如淡茶水等）的饮水安排，资料中给出的建议是：**可早、晚各饮1杯水，每杯约200ml**[1]。\n\n也就是说，早晚各约200ml，每次1杯[1]。\n\n补充要点：\n- 应主动喝水、少量多次，喝水可以在一天的任意时间，每次1杯，每杯约200ml；其他时间里每1~2小时喝一杯水[1]。\n- 建议饮水的适宜温度在10~40℃[1]。\n- 推荐喝白水或茶水，少喝或不喝含糖饮料，不用饮料代替白水[3][5]。\n\n关于“除白水外”可替代饮品的具体种类，资料提到可用白水或茶水替代含糖饮料，也可在淡茶水中选择[2]；但资料中未收录“除白水外”其他饮品在早晚的具体饮用量规定，上述早晚各1杯（约200ml）为资料中关于早晚饮水的一般性建议[1]。",
+      "answer_norag": "除白水外，早晚饮水建议如下：\n\n- **早晨**：起床后可饮约200–300毫升（如淡盐水、柠檬水、蜂蜜水等，注意蜂蜜水含糖，糖尿病者慎用）。\n- **晚上**：睡前1–2小时可饮约100–200毫升，避免临睡前大量饮水以免影响睡眠和夜间起夜。\n\n注意：含糖饮料、浓茶、咖啡不宜替代白水；全天总饮水量仍应以白水为主，一般成人每日约1500–1700毫升（中国居民膳食指南建议）。"
+    },
+    {
+      "id": "S33",
+      "category": "special",
+      "question": "排尿次数和尿量比平时减少提示什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "排尿次数和尿量比平时减少，提示水分摄入过少，机体可能出现缺水状态[1]。",
+      "answer_norag": "排尿次数和尿量比平时减少，医学上称为少尿，通常提示身体可能存在以下问题：\n\n1. **水分摄入不足**：饮水太少、出汗过多或腹泻呕吐导致脱水，是最常见的原因。\n2. **肾脏问题**：如急性肾损伤、肾炎等，肾脏滤过功能下降。\n3. **尿路梗阻**：如前列腺增生、结石堵塞，导致尿液排出受阻。\n4. **心功能不全**：心脏泵血能力下降，肾脏血流减少。\n5. **其他**：严重感染、休克、某些药物影响等。\n\n**判断标准**：成人24小时尿量少于400毫升为少尿，少于100毫升为无尿，属于需要及时就医的情况。\n\n**建议**：若只是短期饮水少引起，补充水分后可恢复；若持续减少、伴水肿、乏力、腰痛或明显不适，应尽快就医检查肾功能和尿常规。"
+    },
+    {
+      "id": "S34",
+      "category": "special",
+      "question": "尿液颜色加深提示机体可能处于什么状态？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "尿液颜色加深提示机体可能摄入水分较少，存在**脱水状态**。具体而言：\n\n- 水分摄入充足时，正常尿液颜色为透明黄色或浅黄色[1]。\n- 尿液颜色加深、呈现黄色时，机体可能摄入水分较少，存在脱水状态[1]。\n- 呈现较深黄色和深黄色时，提示机体水分不足或缺少水分，处于脱水状态[1]。\n\n因此，尿液颜色加深是判断机体缺水的简便指标之一，出现这种情况应主动补充水分[1]。",
+      "answer_norag": "尿液颜色加深可能提示机体处于以下状态：\n\n1. **脱水**：饮水不足或出汗过多时，尿液浓缩，颜色变深（深黄色）。\n2. **肝胆问题**：尿色呈深黄、茶色或酱油色，可能提示黄疸、肝炎或胆道梗阻。\n3. **血尿**：尿色偏红或洗肉水样，可能提示泌尿系统感染、结石或肿瘤。\n4. **肌红蛋白尿**：剧烈运动后尿色呈酱油色，可能提示横纹肌溶解。\n5. **药物或食物影响**：某些药物（如利福平）或食物（如甜菜）可使尿色加深。\n\n若尿色持续加深且伴不适，建议及时就医检查。"
+    },
+    {
+      "id": "S35",
+      "category": "special",
+      "question": "午餐的食物选择应当遵循什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，午餐的食物选择应遵循以下要点：\n\n1. **总体原则**：根据不同年龄人群的营养需要，遵照平衡膳食的要求进行选择[1]。\n\n2. **具体搭配**：\n   - 主食可选择米或面制品，做到粗细搭配[1]；\n   - 2~3种蔬菜[1]；\n   - 1~2种动物性食物，如鱼虾等水产品、鸡肉、瘦猪肉、牛羊肉[1]；\n   - 1种豆制品[1]；\n   - 1份水果[1]。\n\n3. **进餐时间**：午餐安排在11:30—13:30为宜[2]；用餐时间建议20~30分钟[2]。\n\n4. **能量占比**：午餐提供的能量应占全天总能量的30%~40%[2]。\n\n以上内容均来自参考资料，资料中未收录的其他午餐选择建议无法作答。",
+      "answer_norag": "午餐应遵循均衡搭配原则：主食粗细结合（如杂粮饭、全麦），蛋白质适量（鱼、瘦肉、豆制品、蛋），蔬菜占一半以上，少油少盐、控制糖分，七八分饱，避免过饱影响下午状态。"
+    },
+    {
+      "id": "S36",
+      "category": "special",
+      "question": "晚餐安排应遵循什么原则？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "晚餐安排应遵循以下原则：\n\n1. **不宜过于丰盛、油腻**，应确保食物品种丰富，并考虑早、午餐的进餐情况，适当调整晚餐食物的摄入量，保证全天营养平衡；同时做到清淡少油少盐[1]。\n\n2. **主食可选富含膳食纤维的食物**，如小米、薏米、荞麦、红薯等，既能增加饱腹感，又可以促进肠胃蠕动；搭配蔬菜、水果、适量动物性食物和豆制品[1]。\n\n3. **烹调方式**多采用蒸、煮、炖、清炒等，少用炸、煎等[1]。\n\n4. **晚餐时间不要太晚**，至少在睡觉前2小时进食[1]。\n\n5. **时间安排**：晚餐以18:00—20:00为宜；两餐间隔以4~6小时为宜；晚餐用餐时间为20~30分钟[2]。\n\n6. **能量分配**：晚餐提供的能量应占全天总能量的30%~35%[2]。",
+      "answer_norag": "晚餐安排应遵循以下原则：\n\n1. **适量不过饱**：晚餐宜吃七八分饱，避免过量进食增加肠胃负担、影响睡眠。\n2. **清淡少油**：减少油炸、高脂、高盐食物，多采用蒸、煮、炖、凉拌等烹饪方式。\n3. **荤素搭配**：以蔬菜为主，适量搭配优质蛋白（鱼、瘦肉、豆制品），主食可适当减少精米白面，增加粗粮。\n4. **控制时间**：尽量在睡前3小时左右吃完，避免临睡前进食。\n5. **少糖少刺激**：避免高糖甜点和浓茶、咖啡等刺激性饮品，以免影响睡眠。\n6. **营养均衡**：保证蛋白质、膳食纤维、维生素的摄入，主食适量，不宜完全不吃。"
+    },
+    {
+      "id": "S37",
+      "category": "special",
+      "question": "晚餐主食可以选择什么类型？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，晚餐主食可以选择**富含膳食纤维的食物**，如小米、薏米、荞麦、红薯等，既能增加饱腹感，又可以促进肠胃蠕动[1]。\n\n此外，晚餐主食也可选择米或面制品，并做到粗细搭配[1]。\n\n**补充提示：**\n- 晚餐应清淡少油少盐，烹调多采用蒸、煮、炖、清炒等，少用炸、煎[1]。\n- 晚餐时间不要太晚，至少在睡觉前2小时进食[1]。",
+      "answer_norag": "晚餐主食建议优先选择**低升糖、富含膳食纤维、易消化**的类型，例如：\n\n- **杂粮饭/糙米饭**：比白米饭升糖慢，饱腹感强。\n- **燕麦、藜麦、玉米**：可替代部分精米白面。\n- **红薯、紫薯、山药**：蒸煮食用，注意控制分量。\n- **全麦面条、荞麦面**：比普通面条更耐饿。\n- **豆类杂粮粥**：如红豆、绿豆、燕麦粥，少加糖。\n\n晚餐主食建议**适量**，约占一餐的1/4，搭配蔬菜和优质蛋白；避免过多精制主食、油炸主食和甜点。"
+    },
+    {
+      "id": "S38",
+      "category": "special",
+      "question": "烹调应多采用哪些方法？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        3,
+        1,
+        3,
+        2
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "烹调应多采用**蒸、炖、煮**等方法，少用**炸、煎**等烹调方法[1][3]。\n\n具体依据：\n- 在外就餐点餐时，尽量选择用蒸、炖、煮等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴，以免摄入过多油脂[1]。\n- 安排晚餐时，多采用蒸、煮、炖、清炒等，少用炸、煎等烹调方法[3]。\n\n此外，准则五提出“少吃高盐和油炸食品”[2]，与上述烹调建议方向一致。",
+      "answer_norag": "烹调建议多采用蒸、煮、炖、焖、汆、凉拌、快炒等方法，少用油炸、油煎、熏烤和长时间高温爆炒。这样能减少油脂摄入和营养流失，也更利于健康。"
+    },
+    {
+      "id": "S39",
+      "category": "special",
+      "question": "烹调应少用什么方法？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        4,
+        2
+      ],
+      "gold_covered_rag": false,
+      "gold_covered_norag": false,
+      "faithful": false,
+      "answer_rag": "烹调应少用**炸、煎**等方法，多采用**蒸、煮、炖、清炒**等烹调方法[4]。在外就餐点餐时，也应尽量选择用**蒸、炖、煮**等方法烹调的菜肴，避免煎炸食品和含脂肪高的菜肴，以免摄入过多油脂[2]。",
+      "answer_norag": "烹调应少用油炸、油煎、熏烤和长时间高温爆炒等方法，以减少油脂摄入和有害物质产生。"
+    },
+    {
+      "id": "S40",
+      "category": "special",
+      "question": "进餐时可以先吃什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        5,
+        1,
+        6
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，进餐时的进食顺序建议如下：\n\n- **在外就餐时**：可以先吃少量主食，再吃蔬菜、肉类等[5]。\n\n此外，资料中还有与进餐相关的其他建议（非顺序问题，供参考）：\n- 进餐应细嚼慢咽，营造轻松愉快的氛围，相对专注，不宜边进餐边看电视、看手机等[1]。\n- 零食不宜代替正餐，两餐之间可适当吃些零食，睡前1小时不宜吃零食[6]。\n\n关于在家进餐的具体进食顺序，资料中未收录。",
+      "answer_norag": "进餐时建议先吃蔬菜，再吃蛋白质类食物（如肉、蛋、豆制品），最后吃主食（米饭、面条等）。这样有助于增加饱腹感、平稳餐后血糖，并控制总热量摄入。"
+    },
+    {
+      "id": "S41",
+      "category": "special",
+      "question": "在外就餐应避免什么菜肴？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "在外就餐时，应避免以下菜肴：\n\n1. **煎炸食品**：应尽量避免[1]。\n2. **含脂肪高的菜肴**：应避免，以免摄入过多油脂[1]。\n\n同时建议尽量选择用蒸、炖、煮等方法烹调的菜肴[1]。",
+      "answer_norag": "在外就餐时，建议避免以下几类菜肴：\n\n1. **油炸类**：如炸鸡、炸鱼、油条等，油脂含量高，热量大。\n2. **重油重盐类**：如红烧肉、干锅菜、水煮鱼等，钠和脂肪含量较高。\n3. **糖醋/拔丝类**：如糖醋排骨、拔丝地瓜，含糖量高。\n4. **勾芡浓汤类**：如浓汤、羹类，淀粉和油脂较多。\n5. **加工肉制品**：如腊肉、香肠、培根，含盐和添加剂较多。\n6. **动物内脏类**：胆固醇和嘌呤较高，高血脂、痛风人群尤其注意。\n7. **凉菜中的生食**：如生拌海鲜、未彻底加热的凉菜，注意食品安全风险。\n\n点餐时可优先选择清蒸、白灼、炖煮、凉拌（熟制）等方式，并注意荤素搭配、控制分量。"
+    },
+    {
+      "id": "S42",
+      "category": "special",
+      "question": "两餐之间可以适当吃什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        2,
+        2,
+        2,
+        2,
+        3
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "两餐之间可适当吃些零食，选择时应注意以下几点：\n\n1. **选择营养素密度高的食物**：如鸡蛋、牛奶、豆制品等，还可选择新鲜蔬菜水果以及坚果等[2]。\n2. **少选油炸或膨化食品**[2]。\n3. **控制量**：吃零食的量不宜多，以不影响正餐为宜，更不应该代替正餐[2]。\n4. **时间安排**：两餐之间可适当吃些零食，睡前1小时不宜吃零食[2]。\n\n此外，两餐的间隔以4~6小时为宜[3]。\n\n关于具体零食种类的推荐清单，资料中仅提及上述类别，未收录更详细的表2内容。",
+      "answer_norag": "两餐之间可以适当吃以下食物：\n\n1. **水果**：苹果、香蕉、橙子、蓝莓等，富含维生素和膳食纤维。\n2. **坚果**：杏仁、核桃、腰果等，适量食用，补充健康脂肪和蛋白质。\n3. **酸奶**：无糖或低糖酸奶，补充蛋白质和益生菌。\n4. **全谷物饼干**：低糖全麦饼干，提供能量且饱腹感较强。\n5. **蔬菜条**：胡萝卜、黄瓜、芹菜等，低热量且富含纤维。\n6. **水煮蛋**：富含优质蛋白质，饱腹感强。\n7. **奶酪**：低脂奶酪，补充蛋白质和钙。\n\n注意控制分量，避免高糖、高盐、高脂肪的零食。"
+    },
+    {
+      "id": "S43",
+      "category": "special",
+      "question": "哪些人群不应饮酒？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，以下人群不应饮酒：儿童青少年、孕妇、乳母以及慢性病患者不应饮酒[1]。",
+      "answer_norag": "以下人群不应饮酒：\n\n1. **孕妇和哺乳期女性**：酒精可影响胎儿发育，导致胎儿酒精谱系障碍；哺乳期饮酒也会通过乳汁影响婴儿。\n2. **儿童和青少年**：身体和大脑尚未发育成熟，饮酒危害更大。\n3. **准备怀孕的女性**：饮酒可能影响受孕及胎儿健康。\n4. **服用某些药物者**：如头孢类抗生素、镇静催眠药、降糖药、部分抗抑郁药等，饮酒可能引起严重不良反应（如双硫仑样反应）。\n5. **肝脏疾病患者**：如肝炎、肝硬化，饮酒会加重肝损伤。\n6. **胰腺炎患者**：饮酒可诱发或加重胰腺炎。\n7. **心血管疾病患者**：如高血压、冠心病、心律失常，饮酒可能加重病情。\n8. **消化系统疾病患者**：如胃溃疡、胃炎，酒精刺激胃黏膜。\n9. **神经系统疾病患者**：如癫痫，饮酒可能诱发发作。\n10. **酒精过敏或不耐受者**。\n11. **需要驾驶、操作机械或从事高危作业者**：饮酒影响判断和反应能力。\n12. **痛风患者**：酒精可升高尿酸，诱发痛风发作。\n\n此外，从健康角度，即使不属于上述人群，也建议尽量少饮或不饮。"
+    },
+    {
+      "id": "S44",
+      "category": "special",
+      "question": "白水指哪些饮用水？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，白水是指以下各类饮用水[1]：\n\n- 自来水\n- 经过滤净化处理后的直饮水\n- 经煮沸的白水\n- 桶装水\n- 包装饮用纯净水\n- 天然矿泉水\n- 天然泉水\n\n资料同时建议首选白水，因其廉价易得、安全卫生、不增加能量，且无需担心“添加糖”带来的健康风险[1]。",
+      "answer_norag": "“白水”通常指不加任何添加物的饮用水，常见包括：\n\n- **白开水**：自来水烧开后的水\n- **纯净水**：经反渗透、蒸馏等处理的水\n- **矿泉水**：天然含矿物质的水\n- **凉白开**：烧开后放凉的水\n\n日常语境中，“白水”多指**白开水**，强调不加糖、不加茶、不加任何配料。"
+    },
+    {
+      "id": "S45",
+      "category": "special",
+      "question": "含糖饮料的主要成分是什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        4,
+        4,
+        4,
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "含糖饮料的主要成分是水和添加糖，其营养价值、营养素密度低[4]。\n\n此外，参考资料还提示：过多摄入含糖饮料可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[4]；建议用白水或茶水替代含糖饮料，少喝或不喝含糖饮料，不用饮料代替白水[4][5]。",
+      "answer_norag": "含糖饮料的主要成分是水、添加糖（如蔗糖、果葡糖浆、葡萄糖等），以及调味剂、酸度调节剂、香精、色素和防腐剂等食品添加剂；部分含糖碳酸饮料还含二氧化碳，含咖啡因饮料还含咖啡因。"
+    },
+    {
+      "id": "S46",
+      "category": "special",
+      "question": "含糖饮料的营养素密度如何？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        2,
+        3,
+        8,
+        2,
+        3,
+        8,
+        1,
+        1,
+        4,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，含糖饮料的营养素密度低。资料指出，含糖饮料的主要成分是水和添加糖，其“营养价值、营养素密度低”[1]。\n\n从具体饮料的营养成分数据也可印证这一点。例如：\n- 橙汁饮料（光明牌）每100克可食部含能量187kJ、蛋白质0.7g、脂肪0.1g、碳水化合物10.2g[2]；\n- 酸枣果汁饮料每100克可食部含能量116kJ、蛋白质0.1g、脂肪0.0g、碳水化合物6.7g[3]；\n- 椰子汁饮料每100克可食部含能量213kJ、蛋白质0.7g、脂肪2.4g、碳水化合物6.6g[8]。\n\n这些饮料以碳水化合物（糖）和水分（88.6~93.0g/100g）为主[2][3][8]，蛋白质、维生素、矿物质含量总体较低，符合“营养素密度低”的描述[1]。\n\n此外，资料建议少喝或不喝含糖饮料，不用饮料代替白水[1][4]；过多摄入含糖饮料可增加龋齿、超重肥胖、2型糖尿病、血脂异常的发病风险[1]。",
+      "answer_norag": "含糖饮料的营养素密度通常很低。它们主要提供添加糖带来的能量（热量），但蛋白质、维生素、矿物质、膳食纤维等营养素含量很少甚至没有，因此属于“空热量”食物。经常饮用容易增加添加糖和总能量摄入，却难以提供饱腹感和必需营养素。"
+    },
+    {
+      "id": "S47",
+      "category": "special",
+      "question": "规律三餐有助于降低什么疾病风险？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        8
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "规律三餐有助于控制体重，降低**超重肥胖**和**糖尿病**的发生风险[8]。",
+      "answer_norag": "规律三餐有助于降低以下疾病风险：\n\n1. **肥胖和代谢综合征**：定时进餐有助于维持能量平衡，减少暴饮暴食和过量摄入，从而降低肥胖及代谢综合征风险。\n\n2. **2型糖尿病**：规律进餐有助于稳定血糖水平，改善胰岛素敏感性，降低2型糖尿病风险。\n\n3. **心血管疾病**：规律饮食有助于控制血脂、血压和体重，降低冠心病、高血压等心血管疾病风险。\n\n4. **消化系统疾病**：定时进餐可促进消化液规律分泌，减少胃炎、胃溃疡、胆结石等消化系统疾病风险。\n\n5. **胆结石**：规律进食（尤其早餐）可促进胆囊排空，减少胆汁淤积，降低胆结石形成风险。\n\n简言之，规律三餐主要通过稳定血糖、控制体重、改善代谢和促进消化，降低肥胖、糖尿病、心血管疾病及消化系统疾病的风险。"
+    },
+    {
+      "id": "S48",
+      "category": "special",
+      "question": "吃好早餐有助于什么？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        8
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": false,
+      "faithful": true,
+      "answer_rag": "根据参考资料，吃好早餐有助于：满足机体营养需要，维持血糖平稳，改善认知能力和工作效率[8]。",
+      "answer_norag": "吃好早餐有助于：\n\n1. **补充能量**：经过一夜空腹，早餐为大脑和身体提供葡萄糖，帮助维持上午的精力与注意力。\n2. **提高学习和工作效率**：稳定血糖，改善记忆、专注力和反应能力。\n3. **控制体重**：规律吃早餐有助于减少午餐前的饥饿感，避免暴饮暴食，利于体重管理。\n4. **稳定血糖**：规律进食可减少血糖波动，对预防2型糖尿病有积极作用。\n5. **改善代谢与心血管健康**：有助于调节血脂、血压，降低心血管疾病风险。\n6. **促进肠道健康**：搭配全谷物、蔬果和优质蛋白，有助于规律排便和肠道菌群平衡。\n7. **养成健康饮食习惯**：规律早餐更容易带动全天均衡饮食。\n\n建议早餐包含全谷物、优质蛋白（蛋、奶、豆制品）和蔬果，少油少糖。"
+    },
+    {
+      "id": "S49",
+      "category": "special",
+      "question": "饮水过少会增加什么疾病风险？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        5
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "饮水过少（脱水状态）会增加以下疾病风险：\n\n- **泌尿系统疾病**：饮水过少引起的脱水状态会降低认知能力和体能，增加泌尿系统疾病的患病风险[1]。\n\n此外，资料还提示：水分摄入不足时，可通过口渴、排尿次数和尿量减少、尿液颜色加深等信号判断机体可能处于缺水或脱水状态[5]。",
+      "answer_norag": "饮水过少会增加以下疾病风险：\n\n1. **泌尿系统结石**（肾结石、尿路结石）：尿液浓缩，矿物质易沉积形成结石。\n2. **尿路感染**：排尿减少，细菌不易被冲刷排出。\n3. **便秘**：肠道水分不足，粪便干硬。\n4. **慢性肾病**：长期缺水可加重肾脏负担、损伤肾功能。\n5. **心脑血管事件**：血液黏稠度升高，增加血栓、心梗、脑卒中风险，尤其老年人。\n6. **皮肤问题**：皮肤干燥、弹性下降。\n7. **认知与体能下降**：脱水可致注意力不集中、疲劳、头晕。\n\n建议成人每日饮水约1500–1700毫升（《中国居民膳食指南》），运动、高温或出汗多时需增加。"
+    },
+    {
+      "id": "S50",
+      "category": "special",
+      "question": "判断机体是否缺水可通过哪些信号？",
+      "retrieval_hit": true,
+      "citations_valid": true,
+      "citations": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "gold_covered_rag": true,
+      "gold_covered_norag": true,
+      "faithful": true,
+      "answer_rag": "根据参考资料，判断机体是否缺水可通过以下信号：\n\n1. **口渴**：出现口渴已经是身体明显缺水的信号，应避免出现口渴现象，主动喝水[1]。\n\n2. **排尿次数和排尿量**：当排尿次数和尿液量比平时减少时，提示水分摄入过少，机体可能出现缺水状态[1]。\n\n3. **尿液颜色**：水分摄入充足时，正常尿液颜色为透明黄色或浅黄色；尿液颜色加深呈现黄色时，机体可能摄入水分较少、存在脱水状态；呈现较深黄色和深黄色时，提示机体水分不足或缺少水分，处于脱水状态[1]。\n\n以上判断方法简便易行，可综合口渴、排尿次数、尿液量和颜色来判断机体的水合状态[1]。",
+      "answer_norag": "判断机体是否缺水，可关注以下信号：\n\n1. **口渴**：最直接的信号，但出现时往往已轻度缺水。\n2. **尿液颜色深、量少**：正常为淡黄色透明，缺水时呈深黄甚至琥珀色，排尿次数减少。\n3. **皮肤弹性差、干燥**：捏起手背皮肤回弹慢，口唇干裂。\n4. **疲劳、头晕、注意力不集中**：轻度脱水即可影响认知和体能。\n5. **便秘**：肠道水分不足，大便干结。\n6. **心跳加快、血压偏低**：缺水使血容量下降。\n7. **眼窝凹陷、眼泪少**（较重脱水时）。\n8. **肌肉痉挛**：电解质随水分流失。\n\n日常以尿液颜色和口渴感为主要参考；运动、高温、发热腹泻时需主动补水。"
+    }
+  ]
+}

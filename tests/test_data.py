@@ -29,7 +29,7 @@ def test_kb_food_chunks_count():
 def test_kb_guideline_chunks_count():
     kb = (DATA / "kb_guidelines.txt").read_text(encoding="utf-8")
     chunks = [c for c in re.split(r"(?=【膳食指南)", kb) if c.strip()]
-    assert len(chunks) == 17
+    assert len(chunks) == 19
 
 
 def test_vector_store_restored_and_count():
@@ -40,7 +40,7 @@ def test_vector_store_restored_and_count():
     assert db.exists()
     con = sqlite3.connect(db / "chroma.sqlite3")
     n = con.execute("SELECT COUNT(*) FROM embeddings").fetchone()[0]
-    assert n == 342
+    assert n == 344
 
 
 def test_vector_store_backup_present():
@@ -50,8 +50,8 @@ def test_vector_store_backup_present():
 def test_sources_md_numbers_consistent():
     src = (DATA / "SOURCES.md").read_text(encoding="utf-8")
     assert "325" in src
-    assert "17 段" in src
-    assert "342 chunks" in src
+    assert "19 段" in src
+    assert "344" in src
 
 
 def test_guideline_md_has_sections():

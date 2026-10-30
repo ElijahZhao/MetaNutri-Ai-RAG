@@ -51,13 +51,13 @@ def chunk_guidelines():
     # rule-6 detail: one chunk per topical section (（一）-（八）)
     d6 = open("data/dietary_guidelines_rule6_detail.md", encoding="utf-8").read()
     d6 = re.sub(r"^#.*$", "", d6, flags=re.M).strip()
-    marks = list(re.finditer(r"（[一二三四五六七八]）", d6))
+    marks = list(re.finditer(r"（[一二三四五六七八九十]+）", d6))
     intro = d6[:marks[0].start()].strip()
     for i, m in enumerate(marks):
         start = m.start()
         end = marks[i + 1].start() if i + 1 < len(marks) else len(d6)
         sec = d6[start:end].strip()
-        title = re.match(r"（[一二三四五六七八]）[^\n]{0,42}", sec).group(0).rstrip()
+        title = re.match(r"（[一二三四五六七八九十]+）[^\n]{0,42}", sec).group(0).rstrip()
         chunks.append(f"【膳食指南·准则六 详细实践：{title}】\n{sec}\n（来源：中国营养学会《中国居民膳食指南（2022）》，官网实践应用部分）\n")
     if intro:
         chunks.append(f"【膳食指南·准则六 详细实践（概述）】\n{intro}\n（来源：中国营养学会《中国居民膳食指南（2022）》，官网实践应用部分）\n")

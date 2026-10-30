@@ -17,6 +17,8 @@ from src.config import (
     DASHSCOPE_BASE,
     LLM_MAX_TOKENS,
     LLM_MODEL,
+    LLM_PROFILES,
+    LLM_PROVIDER,
     LLM_TEMPERATURE,
     MAX_CONTEXT_CHARS,
 )
@@ -36,9 +38,11 @@ LANG_RULES = {
 
 
 class Generator:
-    def __init__(self):
+    def __init__(self, provider: str = ""):
+        prof = LLM_PROFILES[provider or LLM_PROVIDER]
+        self._model = os.environ.get("LLM_MODEL", prof["model"])
         self._client = OpenAI(
-            api_key=os.environ["DASHSCOPE_API_KEY"], base_url=DASHSCOPE_BASE, timeout=60.0
+            api_key=os.environ[prof["key_env"]], base_url=prof["base"], timeout=60.0
         )
 
     def build_prompt(self, query: str, chunks: list[dict]) -> str:
@@ -63,7 +67,7 @@ class Generator:
         ]
         try:
             r = self._client.chat.completions.create(
-                model=LLM_MODEL,
+                model=self._model,
                 messages=messages,
                 temperature=LLM_TEMPERATURE,
                 max_tokens=LLM_MAX_TOKENS,
@@ -84,7 +88,7 @@ class Generator:
         ]
         try:
             r = self._client.chat.completions.create(
-                model=LLM_MODEL,
+                model=self._model,
                 messages=messages,
                 temperature=LLM_TEMPERATURE,
                 max_tokens=LLM_MAX_TOKENS,

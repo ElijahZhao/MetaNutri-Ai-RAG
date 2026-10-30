@@ -19,12 +19,13 @@ load_dotenv(".env")
 
 from openai import OpenAI
 
-from src.config import DASHSCOPE_BASE, LLM_MODEL, LLM_TEMPERATURE, LLM_MAX_TOKENS
+from src.config import LLM_MODEL, LLM_PROFILES, LLM_PROVIDER, LLM_TEMPERATURE, LLM_MAX_TOKENS
 from src.generation import Generator, extract_citations
-from src.retrieval import Retriever
+from src.hybrid import HybridRetriever
 
 EVAL_FILE = "data/eval_questions.json"
-REPORT_FILE = "data/eval_report.json"
+REPORT_FILE = "data/eval_report.json" if os.environ.get("LLM_PROVIDER", "qwen") == "qwen" \
+    else f"data/eval_report_{os.environ.get('LLM_PROVIDER', 'qwen')}.json"
 
 NUM_RE = re.compile(r"\d+(?:\.\d+)?\s*(?:kJ|kg|g|mg|ml|μg|µg|%|种|步|分钟|小时|次|类)")
 
@@ -78,16 +79,19 @@ def has_key_info(answer: str, gold: str, kw: str = "", gold_key: str = "") -> bo
 
 def main():
     questions = json.load(open(EVAL_FILE, encoding="utf-8"))
-    retriever = Retriever()
+    retriever = HybridRetriever(top_k=int(os.environ.get("TOP_K", "8")))
     generator = Generator()
 
     # no-RAG generator: generic assistant, answers from model knowledge
-    norag_client = OpenAI(api_key=os.environ["DASHSCOPE_API_KEY"], base_url=DASHSCOPE_BASE)
+    _prof = LLM_PROFILES[LLM_PROVIDER]
+    norag_client = OpenAI(
+        api_key=os.environ[_prof["key_env"]], base_url=_prof["base"], timeout=60.0
+    )
     NORAG_SYSTEM = "你是一名健康饮食助手，用你自己的知识回答用户问题，简洁、准确、使用简体中文。"
 
     def answer_no_rag(q: str) -> str:
         r = norag_client.chat.completions.create(
-            model=LLM_MODEL,
+            model=os.environ.get("LLM_MODEL", _prof["model"]),
             messages=[
                 {"role": "system", "content": NORAG_SYSTEM},
                 {"role": "user", "content": q},
@@ -106,7 +110,7 @@ def main():
         gk = item.get("gold_key", "")
 
         # 1) retrieval hit (whitespace-normalized)
-        hits = retriever.search(q, top_k=5)
+        hits = retriever.search(q, top_k=int(os.environ.get("TOP_K", "8")))
         hit = any(norm(kw) in norm(h["text"]) for h in hits)
         agg["hit"][1] += 1
         agg["hit"][0] += int(hit)

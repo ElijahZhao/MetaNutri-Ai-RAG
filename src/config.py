@@ -19,6 +19,26 @@ LLM_MODEL = os.environ.get("LLM_MODEL", "qwen-plus")
 LLM_TEMPERATURE = 0.3
 LLM_MAX_TOKENS = 512
 
+# OpenAI-compatible provider profiles (keys read from .env, never committed)
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "qwen")
+LLM_PROFILES = {
+    "qwen": {
+        "base": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "key_env": "DASHSCOPE_API_KEY",
+        "model": "qwen-plus",
+    },
+    "deepseek": {
+        "base": "https://api.deepseek.com",
+        "key_env": "DEEPSEEK_API_KEY",
+        "model": "deepseek-chat",
+    },
+    "glm": {
+        "base": "https://ark.cn-beijing.volces.com/api/v3",
+        "key_env": "ARK_API_KEY",
+        "model": "glm-5-3-flash-260828",
+    },
+}
+
 # Retrieval
 COLLECTION = "nutri_kb"
 # top_k=5 chosen from the 9-run hyper-parameter sweep (k=3 misses 3 cases, k=8 hurts coverage)

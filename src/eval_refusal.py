@@ -18,12 +18,13 @@ load_dotenv(".env")
 
 from openai import OpenAI
 
-from src.config import DASHSCOPE_BASE, LLM_MODEL, LLM_TEMPERATURE, LLM_MAX_TOKENS
+from src.config import LLM_MODEL, LLM_PROFILES, LLM_PROVIDER, LLM_TEMPERATURE, LLM_MAX_TOKENS
 from src.generation import Generator
-from src.retrieval import Retriever
+from src.hybrid import HybridRetriever
 
 REFUSAL_FILE = "data/refusal_questions.json"
-REPORT_FILE = "data/refusal_report.json"
+REPORT_FILE = "data/refusal_report.json" if os.environ.get("LLM_PROVIDER", "qwen") == "qwen" \
+    else f"data/refusal_report_{os.environ.get('LLM_PROVIDER', 'qwen')}.json"
 
 REFUSAL_MARKERS = [
     "未收录", "资料未", "未提供", "无法回答", "不包含", "没有相关",
@@ -40,11 +41,15 @@ def is_refusal(answer: str) -> bool:
 
 def main():
     questions = json.load(open(REFUSAL_FILE, encoding="utf-8"))
-    retriever = Retriever()
+    retriever = HybridRetriever(top_k=int(os.environ.get("TOP_K", "8")))
     generator = Generator()
 
+    _prof = LLM_PROFILES[LLM_PROVIDER]
+    _prof_model = os.environ.get("LLM_MODEL", _prof["model"])
     # no-RAG baseline for comparison: a plain assistant
-    norag_client = OpenAI(api_key=os.environ["DASHSCOPE_API_KEY"], base_url=DASHSCOPE_BASE, timeout=60.0)
+    norag_client = OpenAI(
+        api_key=os.environ[_prof["key_env"]], base_url=_prof["base"], timeout=60.0
+    )
     NORAG_SYSTEM = "你是一名健康饮食助手，用你自己的知识回答用户问题，简洁、准确、使用简体中文。"
     # a "strict assistant" that must refuse out-of-scope asks (what RAG *should* do)
     STRICT_SYSTEM = (
@@ -54,7 +59,7 @@ def main():
 
     def answer_no_rag(q: str, system: str) -> str:
         r = norag_client.chat.completions.create(
-            model=LLM_MODEL,
+            model=_prof_model,
             messages=[{"role": "system", "content": system}, {"role": "user", "content": q}],
             temperature=LLM_TEMPERATURE,
             max_tokens=LLM_MAX_TOKENS,
@@ -66,7 +71,7 @@ def main():
 
     for i, item in enumerate(questions):
         q = item["question"]
-        hits = retriever.search(q)
+        hits = retriever.search(q, top_k=int(os.environ.get("TOP_K", "8")))
         ans_rag = generator.answer(q, hits)
         ans_norag = answer_no_rag(q, NORAG_SYSTEM)
         ans_strict = answer_no_rag(q, STRICT_SYSTEM)

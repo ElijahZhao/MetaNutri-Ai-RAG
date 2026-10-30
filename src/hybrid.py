@@ -94,9 +94,10 @@ class HybridRetriever:
 
     def search(self, query: str, top_k: int | None = None) -> list[dict]:
         k = top_k or self.top_k
-        vec_hits = self._vec.search(query, top_k=max(k * 2, 4))
+        cand = max(k * 4, 20)  # fusion candidate pool: stable against k
+        vec_hits = self._vec.search(query, top_k=cand)
         vec_ranked = [(self.docs.index(h["text"]), h["score"]) for h in vec_hits]
-        bm_ranked = self.bm25.rank(query, limit=max(k * 2, 4))
+        bm_ranked = self.bm25.rank(query, limit=cand)
         fused = rrf_fuse([vec_ranked, bm_ranked])
         order = sorted(fused.items(), key=lambda x: x[1], reverse=True)[:k]
         out = []

@@ -120,11 +120,36 @@ For deployment on Streamlit Community Cloud: set `DASHSCOPE_API_KEY` in **Advanc
 | Vector store | ChromaDB (embedded, file-based) |
 | Embedding | `text-embedding-v3` (Alibaba DashScope) |
 | LLM | `qwen-plus` (OpenAI-compatible endpoint) |
-| Eval | Custom 50-case set + ablation script |
+| Eval | NutriQA benchmark (200 items) — see [`docs/eval-benchmark-spec.md`](docs/eval-benchmark-spec.md) |
 
 ## 📊 Evaluation
 
-_Below: the 50-case offline evaluation, then four research extensions — refusal (anti-hallucination), hyper-parameter sweep, hybrid-retrieval comparison and failure attribution — each backed by a one-command regenerable report._
+**Current benchmark (NutriQA v1.0.0)** — 200 items (composition 60 / guideline 50 / special 50 / refusal 40), hybrid retrieval (BM25 char-bigram + vector RRF, top_k=8), KB = 344 docs (325 foods + 19 guideline chunks), three commercial models. All numbers below are regenerated from `data/eval_report*.json` / `data/refusal_report*.json`; see the NutriQA paper (title page + `docs/figures`, pinned at tag v1.0.0).
+
+Generation evaluation (160 items):
+
+| Metric | qwen-plus | deepseek-chat | glm-5.3-flash |
+|---|---|---|---|
+| Retrieval hit rate | 1.0 | 1.0 | 1.0 |
+| Faithfulness | 0.9625 | **0.9938** | 0.9875 |
+| Gold cover (RAG → NoRAG) | 0.9625 → 0.7625 | 0.9938 → 0.7688 | 0.9875 → 0.7625 |
+| **RAG gain** | 0.20 | 0.225 | 0.225 |
+
+Refusal evaluation (40 items):
+
+| Protocol | qwen-plus | deepseek-chat | glm-5.3-flash |
+|---|---|---|---|
+| RAG (with retrieved context) | 1.0 | 1.0 | 0.975 |
+| NoRAG (bare LLM) | 0.0 | 0.0 | 0.025 |
+| Strict (refuse instruction) | 0.675 | 0.925 | 0.925 |
+
+Boundary hallucination (10 out-of-KB × numeric-bait items): bare LLMs fabricate numeric values **100%** across all three models; RAG refusal suppresses this to ~0–2.5%.
+
+Automated-judgment gate (stratified 40-item sample, 39 valid): deterministic rules–human **0.949**, LLM-judge–human 0.846, rules–LLM-judge 0.850.
+
+---
+
+_Below: the historical 50-case baseline (superseded by the v1.0.0 benchmark above), then the earlier research extensions — refusal, hyper-parameter sweep, hybrid-retrieval comparison and failure attribution._
 
 Offline evaluation on 50 hand-verified cases (20 composition / 15 guideline / 15 special; gold answers are real CSV values or verbatim guideline text — none hand-written), qwen-plus, 100 LLM calls total:
 

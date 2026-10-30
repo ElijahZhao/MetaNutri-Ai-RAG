@@ -107,12 +107,12 @@
 
 | 口径 | qwen-plus | deepseek-chat | glm-5.3-flash |
 |---|---|---|---|
-| refusal_rate_rag | 1.0 | 1.0 | 待补跑收口 |
+| refusal_rate_rag | 1.0 | 1.0 | 0.975 |
 | refusal_rate_norag | 0.0 | 0.0 | 0.025 |
-| refusal_rate_strict | 0.675 | 0.925 | 0.9 |
+| refusal_rate_strict | 0.675 | 0.925 | 0.925 |
 
 - RAG 拒答率三模型均 ≥0.975：检索到边界/库外信息即拒答（boundary 子类 10/10 全拒）
-- strict（去资料+拒答指令）：deepseek 0.925 > glm 0.9 > qwen 0.675——"资料边界控制 vs 模型指令约束"的实证
+- strict（去资料+拒答指令）：deepseek = glm 0.925 > qwen 0.675——"资料边界控制 vs 模型指令约束"的实证
 - GLM 是唯一裸 LLM 主动拒答的模型（norag 0.025）
 
 ### 9.3 judge-人工一致性闸门（S2-2）

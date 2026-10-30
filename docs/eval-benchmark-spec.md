@@ -73,3 +73,24 @@
 ## 8. 与论文的关系
 
 本规格是 NutriQA 论文"评测协议"贡献的支撑文档；评测集扩展完成并经过 S2 的 judge-人工一致性校验后，数字进入 `docs/tech-report.md`（H-6 单一源约定）。
+
+## 9. 落地状态（S1 完成，2026-10-30）
+
+| 类别 | 目标 | 已落地 | 数据文件 | 基线（qwen-plus，S1b/S1c 实测） |
+|---|---|---|---|---|
+| composition | 60 | 60 | `data/eval_questions.json` | retrieval_hit 1.0 / faithfulness 1.0 |
+| guideline | 50 | 50 | `data/eval_questions.json` | retrieval_hit 0.90 / faithfulness 0.88 |
+| special | 50 | 50 | `data/eval_questions.json` | retrieval_hit 0.84 / faithfulness 0.86 |
+| refusal | 40 | 40 | `data/refusal_questions.json` | refusal_rate_rag 0.975 / norag 0.0 / strict 0.775 |
+| **合计** | **200** | **200** | — | 整体 retrieval_hit 0.9187 / faithfulness 0.9187 / gold_cover_rag 0.9313 / gold_cover_norag 0.7625 / ablation_gain 0.1688 |
+
+- gold 溯源：composition 全部来自成分表 CSV 精确值（脚本提取，失败即报错）；guideline/special 来自指南原文逐字（抽查 5/5 命中原文）；拒答为无 gold 判定口径。
+- 可复现性修复：`src/generation.py` 与 `src/eval_refusal.py` 均加 `timeout=60.0`（评测可完成、可复现）。
+- 守卫测试：26/26 通过；报告与评测集动态对齐断言。
+- 已知缺口：guideline/special 13 题检索未命中（长短语关键词，S2 优化方向）；boundary 类跨模型数据留 S3。
+
+## 10. 下一步（S2+）
+
+1. judge-人工一致性校验（≥0.8 闸门）
+2. 检索优化（top_k / 混合检索 / 分块），复测 13 题未命中
+3. 跨模型实验（qwen-plus + DeepSeek + 火山引擎第三模型，用户选定）

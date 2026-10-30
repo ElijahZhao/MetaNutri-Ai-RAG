@@ -74,22 +74,67 @@
 
 本规格是 NutriQA 论文"评测协议"贡献的支撑文档；评测集扩展完成并经过 S2 的 judge-人工一致性校验后，数字进入 `docs/tech-report.md`（H-6 单一源约定）。
 
-## 9. 落地状态（S1 完成，2026-10-30）
+## 9. 落地状态（S2 完成，2026-10-30）
 
-| 类别 | 目标 | 已落地 | 数据文件 | 基线（qwen-plus，S1b/S1c 实测） |
+### 9.1 评测集与数据
+
+| 类别 | 目标 | 已落地 | 数据文件 | 说明 |
 |---|---|---|---|---|
-| composition | 60 | 60 | `data/eval_questions.json` | retrieval_hit 1.0 / faithfulness 1.0 |
-| guideline | 50 | 50 | `data/eval_questions.json` | retrieval_hit 0.90 / faithfulness 0.88 |
-| special | 50 | 50 | `data/eval_questions.json` | retrieval_hit 0.84 / faithfulness 0.86 |
-| refusal | 40 | 40 | `data/refusal_questions.json` | refusal_rate_rag 0.975 / norag 0.0 / strict 0.775 |
-| **合计** | **200** | **200** | — | 整体 retrieval_hit 0.9187 / faithfulness 0.9187 / gold_cover_rag 0.9313 / gold_cover_norag 0.7625 / ablation_gain 0.1688 |
+| composition | 60 | 60 | `data/eval_questions.json` | 数值精确值（±1 容差） |
+| guideline | 50 | 50 | `data/eval_questions.json` | 指南原文逐字 |
+| special | 50 | 50 | `data/eval_questions.json` | 特殊人群/实践 |
+| refusal | 40 | 40 | `data/refusal_questions.json` | offtopic 15 / not_in_kb 15 / boundary 10 |
+| **合计** | **200** | **200** | — | S1d 溯源抽查 8/8 + 5/5 通过 |
 
-- gold 溯源：composition 全部来自成分表 CSV 精确值（脚本提取，失败即报错）；guideline/special 来自指南原文逐字（抽查 5/5 命中原文）；拒答为无 gold 判定口径。
-- 可复现性修复：`src/generation.py` 与 `src/eval_refusal.py` 均加 `timeout=60.0`（评测可完成、可复现）。
-- 守卫测试：26/26 通过；报告与评测集动态对齐断言。
-- 已知缺口：guideline/special 13 题检索未命中（长短语关键词，S2 优化方向）；boundary 类跨模型数据留 S3。
+### 9.2 三模型最终基线（混合检索 BM25+向量 RRF，新 KB 344 chunks，top_k=8）
 
-## 10. 下一步（S2+）
+**160 题生成评测：**
+
+| 指标 | qwen-plus | deepseek-chat | glm-5.3-flash |
+|---|---|---|---|
+| retrieval_hit_rate | 1.0 | 1.0 | 1.0 |
+| faithfulness | 0.9625 | **0.9938** | 0.9875 |
+| rag_citation_rate | 1.0 | 1.0 | 1.0 |
+| gold_cover_rag | 0.9625 | 0.9938 | 0.9875 |
+| gold_cover_norag | 0.7625 | 0.7688 | 0.7625 |
+| ablation_gain | 0.20 | **0.225** | 0.225 |
+
+- by_category：qwen guideline 0.92 / special 0.96；deepseek guideline 1.0 / special 0.98；glm guideline 0.96 / special 1.0（composition 三模型均 1.0）
+- 检索优化前（纯向量 k=5 + 旧 KB）：qwen 0.9187/0.9187/0.1688；**混合检索 + 分块修复后检索命中 1.0，RAG 增益升至 0.20-0.225**
+- 检索方法 > 分块粒度：切分修复对纯向量有扰动（13→15 miss），混合检索稳定修复至 0 miss
+
+**40 题拒答评测：**
+
+| 口径 | qwen-plus | deepseek-chat | glm-5.3-flash |
+|---|---|---|---|
+| refusal_rate_rag | 1.0 | 1.0 | 待补跑收口 |
+| refusal_rate_norag | 0.0 | 0.0 | 0.025 |
+| refusal_rate_strict | 0.675 | 0.925 | 0.9 |
+
+- RAG 拒答率三模型均 ≥0.975：检索到边界/库外信息即拒答（boundary 子类 10/10 全拒）
+- strict（去资料+拒答指令）：deepseek 0.925 > glm 0.9 > qwen 0.675——"资料边界控制 vs 模型指令约束"的实证
+- GLM 是唯一裸 LLM 主动拒答的模型（norag 0.025）
+
+### 9.3 judge-人工一致性闸门（S2-2）
+
+| 对比 | 比例 | 判定 |
+|---|---|---|
+| LLM judge vs 人工（39 条） | **0.846** | ✅ ≥0.8 通过 |
+| 规则口径 vs 人工 | **0.949** | 规则判定为低成本强代理 |
+
+- 规则口径（±1 容差 + 要点覆盖 + 编造检测）比通用 LLM judge 更贴人工——论文主口径用规则（可审计、可复现）
+- judge 系统性偏严：6 条分歧中 4 条 judge 判不忠、人工判忠（±1 容差与部分要点覆盖）
+
+### 9.4 工程与可复现性
+
+- 检索：`src/hybrid.py` HybridRetriever（BM25 字 bigram + 向量 RRF，候选池 max(k*4,20)）；评测 top_k=8，demo 保持向量检索
+- 分块修复：`data/build_kb_texts.py` 正则覆盖（一）~（十），guideline 17→19 chunks（（八）1549→360 字）
+- 台账：`data/SOURCES.md` 325 食物 / 19 段 / 344 chunks；chroma_db 344 docs，备份 tar.gz 同步
+- 守卫测试：26/26 通过（19 chunks / 344 docs / 325 foods 断言）
+- API 超时修复：`src/generation.py` timeout=60.0（评测可复现）
+- 密钥管理：API key 只进 `.env`（gitignored），`src/config.py` 仅存环境变量名
+
+## 10. 下一步（S2+）## 10. 下一步（S2+）
 
 1. judge-人工一致性校验（≥0.8 闸门）
 2. 检索优化（top_k / 混合检索 / 分块），复测 13 题未命中

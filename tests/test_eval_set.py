@@ -14,9 +14,9 @@ def _load(name):
 
 def test_eval_set_size_and_categories():
     qs = _load("eval_questions.json")
-    assert len(qs) == 50
+    assert len(qs) == 160
     cnt = Counter(x["category"] for x in qs)
-    assert cnt == {"composition": 20, "guideline": 15, "special": 15}
+    assert cnt == {"composition": 60, "guideline": 50, "special": 50}
 
 
 def test_eval_set_fields_complete():
@@ -24,9 +24,9 @@ def test_eval_set_fields_complete():
     for it in qs:
         assert it["id"] and it["question"] and it["gold"] and it["source_keyword"]
         assert it["category"] in ("composition", "guideline", "special")
-    # all 15 special cases carry an explicit gold_key
+    # all 50 special cases carry an explicit gold_key
     special = [x for x in qs if x["category"] == "special"]
-    assert len(special) == 15 and all(x.get("gold_key") for x in special)
+    assert len(special) == 50 and all(x.get("gold_key") for x in special)
 
 
 def test_composition_gold_format():
@@ -42,6 +42,6 @@ def test_eval_report_shape():
     for key in ["retrieval_hit_rate", "faithfulness", "rag_citation_rate",
                 "gold_cover_rag", "gold_cover_norag", "ablation_gain"]:
         assert key in s and 0.0 <= s[key] <= 1.0
-    assert len(rep["items"]) == 50
+    assert len(rep["items"]) == len(_load("eval_questions.json"))
     for it in rep["items"]:
         assert it["id"] in {x["id"] for x in _load("eval_questions.json")}

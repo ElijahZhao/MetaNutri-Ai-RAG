@@ -38,7 +38,7 @@ LANG_RULES = {
 class Generator:
     def __init__(self):
         self._client = OpenAI(
-            api_key=os.environ["DASHSCOPE_API_KEY"], base_url=DASHSCOPE_BASE
+            api_key=os.environ["DASHSCOPE_API_KEY"], base_url=DASHSCOPE_BASE, timeout=60.0
         )
 
     def build_prompt(self, query: str, chunks: list[dict]) -> str:

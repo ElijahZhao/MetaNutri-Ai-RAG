@@ -4,7 +4,7 @@
 
 ## 背景
 
-- MetaNutri 生态：**MetaNutri-AI**（主仓，全栈平台）· **ppgr-predictor**（子仓，PPGR 血糖预测）· **Nutri-RAG**（本仓，生态的 LLM/RAG 模块）。
+- MetaNutri 生态：**MetaNutri-AI**（主仓，全栈平台）· **MetaNutri-Ai-ppgr-predictor**（子仓，PPGR 血糖预测）· **Nutri-RAG**（本仓，生态的 LLM/RAG 模块）。
 - 生态内已有论文：PPGR 测量可靠性跨队列比较研究（medRxiv 预印本，Elijah Zhao 一作，29 页）。**本仓库与该论文相互独立**：论文代码指向 MetaNutri `research/`，全文无 RAG/LLM 内容；本仓 README 定位为"MetaNutri 生态的 RAG 模块"，不声称属于该论文。
 
 ## 现有研究素材（可支撑论文骨架）

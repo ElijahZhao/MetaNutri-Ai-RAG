@@ -1,4 +1,4 @@
-"""Central configuration for nutri-rag pipeline.
+"""Central configuration for Nutri-RAG pipeline.
 
 All tunable knobs live here. Values are read from environment where sensible.
 """

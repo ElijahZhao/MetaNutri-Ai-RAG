@@ -50,8 +50,8 @@ To me, AI engineering is exactly this: making a claim measurable, and making the
 ```
 MetaNutri (main)  →  Full-stack precision-nutrition platform (Vercel)
        │
-       ├── ppgr-predictor  →  Post-meal glucose prediction (Streamlit)
-       └── nutri-rag      →  The evidence layer: RAG Q&A over official data (Streamlit)
+       ├── MetaNutri-Ai-ppgr-predictor  →  Post-meal glucose prediction (Streamlit)
+       └── MetaNutri-Ai-RAG             →  The evidence layer: RAG Q&A over official data (Streamlit)
 ```
 
 1. **Why an ecosystem, not one repo?** — A nutrition recommendation chain needs three layers: *understanding* (what to eat), *prediction* (how your body reacts), and *evidence* (why — grounded, citable facts). One full-stack app can't carry all three convincingly, so I split them into three focused, independently deployable projects.

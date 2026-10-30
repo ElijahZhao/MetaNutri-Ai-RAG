@@ -211,7 +211,7 @@ Limitations and future work (details in Limitations): the 10-item boundary subcl
 
 ## Declarations
 
-**Data and code availability**: All data, code, and evidence are pinned at git tag v1.0.0 of the nutri-rag repository (MIT license); full reproducibility guide in `docs/`.
+**Data and code availability**: All data, code, and evidence are pinned at git tag v1.0.0 of the MetaNutri-Ai-RAG repository (MIT license); full reproducibility guide in `docs/`.
 
 **Funding**: None declared.
 

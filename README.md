@@ -213,7 +213,7 @@ This project is for research and educational demonstration only. It does not con
 Nutri-RAG is the LLM research module of the **MetaNutri** ecosystem:
 
 - **MetaNutri** — full-stack precision-nutrition platform ([repo](https://github.com/ElijahZhao/MetaNutri---AI-) · [demo](https://meta-nutri-ai.vercel.app/))
-- **ppgr-predictor** — 2-hour postprandial glucose prediction ([repo](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) · [demo](https://metanutri-ai-ppgr-predictor.streamlit.app/))
+- **MetaNutri-Ai-ppgr-predictor** — 2-hour postprandial glucose prediction ([repo](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) · [demo](https://metanutri-ai-ppgr-predictor.streamlit.app/))
 - **Nutri-RAG** (this repo) — health-diet Q&A via RAG
 
 ## ❓ FAQ
@@ -228,7 +228,7 @@ For applicants & interviewers: how to tell the Nutri-RAG story — one-liner, PS
 
 ## 📄 License
 
-[MIT](LICENSE) — consistent with the MetaNutri ecosystem (MetaNutri & ppgr-predictor).
+[MIT](LICENSE) — consistent with the MetaNutri ecosystem (MetaNutri & MetaNutri-Ai-ppgr-predictor).
 
 ## 📝 Changelog
 

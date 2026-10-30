@@ -9,8 +9,8 @@
 **基于检索增强生成（RAG）的健康饮食问答** — MetaNutri 生态的 LLM 研究模块
 
 [![在线演示](https://img.shields.io/badge/Streamlit-%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
-[![CI](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml)
-[![License](https://img.shields.io/github/license/ElijahZhao/nutri-rag?color=8b5cf6)](LICENSE)
+[![CI](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml)
+[![License](https://img.shields.io/github/license/ElijahZhao/MetaNutri-Ai-RAG?color=8b5cf6)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)]()
 [![向量库](https://img.shields.io/badge/VectorDB-ChromaDB-4ea94b)]()
 [![LLM](https://img.shields.io/badge/LLM-qwen--plus-FF6B6B)]()
@@ -57,8 +57,8 @@ flowchart TD
 ## ⚡ 快速开始
 
 ```bash
-git clone https://github.com/ElijahZhao/nutri-rag.git
-cd nutri-rag
+git clone https://github.com/ElijahZhao/MetaNutri-Ai-RAG.git
+cd MetaNutri-Ai-RAG
 pip install -r requirements.txt
 
 # 在 .env 中配置阿里云百炼 API Key：
@@ -172,7 +172,7 @@ top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发�
 Nutri-RAG 是 **MetaNutri** 生态的 LLM 研究模块：
 
 - **MetaNutri** — 全栈精准营养平台（[仓库](https://github.com/ElijahZhao/MetaNutri---AI-) · [演示](https://meta-nutri-ai.vercel.app/)）
-- **ppgr-predictor** — 餐后 2 小时血糖预测（[仓库](https://github.com/ElijahZhao/ppgr-predictor) · [演示](https://metanutri-ai-ppgr-predictor.streamlit.app/)）
+- **MetaNutri-Ai-ppgr-predictor** — 餐后 2 小时血糖预测（[仓库](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) · [演示](https://metanutri-ai-ppgr-predictor.streamlit.app/)）
 - **Nutri-RAG**（本仓库）— 基于 RAG 的健康饮食问答
 
 ## ❓ 常见问题
@@ -187,7 +187,7 @@ Nutri-RAG 是 **MetaNutri** 生态的 LLM 研究模块：
 
 ## 📄 开源协议
 
-[MIT](LICENSE) —— 与 MetaNutri 生态（MetaNutri 与 ppgr-predictor）保持一致。
+[MIT](LICENSE) —— 与 MetaNutri 生态（MetaNutri 与 MetaNutri-Ai-ppgr-predictor）保持一致。
 
 ## 📝 更新日志
 

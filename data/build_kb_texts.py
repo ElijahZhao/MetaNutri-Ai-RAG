@@ -84,7 +84,7 @@ def main():
         n_food_items += len(parts)
 
     with open("data/SOURCES.md", "w", encoding="utf-8") as f:
-        f.write("""# 数据来源登记（nutri-rag）
+        f.write("""# 数据来源登记（Nutri-RAG）
 
 ## 1. 食物营养成分数据
 - 来源：中国疾病预防控制中心营养与健康所「食物营养成分查询平台」

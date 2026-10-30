@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """NutriQA paper figures.
-Data source: ../nutri-rag/data/eval_report*.json and ../nutri-rag/data/refusal_report*.json
+Data source: ../MetaNutri-Ai-RAG/data/eval_report*.json and ../MetaNutri-Ai-RAG/data/refusal_report*.json
 (single source of numbers, H-6). Ablation/agreement numbers hard-coded from
 docs/eval-benchmark-spec.md §9.2/§9.4 (see comments).
 Output: fig1..fig6 PNG @300 dpi, English labels (Research Square submission).
@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(ROOT, "..", "nutri-rag", "data")
+DATA = os.path.join(ROOT, "..", "MetaNutri-Ai-RAG", "data")
 OUT = ROOT
 
 # ---- load reports (single source) ----

@@ -9,8 +9,8 @@
 **Health-diet Q&A via Retrieval-Augmented Generation** — the LLM research module of the MetaNutri ecosystem
 
 [![Online Demo](https://img.shields.io/badge/Streamlit-Online%20Demo-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
-[![CI](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/nutri-rag/actions/workflows/ci-gates.yml)
-[![License](https://img.shields.io/github/license/ElijahZhao/nutri-rag?color=8b5cf6)](LICENSE)
+[![CI](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml)
+[![License](https://img.shields.io/github/license/ElijahZhao/MetaNutri-Ai-RAG?color=8b5cf6)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)]()
 [![Vector DB](https://img.shields.io/badge/VectorDB-ChromaDB-4ea94b)]()
 [![LLM](https://img.shields.io/badge/LLM-qwen--plus-FF6B6B)]()
@@ -24,7 +24,7 @@
 
 - **Balanced two-path retrieval** — food chunks and guideline chunks are queried separately with equal quota, so guideline recommendations are never squeezed out by 325 food chunks
 - **Citation-grounded answers** — every key claim carries a `[n]` reference to its source chunk, making answers fully traceable
-- **Built-in evaluation** — 50-case eval set (composition / guideline / special) with no-RAG vs RAG ablation, regenerable with one command
+- **Built-in evaluation** — 200-item NutriQA benchmark (composition 60 / guideline 50 / special 50 / refusal 40) with no-RAG vs RAG ablation across 3 commercial models, regenerable with one command
 - **Reproducible data pipeline** — official data sources, scraper → clean → chunk → vector store, all scripted
 - **Lightweight deployment** — single-process Streamlit app on the free tier; vector store auto-restored from tarball
 
@@ -33,7 +33,7 @@
 ```mermaid
 flowchart TD
     A["Official data sources<br/>China Food Composition Tables + Dietary Guidelines 2022"] --> B["Data pipeline<br/>scrape → clean → chunk"]
-    B --> C[("ChromaDB vector store<br/>342 chunks")]
+    B --> C[("ChromaDB vector store<br/>344 slices")]
     C --> D["Python RAG pipeline<br/>retrieval → context assembly → LLM → answer + citations"]
     D --> E["Streamlit app<br/>chat UI + evaluation dashboard"]
 ```
@@ -73,8 +73,8 @@ Figures from the *NutriQA* paper (git tag `v1.0.0`), regenerable with `docs/figu
 ## ⚡ Quick Start
 
 ```bash
-git clone https://github.com/ElijahZhao/nutri-rag.git
-cd nutri-rag
+git clone https://github.com/ElijahZhao/MetaNutri-Ai-RAG.git
+cd MetaNutri-Ai-RAG
 pip install -r requirements.txt
 
 # configure your Alibaba Bailian API key in .env:
@@ -97,16 +97,16 @@ For deployment on Streamlit Community Cloud: set `DASHSCOPE_API_KEY` in **Advanc
 │   ├── retrieval.py        # balanced two-path retrieval (food + guideline)
 │   ├── generation.py       # context assembly + LLM answer with [n] citations
 │   ├── kb.py               # vector store build/rebuild (ChromaDB)
-│   └── evaluation.py       # 50-case eval + no-RAG vs RAG ablation
+│   └── evaluation.py       # 160-case eval + no-RAG vs RAG ablation (HybridRetriever)
 ├── data/
 │   ├── fetch_*.py          # data collection scripts (official sources)
 │   ├── build_kb_texts.py   # chunking
 │   ├── build_eval_set.py   # eval set generation
-│   ├── eval_questions.json # 50-case eval set
+│   ├── eval_questions.json # 160-case eval set
 │   ├── eval_report.json    # latest evaluation report
 │   ├── kb_foods.txt        # 325 food chunks
-│   ├── kb_guidelines.txt   # 17 guideline chunks
-│   ├── chroma_db.tar.gz    # vector store backup (342 chunks)
+│   ├── kb_guidelines.txt   # 19 guideline chunks
+│   ├── chroma_db.tar.gz    # vector store backup (344 slices)
 │   └── SOURCES.md          # data provenance registry
 └── requirements.txt
 ```
@@ -213,7 +213,7 @@ This project is for research and educational demonstration only. It does not con
 Nutri-RAG is the LLM research module of the **MetaNutri** ecosystem:
 
 - **MetaNutri** — full-stack precision-nutrition platform ([repo](https://github.com/ElijahZhao/MetaNutri---AI-) · [demo](https://meta-nutri-ai.vercel.app/))
-- **ppgr-predictor** — 2-hour postprandial glucose prediction ([repo](https://github.com/ElijahZhao/ppgr-predictor) · [demo](https://metanutri-ai-ppgr-predictor.streamlit.app/))
+- **ppgr-predictor** — 2-hour postprandial glucose prediction ([repo](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) · [demo](https://metanutri-ai-ppgr-predictor.streamlit.app/))
 - **Nutri-RAG** (this repo) — health-diet Q&A via RAG
 
 ## ❓ FAQ

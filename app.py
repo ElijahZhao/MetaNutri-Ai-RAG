@@ -35,7 +35,7 @@ sys.path.insert(0, str(ROOT))
 
 from src.config import TOP_K  # noqa: E402
 from src.generation import Generator, extract_citations  # noqa: E402
-from src.retrieval import Retriever  # noqa: E402
+from src.hybrid import HybridRetriever  # noqa: E402
 
 st.set_page_config(page_title="Nutri-RAG · 健康饮食问答", page_icon="🥗", layout="wide")
 
@@ -542,7 +542,7 @@ st.markdown(f'<p class="chat-hint">{L["hint"]}</p>', unsafe_allow_html=True)
 
 @st.cache_resource
 def load_engine():
-    return Retriever(), Generator()
+    return HybridRetriever(top_k=TOP_K), Generator()
 
 
 retriever, generator = load_engine()

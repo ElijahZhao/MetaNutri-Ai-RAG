@@ -41,8 +41,8 @@ LLM_PROFILES = {
 
 # Retrieval
 COLLECTION = "nutri_kb"
-# top_k=5 chosen from the 9-run hyper-parameter sweep (k=3 misses 3 cases, k=8 hurts coverage)
-TOP_K = int(os.environ.get("TOP_K", "5"))
+# top_k=8 matches the NutriQA paper evaluation config (HybridRetriever, candidate pool max(k*4,20))
+TOP_K = int(os.environ.get("TOP_K", "8"))
 # keep a small margin so the prompt does not overflow
 MAX_CONTEXT_CHARS = 4000
 

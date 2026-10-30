@@ -44,7 +44,7 @@ def main():
     generator = Generator()
 
     # no-RAG baseline for comparison: a plain assistant
-    norag_client = OpenAI(api_key=os.environ["DASHSCOPE_API_KEY"], base_url=DASHSCOPE_BASE)
+    norag_client = OpenAI(api_key=os.environ["DASHSCOPE_API_KEY"], base_url=DASHSCOPE_BASE, timeout=60.0)
     NORAG_SYSTEM = "你是一名健康饮食助手，用你自己的知识回答用户问题，简洁、准确、使用简体中文。"
     # a "strict assistant" that must refuse out-of-scope asks (what RAG *should* do)
     STRICT_SYSTEM = (

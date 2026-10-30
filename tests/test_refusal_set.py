@@ -13,16 +13,16 @@ def _load(name):
 
 def test_refusal_set_size_and_categories():
     qs = _load("refusal_questions.json")
-    assert len(qs) == 10
+    assert len(qs) == 40
     cnt = Counter(x["category"] for x in qs)
-    assert cnt == {"offtopic": 6, "not_in_kb": 4}
+    assert cnt == {"offtopic": 15, "not_in_kb": 15, "boundary": 10}
 
 
 def test_refusal_set_fields_complete():
     qs = _load("refusal_questions.json")
     for it in qs:
         assert it["id"].startswith("R") and it["question"]
-        assert it["category"] in ("offtopic", "not_in_kb")
+        assert it["category"] in ("offtopic", "not_in_kb", "boundary")
 
 
 def test_refusal_set_no_overlap_with_eval_set():
@@ -38,7 +38,7 @@ def test_refusal_report_shape():
     s = rep["summary"]
     for key in ["refusal_rate_rag", "refusal_rate_norag", "refusal_rate_strict_assistant", "n"]:
         assert key in s
-    assert s["n"] == 10
-    assert len(rep["items"]) == 10
+    assert s["n"] == 40
+    assert len(rep["items"]) == 40
     for it in rep["items"]:
         assert it["id"] in {x["id"] for x in _load("refusal_questions.json")}

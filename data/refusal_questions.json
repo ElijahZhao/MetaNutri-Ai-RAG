@@ -1,12 +1,202 @@
 [
-  {"id": "R01", "category": "offtopic", "question": "今天上海天气怎么样？"},
-  {"id": "R02", "category": "offtopic", "question": "量子计算的基本原理是什么？"},
-  {"id": "R03", "category": "offtopic", "question": "帮我写一首关于秋天的诗"},
-  {"id": "R04", "category": "offtopic", "question": "247 乘以 18 等于多少？"},
-  {"id": "R05", "category": "offtopic", "question": "梵高的代表作有哪些？"},
-  {"id": "R06", "category": "offtopic", "question": "蜜蜂是怎么酿蜜的？"},
-  {"id": "R07", "category": "not_in_kb", "question": "榴莲每100克的热量是多少？"},
-  {"id": "R08", "category": "not_in_kb", "question": "人参含哪些营养成分？"},
-  {"id": "R09", "category": "not_in_kb", "question": "运动员训练期应该如何补充碳水？"},
-  {"id": "R10", "category": "not_in_kb", "question": "孕妇每天需要补充多少 DHA？"}
+  {
+    "id": "R01",
+    "category": "offtopic",
+    "question": "今天上海天气怎么样？"
+  },
+  {
+    "id": "R02",
+    "category": "offtopic",
+    "question": "量子计算的基本原理是什么？"
+  },
+  {
+    "id": "R03",
+    "category": "offtopic",
+    "question": "帮我写一首关于秋天的诗"
+  },
+  {
+    "id": "R04",
+    "category": "offtopic",
+    "question": "247 乘以 18 等于多少？"
+  },
+  {
+    "id": "R05",
+    "category": "offtopic",
+    "question": "梵高的代表作有哪些？"
+  },
+  {
+    "id": "R06",
+    "category": "offtopic",
+    "question": "蜜蜂是怎么酿蜜的？"
+  },
+  {
+    "id": "R11",
+    "category": "offtopic",
+    "question": "北京到上海的高铁票价是多少？"
+  },
+  {
+    "id": "R12",
+    "category": "offtopic",
+    "question": "《三体》主要讲了什么故事？"
+  },
+  {
+    "id": "R13",
+    "category": "offtopic",
+    "question": "帮我翻译一句英文：Hello world"
+  },
+  {
+    "id": "R14",
+    "category": "offtopic",
+    "question": "Python 中如何实现快速排序？"
+  },
+  {
+    "id": "R15",
+    "category": "offtopic",
+    "question": "今天股市行情怎么样？"
+  },
+  {
+    "id": "R16",
+    "category": "offtopic",
+    "question": "推荐一部好看的科幻电影"
+  },
+  {
+    "id": "R17",
+    "category": "offtopic",
+    "question": "怎么给手机安装系统更新？"
+  },
+  {
+    "id": "R18",
+    "category": "offtopic",
+    "question": "2026 年世界杯在哪里举办？"
+  },
+  {
+    "id": "R19",
+    "category": "offtopic",
+    "question": "附近有什么好喝的咖啡店？"
+  },
+  {
+    "id": "R07",
+    "category": "not_in_kb",
+    "question": "榴莲每100克的热量是多少？"
+  },
+  {
+    "id": "R08",
+    "category": "not_in_kb",
+    "question": "人参含哪些营养成分？"
+  },
+  {
+    "id": "R09",
+    "category": "not_in_kb",
+    "question": "运动员训练期应该如何补充碳水？"
+  },
+  {
+    "id": "R10",
+    "category": "not_in_kb",
+    "question": "孕妇每天需要补充多少 DHA？"
+  },
+  {
+    "id": "R20",
+    "category": "not_in_kb",
+    "question": "小龙虾每100克含多少蛋白质？"
+  },
+  {
+    "id": "R21",
+    "category": "not_in_kb",
+    "question": "牛油果的脂肪含量是多少？"
+  },
+  {
+    "id": "R22",
+    "category": "not_in_kb",
+    "question": "蜂王浆有哪些保健功效？"
+  },
+  {
+    "id": "R23",
+    "category": "not_in_kb",
+    "question": "燕窝的营养价值高吗？"
+  },
+  {
+    "id": "R24",
+    "category": "not_in_kb",
+    "question": "代餐奶昔真的能减肥吗？"
+  },
+  {
+    "id": "R25",
+    "category": "not_in_kb",
+    "question": "西洋参每天吃多少克合适？"
+  },
+  {
+    "id": "R26",
+    "category": "not_in_kb",
+    "question": "冬虫夏草怎么吃效果最好？"
+  },
+  {
+    "id": "R27",
+    "category": "not_in_kb",
+    "question": "蛋白粉每天应该摄入多少？"
+  },
+  {
+    "id": "R28",
+    "category": "not_in_kb",
+    "question": "藜麦的升糖指数是多少？"
+  },
+  {
+    "id": "R29",
+    "category": "not_in_kb",
+    "question": "益生菌酸奶和普通酸奶有什么区别？"
+  },
+  {
+    "id": "R30",
+    "category": "not_in_kb",
+    "question": "电解质水每天喝多少合适？"
+  },
+  {
+    "id": "R31",
+    "category": "boundary",
+    "question": "魔芋爽每100克含多少钠？"
+  },
+  {
+    "id": "R32",
+    "category": "boundary",
+    "question": "辣条每100克含多少脂肪？"
+  },
+  {
+    "id": "R33",
+    "category": "boundary",
+    "question": "一杯奶茶的热量是多少千卡？"
+  },
+  {
+    "id": "R34",
+    "category": "boundary",
+    "question": "螺蛳粉每100克含多少能量？"
+  },
+  {
+    "id": "R35",
+    "category": "boundary",
+    "question": "自热火锅每份的钠含量是多少？"
+  },
+  {
+    "id": "R36",
+    "category": "boundary",
+    "question": "猫粮每100克含多少蛋白质？"
+  },
+  {
+    "id": "R37",
+    "category": "boundary",
+    "question": "青梅酒每100毫升含多少能量？"
+  },
+  {
+    "id": "R38",
+    "category": "boundary",
+    "question": "生酮饼干每100克含多少碳水化合物？"
+  },
+  {
+    "id": "R39",
+    "category": "boundary",
+    "question": "预制菜宫保鸡丁每100克含多少蛋白质？"
+  },
+  {
+    "id": "R40",
+    "category": "boundary",
+    "question": "蛋白棒每100克含多少脂肪？"
+  }
 ]

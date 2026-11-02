@@ -8,6 +8,7 @@
 
 **基于检索增强生成（RAG）的健康饮食问答** — MetaNutri 生态的 LLM 研究模块
 
+[![DOI](https://img.shields.io/badge/DOI-10.21203%2Frs.3.rs--11565315%2Fv1-0ea5e9?style=for-the-badge)](https://doi.org/10.21203/rs.3.rs-11565315/v1)
 [![在线演示](https://img.shields.io/badge/Streamlit-%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
 [![CI](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml)
 [![License](https://img.shields.io/github/license/ElijahZhao/MetaNutri-Ai-RAG?color=8b5cf6)](LICENSE)
@@ -20,11 +21,28 @@
 
 **Nutri-RAG** 是一个研究型 RAG 应用，基于官方中文营养数据回答健康饮食问题：*《中国食物成分表》*（325 种食物 × 32 项营养指标）与 *《中国居民膳食指南（2022）》*（平衡膳食八准则 + 详细实践）。
 
+## 📄 预印本
+
+> **NutriQA: A Traceable RAG Question-Answering Benchmark and Empirical Study on Official Chinese Nutrition Data**
+>
+> Yulin Zhao · *Research Square* · v1 · 2026 年 11 月 2 日 · **CC BY 4.0**
+>
+> **DOI** [`10.21203/rs.3.rs-11565315/v1`](https://doi.org/10.21203/rs.3.rs-11565315/v1) · **阅读** [Research Square 全文](https://doi.org/10.21203/rs.3.rs-11565315/v1) · **PDF** [仓库内发布版](docs/paper/NutriQA-paper-researchsquare-v1.pdf)
+
+本仓库是 NutriQA 论文的研究母仓：200 题基准、评测脚本、论文图与论文正文都在这里——
+[`docs/paper/`](docs/paper/) · [`docs/figures/`](docs/figures/) ·
+论文源文件 [`NutriQA-paper.md`](docs/paper/NutriQA-paper.md) · 中文稿 [`NutriQA-paper-zh.md`](docs/paper/NutriQA-paper-zh.md)。
+
+**核心结论**（全部由 `data/eval_report*.json` / `data/refusal_report*.json` 重新生成）：
+混合检索在 `top_k=8` 下达到 160/160 全召回；RAG 把关键信息覆盖从约 0.76 提升到 0.96–0.99；
+裸 LLM 对库外边界题 **100%** 编造数值，而 RAG 拒答把幻觉率压到约 0–2.5%；
+确定性判定规则与人工标注的一致性为 **0.949**，通用 LLM 判官仅 **0.846**。
+
 ## ✨ 核心亮点
 
 - **均衡双路检索** — 食物切片与指南切片按等额配额分别检索，指南建议不会被 325 条食物切片挤出召回窗口
 - **引用溯源回答** — 每条关键信息都带 `[n]` 引用编号指向来源切片，回答全程可核验、无虚构数值
-- **内置评测** — 50 条评测集（成分 / 指南 / 禁忌三类）+ 无 RAG vs RAG 消融对比，一条命令可复现
+- **内置评测** — NutriQA 200 题基准（成分 60 / 指南 50 / 特殊 50 / 拒答 40）+ 无 RAG vs RAG 消融对比，覆盖 qwen-plus / deepseek-chat / glm-5.3-flash 三个模型，一条命令可复现
 - **可复现数据管线** — 官方数据源，采集 → 清洗 → 切片 → 入库全程脚本化
 - **轻量部署** — 单进程 Streamlit 应用跑在免费层，向量库缺失时自动从备份解压恢复
 
@@ -33,7 +51,7 @@
 ```mermaid
 flowchart TD
     A["官方数据源<br/>中国食物成分表 + 膳食指南2022"] --> B["数据管线<br/>采集 → 清洗 → 切片"]
-    B --> C[("ChromaDB 向量库<br/>342 chunks")]
+    B --> C[("ChromaDB 向量库<br/>344 slices")]
     C --> D["Python RAG 管线<br/>检索 → 上下文组装 → LLM → 回答 + 引用"]
     D --> E["Streamlit 应用<br/>聊天界面 + 评测面板"]
 ```
@@ -50,7 +68,7 @@ flowchart TD
 |---|---|
 | <img src="assets/screenshots/screenshot-chat-zh.png" width="100%" alt="问答界面（中文）" /> | <img src="assets/screenshots/screenshot-chat-en.png" width="100%" alt="问答界面（英文）" /> |
 
-| 评测面板 —— 50 条评测覆盖矩阵（绿色 = RAG 与无 RAG 均覆盖，橙色 = RAG 增量补齐） | 评测研究面板（整页长图）—— 50 题评测明细 + 拒答评测 + 超参数消融（9 组）+ 混合检索对比 + 消融失败案例，一页看完整条研究链 |
+| 评测面板 —— 160 题评测覆盖矩阵（绿色 = RAG 与无 RAG 均覆盖，橙色 = RAG 增量补齐） | 评测研究面板（整页长图）—— 160 题评测明细 + 40 题拒答评测 + 超参数消融（9 组）+ 混合检索对比 + 消融失败案例，一页看完整条研究链 |
 |---|---|
 | <img src="assets/screenshots/screenshot-eval-zh.png" width="100%" alt="评测面板" /> | <img src="assets/screenshots/screenshot-eval-research-zh.png" width="100%" alt="评测研究面板" /> |
 
@@ -81,17 +99,24 @@ streamlit run app.py
 │   ├── retrieval.py        # 均衡双路检索（食物 + 指南）
 │   ├── generation.py       # 上下文组装 + LLM 回答（带 [n] 引用）
 │   ├── kb.py               # 向量库构建/重建（ChromaDB）
-│   └── evaluation.py       # 50 条评测 + 无 RAG vs RAG 消融
+│   └── evaluation.py       # 160 题生成评测 + 无 RAG vs RAG 消融
 ├── data/
 │   ├── fetch_*.py          # 数据采集脚本（官方数据源）
 │   ├── build_kb_texts.py   # 知识切片
 │   ├── build_eval_set.py   # 评测集生成
-│   ├── eval_questions.json # 50 条评测集
+│   ├── eval_questions.json # 160 题生成评测集
+│   ├── refusal_questions.json # 40 题拒答评测集（无关 15 / 库外 15 / 边界 10）
 │   ├── eval_report.json    # 最新评测报告
 │   ├── kb_foods.txt        # 325 条食物切片
-│   ├── kb_guidelines.txt   # 17 段指南切片
-│   ├── chroma_db.tar.gz    # 向量库备份（342 chunks）
+│   ├── kb_guidelines.txt   # 19 段指南切片
+│   ├── chroma_db.tar.gz    # 向量库备份（344 slices）
 │   └── SOURCES.md          # 数据来源登记
+├── docs/
+│   ├── paper/              # NutriQA 论文源文件（中英 MD + PDF + 线上发布版）
+│   ├── figures/            # 论文图 1–6 + 生成脚本
+│   ├── eval-benchmark-spec.md # 评测协议规格
+│   └── tech-report.md      # 技术报告（权威数值）
+├── tests/                  # pytest：数据 / 评测集 / 检索 / 集成
 └── requirements.txt
 ```
 
@@ -104,11 +129,36 @@ streamlit run app.py
 | 向量库 | ChromaDB（嵌入式、文件型） |
 | Embedding | `text-embedding-v3`（阿里云百炼） |
 | LLM | `qwen-plus`（OpenAI 兼容端点） |
-| 评测 | 自建 50 条评测集 + 消融脚本 |
+| 评测 | 自建 NutriQA 200 题基准 + 消融脚本 |
 
 ## 📊 评测结果
 
-_以下为 50 条离线评测，以及四项研究扩展——拒答（防幻觉）、超参数消融、混合检索对比、失败归因——每项都有一条命令可复现的报告。_
+**当前基准（NutriQA v1.0.0）** —— 200 题（成分 60 / 指南 50 / 特殊 50 / 拒答 40），混合检索（BM25 字符 bigram + 向量 RRF，`top_k=8`），知识库 344 切片（325 食物 + 19 指南切片），三个商用模型。以下数值全部由 `data/eval_report*.json` / `data/refusal_report*.json` 重新生成，与 NutriQA 论文一致（标题页 + `docs/figures`，固定于 tag `v1.0.1`；数据、代码与完整证据链在 `v1.0.0`）。
+
+生成评测（160 题）：
+
+| 指标 | qwen-plus | deepseek-chat | glm-5.3-flash |
+|---|---|---|---|
+| 检索命中率 | 1.0 | 1.0 | 1.0 |
+| 忠实度 | 0.9625 | **0.9938** | 0.9875 |
+| 关键信息覆盖：RAG → 无 RAG | 0.9625 → 0.7625 | 0.9938 → 0.7688 | 0.9875 → 0.7625 |
+| **RAG 增益** | 0.20 | 0.225 | 0.225 |
+
+拒答评测（40 题）：
+
+| 协议 | qwen-plus | deepseek-chat | glm-5.3-flash |
+|---|---|---|---|
+| RAG（有检索上下文） | 1.0 | 1.0 | 0.975 |
+| 无 RAG（裸 LLM） | 0.0 | 0.0 | 0.025 |
+| 严格指令（要求拒答） | 0.675 | 0.925 | 0.925 |
+
+边界幻觉（10 道库外 × 数值诱饵题）：三个模型的裸 LLM **100%** 编造数值，RAG 拒答把幻觉率压到约 0–2.5%。
+
+自动判定闸门（分层抽样 40 题，39 条有效）：确定性规则–人工 **0.949**，通用 LLM 判官–人工 0.846，规则–判官 0.850。
+
+---
+
+_以下为历史基线（已被上面的 v1.0.0 基准取代），以及早期研究扩展——拒答（防幻觉）、超参数消融、混合检索对比、失败归因——每项都有一条命令可复现的报告。_
 
 离线评测：50 条人工核验评测集（成分 20 / 指南 15 / 禁忌 15；gold 全部来自 CSV 真实数值或指南原文，无手编数字），qwen-plus，共 100 次 LLM 调用：
 
@@ -151,7 +201,7 @@ top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发�
 
 | 模式 | 检索命中 | 引用 | 忠实度 |
 |---|---|---|---|
-| 纯向量（当前默认） | 100% | 100% | 100% |
+| 纯向量（当时的默认） | 100% | 100% | 100% |
 | 混合（BM25+向量） | 100% | 96% | 96% |
 
 检索层无增益（纯向量在本评测集上已饱和），且融合上下文偶发诱导越界引用编号——**故保持均衡双路纯向量检索为默认**。重新生成：`python3 src/eval_hybrid.py`
@@ -173,7 +223,7 @@ Nutri-RAG 是 **MetaNutri** 生态的 LLM 研究模块：
 
 - **MetaNutri** — 全栈精准营养平台（[仓库](https://github.com/ElijahZhao/MetaNutri---AI-) · [演示](https://meta-nutri-ai.vercel.app/)）
 - **MetaNutri-Ai-ppgr-predictor** — 餐后 2 小时血糖预测（[仓库](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) · [演示](https://metanutri-ai-ppgr-predictor.streamlit.app/)）
-- **Nutri-RAG**（本仓库）— 基于 RAG 的健康饮食问答
+- **Nutri-RAG**（本仓库）— 基于 RAG 的健康饮食问答，也是 **NutriQA** 论文的研究母仓（[预印本](https://doi.org/10.21203/rs.3.rs-11565315/v1)）
 
 ## ❓ 常见问题
 
@@ -185,12 +235,22 @@ Nutri-RAG 是 **MetaNutri** 生态的 LLM 研究模块：
 
 面向申请者与面试官：如何讲好 Nutri-RAG 的故事——一句话简介、PS 段落、简历 bullet、三仓生态叙事与面试 Q&A → [`docs/portfolio-narrative.md`](docs/portfolio-narrative.md)。
 
+## 📌 引用方式
+
+若使用本仓库或其评测基准，请引用预印本：
+
+> Zhao, Y. (2026). *NutriQA: A Traceable RAG Question-Answering Benchmark and Empirical Study on Official Chinese Nutrition Data*. Research Square. DOI: [10.21203/rs.3.rs-11565315/v1](https://doi.org/10.21203/rs.3.rs-11565315/v1) · CC BY 4.0
+
+机器可读格式见 [`CITATION.cff`](CITATION.cff)。复现方式：`git checkout v1.0.1`——数据、代码、证据链、论文图与论文文件都已固定在该标签。
+
 ## 📄 开源协议
 
 [MIT](LICENSE) —— 与 MetaNutri 生态（MetaNutri 与 MetaNutri-Ai-ppgr-predictor）保持一致。
+本仓库的代码与数据为 MIT；预印本及其图片为 CC BY 4.0。
 
 ## 📝 更新日志
 
+- **v0.7** — 发表：NutriQA 预印本已在 Research Square 上线（DOI [10.21203/rs.3.rs-11565315/v1](https://doi.org/10.21203/rs.3.rs-11565315/v1)，CC BY 4.0）；发布版 PDF 已收录于 `docs/paper/`；新增 `CITATION.cff`；标签 `v1.0.1` 固定数据、代码、证据链、论文图与论文文件；中文版评测数据同步至 NutriQA v1.0.0 基准
 - **v0.6** — 作品集与健壮性：作品集叙事指南、中英评测长图、论文机会备忘、API 异常兜底（不再崩溃页）
 - **v0.5** — 界面与国际化：英文界面、流式输出、暖色主题、四区块评测面板、8 个英文示例问题（4×2）
 - **v0.4** — 研究增强套件：拒答评测（10 条资料外问题）、9 组超参数消融、混合检索对比、失败归因（6 条无 RAG 案例）

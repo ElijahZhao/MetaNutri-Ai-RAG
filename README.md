@@ -8,6 +8,7 @@
 
 **Health-diet Q&A via Retrieval-Augmented Generation** — the LLM research module of the MetaNutri ecosystem
 
+[![DOI](https://img.shields.io/badge/DOI-10.21203%2Frs.3.rs--11565315%2Fv1-0ea5e9?style=for-the-badge)](https://doi.org/10.21203/rs.3.rs-11565315/v1)
 [![Online Demo](https://img.shields.io/badge/Streamlit-Online%20Demo-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
 [![CI](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml)
 [![License](https://img.shields.io/github/license/ElijahZhao/MetaNutri-Ai-RAG?color=8b5cf6)](LICENSE)
@@ -19,6 +20,25 @@
 </div>
 
 **Nutri-RAG** is a research-grade RAG application that answers health-diet questions grounded in official Chinese nutrition data: the *China Food Composition Tables* (325 foods × 32 nutrients) and the *Dietary Guidelines for Chinese Residents (2022)* (8 principles + detailed practices).
+
+## 📄 Preprint
+
+> **NutriQA: A Traceable RAG Question-Answering Benchmark and Empirical Study on Official Chinese Nutrition Data**
+>
+> Yulin Zhao · *Research Square* · v1 · 2 November 2026 · **CC BY 4.0**
+>
+> **DOI** [`10.21203/rs.3.rs-11565315/v1`](https://doi.org/10.21203/rs.3.rs-11565315/v1) · **Read** [on Research Square](https://doi.org/10.21203/rs.3.rs-11565315/v1) · **PDF** [published version in this repo](docs/paper/NutriQA-paper-researchsquare-v1.pdf)
+
+This repository is the research home of the NutriQA paper: the 200-item benchmark, the evaluation
+scripts, the figures and the manuscript all live here — [`docs/paper/`](docs/paper/) ·
+[`docs/figures/`](docs/figures/) · source [`NutriQA-paper.md`](docs/paper/NutriQA-paper.md) ·
+中文稿 [`NutriQA-paper-zh.md`](docs/paper/NutriQA-paper-zh.md).
+
+**Headline results** (all regenerated from `data/eval_report*.json` / `data/refusal_report*.json`):
+hybrid retrieval reaches 160/160 hits at `top_k=8`; RAG lifts gold coverage from ~0.76 to 0.96–0.99;
+bare LLMs fabricate numeric values for **100%** of out-of-KB boundary items while RAG refusal suppresses
+that to ~0–2.5%; deterministic judgment rules agree with human annotation at **0.949**, against **0.846**
+for a generic LLM judge.
 
 ## ✨ Highlights
 
@@ -124,7 +144,7 @@ For deployment on Streamlit Community Cloud: set `DASHSCOPE_API_KEY` in **Advanc
 
 ## 📊 Evaluation
 
-**Current benchmark (NutriQA v1.0.0)** — 200 items (composition 60 / guideline 50 / special 50 / refusal 40), hybrid retrieval (BM25 char-bigram + vector RRF, top_k=8), KB = 344 docs (325 foods + 19 guideline chunks), three commercial models. All numbers below are regenerated from `data/eval_report*.json` / `data/refusal_report*.json`; see the NutriQA paper (title page + `docs/figures`, pinned at tag v1.0.0).
+**Current benchmark (NutriQA v1.0.0)** — 200 items (composition 60 / guideline 50 / special 50 / refusal 40), hybrid retrieval (BM25 char-bigram + vector RRF, top_k=8), KB = 344 docs (325 foods + 19 guideline chunks), three commercial models. All numbers below are regenerated from `data/eval_report*.json` / `data/refusal_report*.json`; see the NutriQA paper (title page + `docs/figures`, pinned at tag v1.0.1; data, code and the full evidence trail are at v1.0.0).
 
 Generation evaluation (160 items):
 
@@ -192,7 +212,7 @@ top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverag
 
 | Mode | Retrieval hit | Citation | Faithfulness |
 |---|---|---|---|
-| Vector (current default) | 100% | 100% | 100% |
+| Vector (default at the time) | 100% | 100% | 100% |
 | Hybrid (BM25+vector) | 100% | 96% | 96% |
 
 No retrieval gain (pure vector is already saturated on this set), and the fused context occasionally induces out-of-range citation numbers — so **plain balanced two-path vector retrieval stays the default**. Regenerate: `python3 src/eval_hybrid.py`
@@ -214,7 +234,7 @@ Nutri-RAG is the LLM research module of the **MetaNutri** ecosystem:
 
 - **MetaNutri** — full-stack precision-nutrition platform ([repo](https://github.com/ElijahZhao/MetaNutri---AI-) · [demo](https://meta-nutri-ai.vercel.app/))
 - **MetaNutri-Ai-ppgr-predictor** — 2-hour postprandial glucose prediction ([repo](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) · [demo](https://metanutri-ai-ppgr-predictor.streamlit.app/))
-- **Nutri-RAG** (this repo) — health-diet Q&A via RAG
+- **Nutri-RAG** (this repo) — health-diet Q&A via RAG, and the research home of the **NutriQA** paper ([preprint](https://doi.org/10.21203/rs.3.rs-11565315/v1))
 
 ## ❓ FAQ
 
@@ -226,12 +246,23 @@ Nutri-RAG is the LLM research module of the **MetaNutri** ecosystem:
 
 For applicants & interviewers: how to tell the Nutri-RAG story — one-liner, PS paragraph, resume bullets, three-repo ecosystem narrative and interview Q&A → [`docs/portfolio-narrative.md`](docs/portfolio-narrative.md).
 
+## 📌 Citation
+
+If you use this repository or its benchmark, please cite the preprint:
+
+> Zhao, Y. (2026). *NutriQA: A Traceable RAG Question-Answering Benchmark and Empirical Study on Official Chinese Nutrition Data*. Research Square. DOI: [10.21203/rs.3.rs-11565315/v1](https://doi.org/10.21203/rs.3.rs-11565315/v1) · CC BY 4.0
+
+Machine-readable: [`CITATION.cff`](CITATION.cff). Reproduce with `git checkout v1.0.1` — data, code,
+the evidence trail, the figures and the paper files are all pinned at that tag.
+
 ## 📄 License
 
 [MIT](LICENSE) — consistent with the MetaNutri ecosystem (MetaNutri & MetaNutri-Ai-ppgr-predictor).
+The code and data in this repository are MIT; the preprint and its figures are CC BY 4.0.
 
 ## 📝 Changelog
 
+- **v0.7** — Publication: NutriQA preprint published on Research Square (DOI [10.21203/rs.3.rs-11565315/v1](https://doi.org/10.21203/rs.3.rs-11565315/v1), CC BY 4.0); published PDF added under `docs/paper/`; `CITATION.cff` added; tag `v1.0.1` pins data, code, evidence, figures and paper files
 - **v0.6** — Portfolio & robustness: portfolio narrative guide, EN/zh evaluation research screenshots, publication-opportunity memo, readable API-failure handling (no more crash page)
 - **v0.5** — UI & i18n: full English interface, streaming answers, warm theme, 4-block evaluation panel, 8 English example questions (4×2)
 - **v0.4** — Research suite: refusal evaluation (10 out-of-scope cases), 9-run hyper-parameter sweep, hybrid-retrieval comparison, failure attribution (6 no-RAG cases)

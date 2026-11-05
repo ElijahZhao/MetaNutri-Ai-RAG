@@ -54,7 +54,9 @@ I18N = {
         "pill_cite": "📚 引用溯源",
         "hint": "直接提问，或点示例试试 👇",
         "tab_chat": "💬 问答",
+        "tab_about": "📖 项目介绍",
         "tab_eval": "📊 评测结果",
+        "tab_label": "视图",
         "examples": ["高血压人群饮食上应该注意什么？", "每100克鸡蛋含多少蛋白质？",
                      "反式脂肪酸每天摄入量上限是多少？", "高尿酸人群能吃哪些豆制品？",
                      "每100克牛奶含多少钙？", "吃鸡蛋要不要弃蛋黄？"],
@@ -231,7 +233,9 @@ I18N = {
         "pill_cite": "📚 Citation Tracing",
         "hint": "Ask a question, or try an example 👇",
         "tab_chat": "💬 Chat",
+        "tab_about": "📖 About",
         "tab_eval": "📊 Evaluation",
+        "tab_label": "View",
         "examples": ["What should people with hypertension pay attention to in their diet?",
                      "How much protein is in 100g of eggs?",
                      "What is the daily upper limit for trans fatty acids?",
@@ -713,33 +717,44 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.markdown(f'<p class="chat-hint">{L["hint"]}</p>', unsafe_allow_html=True)
 
-st.markdown(L["about_body"])
-st.markdown("> " + L["cold_start"])
-with st.expander(L["faq_head"], expanded=False):
-    for q_key, a_key in (
-        ("faq_q1", "faq_a1"),
-        ("faq_q2", "faq_a2"),
-        ("faq_q3", "faq_a3"),
-    ):
-        st.markdown(f"**{L[q_key]}**")
-        st.markdown(L[a_key])
-    st.markdown(f"**{L['cite_head']}**")
-    st.markdown(L["cite_intro"])
-    st.code(L["cite_bib"], language="bibtex")
-    st.markdown(f"**{L['repro_head']}**")
-    st.markdown(L["repro_body"])
-    st.markdown(f"**{L['eco_head']}**")
-    st.markdown(L["eco_table"])
+# ------------------------------------------------------------------ custom tabs
+# session_state-driven views instead of st.tabs: chat history, streaming
+# answers and the input box live only inside the chat view, so switching to
+# the eval / about views shows a clean page (no input box, no leaked
+# conversation) and no view can push another one around.
+st.session_state.setdefault("tab", "chat")
+
+_TAB_LABELS = {
+    "chat": L["tab_chat"],
+    "about": L["tab_about"],
+    "eval": L["tab_eval"],
+}
+_TAB_OPTIONS = [_TAB_LABELS[k] for k in ("chat", "about", "eval")]
+# label -> key (labels are translated, so map back instead of comparing text)
+_LABEL_TO_KEY = {v: k for k, v in _TAB_LABELS.items()}
+
+# A language switch changes the option labels, which would leave the stored
+# widget value stale; re-seed it with the current view's label in the new
+# language before the widget is created.
+if st.session_state.get("tab_sel") not in _TAB_OPTIONS:
+    st.session_state["tab_sel"] = _TAB_LABELS[st.session_state.get("tab", "chat")]
+
+_tab_sel = st.segmented_control(
+    L["tab_label"],
+    _TAB_OPTIONS,
+    key="tab_sel",
+    label_visibility="collapsed",
+)
+# widget 值是权威：点击后 Streamlit 自带 rerun，这里直接取最新值
+tab_now = _LABEL_TO_KEY.get(_tab_sel, "chat")
+st.session_state["tab"] = tab_now
 
 
 @st.cache_resource
 def load_engine():
     return HybridRetriever(top_k=TOP_K), Generator()
 
-
-retriever, generator = load_engine()
 
 EXAMPLES = L["examples"]
 
@@ -784,24 +799,11 @@ def ask(question):
     conv["messages"].append({"role": "assistant", "content": answer})
 
 
-# ------------------------------------------------------------------ custom tabs
-# session_state-driven views instead of st.tabs: chat history, streaming
-# answers and the input box live only inside the chat view, so switching to
-# the eval view shows a clean page (no input box, no leaked conversation).
-st.session_state.setdefault("tab", "chat")
-
-_tab_sel = st.segmented_control(
-    "",
-    [L["tab_chat"], L["tab_eval"]],
-    default=L["tab_chat"] if st.session_state.tab == "chat" else L["tab_eval"],
-    key="tab_sel",
-    label_visibility="collapsed",
-)
-# widget 值是权威：点击后 Streamlit 自带 rerun，这里直接取最新值
-tab_now = "eval" if _tab_sel == L["tab_eval"] else "chat"
-st.session_state["tab"] = tab_now
-
 if tab_now == "chat":
+    # the retrieval engine is only needed by the chat view — loading it here
+    # keeps the other views independent of the model API
+    retriever, generator = load_engine()
+    st.markdown(f'<p class="chat-hint">{L["hint"]}</p>', unsafe_allow_html=True)
     conv = st.session_state.conversations[st.session_state.current_conv]
 
     for m in conv["messages"]:
@@ -817,6 +819,25 @@ if tab_now == "chat":
 
     if prompt := st.chat_input(L["input_ph"], key="main_chat_input"):
         ask(prompt)
+
+elif tab_now == "about":
+    st.markdown(L["about_body"])
+    st.markdown("> " + L["cold_start"])
+    with st.expander(L["faq_head"], expanded=False):
+        for q_key, a_key in (
+            ("faq_q1", "faq_a1"),
+            ("faq_q2", "faq_a2"),
+            ("faq_q3", "faq_a3"),
+        ):
+            st.markdown(f"**{L[q_key]}**")
+            st.markdown(L[a_key])
+        st.markdown(f"**{L['cite_head']}**")
+        st.markdown(L["cite_intro"])
+        st.code(L["cite_bib"], language="bibtex")
+        st.markdown(f"**{L['repro_head']}**")
+        st.markdown(L["repro_body"])
+        st.markdown(f"**{L['eco_head']}**")
+        st.markdown(L["eco_table"])
 
 else:
     st.markdown(f"#### {L['eval_title']}")

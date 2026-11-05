@@ -37,15 +37,19 @@ from src.config import TOP_K  # noqa: E402
 from src.generation import Generator, extract_citations  # noqa: E402
 from src.hybrid import HybridRetriever  # noqa: E402
 
-st.set_page_config(page_title="Nutri-RAG · 健康饮食问答", page_icon="🥗", layout="wide")
+st.set_page_config(
+    page_title="Nutri-RAG · 中文营养问答 Nutrition Q&A · MetaNutri",
+    page_icon="🥗",
+    layout="wide",
+)
 
 # ---------------------------------------------------------------- i18n texts
 I18N = {
     "zh": {
         "hero_title": "🥗 Nutri-RAG · 健康饮食问答",
         "hero_sub": "基于《中国居民膳食指南（2022）》与《中国食物成分表》的检索增强生成（RAG）演示",
-        "pill_kb": "🧩 342 知识切片",
-        "pill_eval": "🧪 50 条评测集",
+        "pill_kb": "🧩 344 知识切片",
+        "pill_eval": "🧪 NutriQA 200 题基准",
         "pill_dual": "🔀 均衡双路检索",
         "pill_cite": "📚 引用溯源",
         "hint": "直接提问，或点示例试试 👇",
@@ -56,8 +60,8 @@ I18N = {
                      "每100克牛奶含多少钙？", "吃鸡蛋要不要弃蛋黄？"],
         "input_ph": "请输入你的饮食营养问题（如：高尿酸人群能吃哪些豆制品？）",
         "side_data": "📦 数据规模",
-        "side_data_rows": ["325 种食物 × 32 项营养", "17 段指南 · 342 知识切片"],
-        "side_eval": "🎯 评测 · 50 条",
+        "side_data_rows": ["325 种食物 × 32 项营养", "19 段指南 · 344 知识切片"],
+        "side_eval": "🎯 评测 · 160 题",
         "side_hit": "命中 {} · 忠实 {}",
         "side_cite": "引用 {} · 消融 +{}",
         "side_norag": "无 RAG {} → RAG {}",
@@ -68,8 +72,81 @@ I18N = {
                  "https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor"),
                 ("Nutri-RAG", "本仓库 · RAG 健康饮食问答",
                  "https://github.com/ElijahZhao/MetaNutri-Ai-RAG"),
+                ("预印本①·PPGR 测量信度", "Research Square · CC BY 4.0",
+                 "https://doi.org/10.21203/rs.3.rs-11558064/v1"),
+                ("预印本②·NutriQA 基准", "Research Square · CC BY 4.0",
+                 "https://doi.org/10.21203/rs.3.rs-11565315/v1"),
                 ("在线演示", "就是本页面",
                  "https://metanutri-ai-rag-question-answering.streamlit.app/")],
+        "about_body": (
+            "**MetaNutri 生态**的独立研究仓：这个页面用检索增强生成（RAG）回答中文营养问题——"
+            "检索源是**《中国食物成分表》325 种食物 × 32 项营养**与"
+            "**《中国居民膳食指南（2022）》19 段**，共 **344 个知识切片**。\n\n"
+            "它同时是 **NutriQA 基准**的诞生地：**200 道可溯源题目**"
+            "（160 题生成评测 + 40 题拒答评测），跨 **qwen-plus / deepseek-chat / glm-5.3-flash** "
+            "三个模型对比，已作为预印本发表（Research Square，CC BY 4.0）。"
+            "评测明细与论文结论都摆在下方「评测结果」标签里。"
+        ),
+        "cold_start": (
+            "⏳ **第一次访问？** Streamlit 会把闲置应用转入休眠。若你看到“Zzzz”唤醒页，"
+            "请点击 **“Yes, get this app back up!”**，并等待约 30 秒——本页调用的是真实模型 API。"
+        ),
+        "faq_head": "📖 这个项目是什么——不读论文也能懂",
+        "faq_q1": "这个页面到底能做什么？",
+        "faq_a1": (
+            "你提问 → **混合检索**（BM25 字符 bigram + 向量，RRF 融合，top_k=8）从 344 个切片里"
+            "取回证据 → 生成带编号引用的回答，引用卡片可展开核对原文。"
+            "资料里没有的问题，它会明确说“资料未收录”，而不是编一个答案。"
+        ),
+        "faq_q2": "NutriQA 是什么？",
+        "faq_a2": (
+            "200 题的可溯源基准：**160 题生成评测**（成分 60 / 指南 50 / 特殊 50）"
+            "+ **40 题拒答评测**（资料外 15 / 知识库外 15 / 边界 10）。"
+            "题目、答案、判定规则与评分口径全部公开，原始评测报告 JSON 也一并入库。"
+        ),
+        "faq_q3": "我怎么核实这些结论？",
+        "faq_a3": (
+            "数据、代码与全部评测报告锁定在标签 `v1.0.0`；论文 PDF 与图在 `v1.0.1`。"
+            "边界子类的对照实验最狠：裸 LLM **100% 编造数值**，接入 RAG 后 **100% 正确拒答**——"
+            "这类反例都能在仓库里逐条复现。"
+        ),
+        "cite_head": "📌 引用方式",
+        "cite_intro": (
+            "预印本（Research Square，v1，2026-11-02，**CC BY 4.0**）："
+            "[`10.21203/rs.3.rs-11565315/v1`](https://doi.org/10.21203/rs.3.rs-11565315/v1)"
+        ),
+        "cite_bib": (
+            "@misc{zhao2026nutriqa,\n"
+            "  author       = {Yulin Zhao},\n"
+            "  title        = {NutriQA: A Traceable RAG Question-Answering Benchmark "
+            "and Empirical Study on Official Chinese Nutrition Data},\n"
+            "  year         = {2026},\n"
+            "  publisher    = {Research Square},\n"
+            "  doi          = {10.21203/rs.3.rs-11565315/v1},\n"
+            "  url          = {https://doi.org/10.21203/rs.3.rs-11565315/v1},\n"
+            "  note         = {Preprint, CC BY 4.0}\n"
+            "}"
+        ),
+        "repro_head": "🔁 复现锚点",
+        "repro_body": (
+            "数据、代码、题集与全部评测报告锁定在标签 "
+            "[`v1.0.0`](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/tree/v1.0.0)；"
+            "论文 PDF 与图在 "
+            "[`v1.0.1`](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/tree/v1.0.1)；"
+            "两个仓的评测均可一键重跑。"
+        ),
+        "eco_head": "🧭 MetaNutri 生态——三个仓库、两篇已发表论文",
+        "eco_table": (
+            "| 仓库 | 承载什么 | 论文 |\n|---|---|---|\n"
+            "| [`MetaNutri---AI-`](https://github.com/ElijahZhao/MetaNutri---AI-) | "
+            "主平台 + PPGR 研究模块（数据、流水线、结果） | "
+            "[`10.21203/rs.3.rs-11558064/v1`](https://doi.org/10.21203/rs.3.rs-11558064/v1) |\n"
+            "| [`MetaNutri-Ai-RAG`](https://github.com/ElijahZhao/MetaNutri-Ai-RAG) | "
+            "**本仓库**——中文营养检索管线 + NutriQA 200 题基准 | "
+            "[`10.21203/rs.3.rs-11565315/v1`](https://doi.org/10.21203/rs.3.rs-11565315/v1) |\n"
+            "| [`MetaNutri-Ai-ppgr-predictor`](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) | "
+            "部署壳：发布冻结模型做线上推理演示 | — |"
+        ),
         "new_conv": "➕ 新建对话",
         "rename_btn": "重命名",
         "pin_btn": "置顶",
@@ -126,15 +203,15 @@ I18N = {
         "x3_h_mdl": "模型", "x3_h_hit": "检索命中", "x3_h_faith": "忠实度", "x3_h_cite": "引用",
         "x3_h_gain": "RAG增益", "x3_h_rr": "RAG", "x3_h_rn": "无RAG", "x3_h_rs": "Strict",
         "x3_h_prot": "判定口径", "x3_h_agr": "一致率", "x3_h_fab": "编造率", "x3_h_ref": "拒答率",
-        "sweep_title": "🔬 超参数消融 · top-k × 相似度阈值（9 组 × 50 题）",
+        "sweep_title": "🔬 超参数消融 · top-k × 相似度阈值（9 组 × 50 题子集 · 历史实验）",
         "sweep_col": ["top-k", "阈值", "检索命中", "引用", "关键覆盖", "忠实度"],
-        "sweep_opt": "🏆 最优点：top-k = 5、不加阈值（全部 100%）—— 已设为默认",
-        "sweep_note": "top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发遗漏关键信息；阈值在 0.5 以下影响有限",
+        "sweep_opt": "🏆 最优点：top-k = 5、不加阈值（全部 100%）—— 当时的默认值；当前默认 top_k=8，与论文基准一致",
+        "sweep_note": "（50 题子集上的观察）top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发遗漏关键信息；阈值在 0.5 以下影响有限",
         "hyb_title": "🧪 混合检索对比 · BM25 + 向量（RRF 融合）",
         "hyb_col": ["模式", "检索命中", "引用", "忠实度"],
-        "hyb_vec": "纯向量（当前默认）",
-        "hyb_mix": "混合（BM25 + 向量）",
-        "hyb_note": "检索层无增益（纯向量已饱和），融合上下文偶发诱导越界引用编号 → 保持纯向量默认",
+        "hyb_vec": "纯向量（当时的默认）",
+        "hyb_mix": "混合（BM25 + 向量）· 现默认",
+        "hyb_note": "下表为 50 题子集上的历史对比；论文基准（NutriQA v1.0.0，top_k=8）采用混合检索 BM25 + 向量 RRF 融合，本页运行时同样使用混合检索",
         "ea_title": "🔍 消融失败案例 · 裸 LLM 为什么答错（6 条）",
         "ea_hint": "展开查看：同样的 50 题，无 RAG 时这 6 条被 LLM 答错/答偏",
         "ea_mode": "失败模式",
@@ -148,8 +225,8 @@ I18N = {
     "en": {
         "hero_title": "🥗 Nutri-RAG · Healthy Diet Q&A",
         "hero_sub": "Retrieval-Augmented Generation (RAG) demo powered by the Chinese Food Composition Tables and the 2022 Dietary Guidelines for Chinese Residents",
-        "pill_kb": "🧩 342 Knowledge Chunks",
-        "pill_eval": "🧪 50-Q Evaluation Set",
+        "pill_kb": "🧩 344 Knowledge Chunks",
+        "pill_eval": "🧪 NutriQA 200-Item Benchmark",
         "pill_dual": "🔀 Balanced Dual-Route Retrieval",
         "pill_cite": "📚 Citation Tracing",
         "hint": "Ask a question, or try an example 👇",
@@ -165,8 +242,8 @@ I18N = {
                      "How much protein is in 100g of pork tenderloin?"],
         "input_ph": "Ask a diet & nutrition question (e.g. which soy products can people with high uric acid eat?)",
         "side_data": "📦 Data",
-        "side_data_rows": ["325 foods × 32 nutrients", "17 guideline sections · 342 chunks"],
-        "side_eval": "🎯 Evaluation · 50 items",
+        "side_data_rows": ["325 foods × 32 nutrients", "19 guideline sections · 344 chunks"],
+        "side_eval": "🎯 Evaluation · 160 items",
         "side_hit": "Hit {} · Faithful {}",
         "side_cite": "Citation {} · Ablation +{}",
         "side_norag": "No-RAG {} → RAG {}",
@@ -177,8 +254,91 @@ I18N = {
                  "https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor"),
                 ("Nutri-RAG", "This repo · RAG diet Q&A",
                  "https://github.com/ElijahZhao/MetaNutri-Ai-RAG"),
+                ("Preprint ① · PPGR reliability", "Research Square · CC BY 4.0",
+                 "https://doi.org/10.21203/rs.3.rs-11558064/v1"),
+                ("Preprint ② · NutriQA", "Research Square · CC BY 4.0",
+                 "https://doi.org/10.21203/rs.3.rs-11565315/v1"),
                 ("Live demo", "This very page",
                  "https://metanutri-ai-rag-question-answering.streamlit.app/")],
+        "about_body": (
+            "This is the **independent research repository** of the MetaNutri ecosystem: a "
+            "retrieval-augmented generation (RAG) service answering Chinese nutrition "
+            "questions from the **Chinese Food Composition Tables** (325 foods × 32 nutrients) "
+            "and the **2022 Dietary Guidelines for Chinese Residents** (19 sections) — "
+            "**344 knowledge chunks** in total.\n\n"
+            "It is also where the **NutriQA benchmark** was born: **200 traceable questions** "
+            "(160 generation + 40 refusal) evaluated across **qwen-plus / deepseek-chat / "
+            "glm-5.3-flash**, published as a preprint (Research Square, CC BY 4.0). "
+            "The full evaluation and the paper's conclusions sit in the "
+            "“Evaluation Results” tab below."
+        ),
+        "cold_start": (
+            "⏳ **First visit?** Streamlit parks idle apps in a sleep state. If you saw a "
+            "“Zzzz” wake-up prompt, click **“Yes, get this app back up!”** and give it about "
+            "30 seconds — this page calls real model APIs."
+        ),
+        "faq_head": "📖 What this project is — plain answers, no paper required",
+        "faq_q1": "What can this page actually do?",
+        "faq_a1": (
+            "You ask → **hybrid retrieval** (BM25 character bigrams + vectors, fused by RRF, "
+            "top_k=8) pulls evidence out of the 344 chunks → the model answers with numbered "
+            "citations you can expand and check against the source text. When the knowledge "
+            "base has nothing, it says so instead of inventing an answer."
+        ),
+        "faq_q2": "What is NutriQA?",
+        "faq_a2": (
+            "A 200-question traceable benchmark: **160 generation questions** (composition 60 / "
+            "guideline 50 / special 50) plus **40 refusal questions** (off-topic 15 / "
+            "not-in-KB 15 / boundary 10). Questions, reference answers, judging rules and the "
+            "scoring protocol are all public, and the raw evaluation-report JSON ships too."
+        ),
+        "faq_q3": "How do I check the claims?",
+        "faq_a3": (
+            "Data, code, question sets and every evaluation report are pinned at tag "
+            "[`v1.0.0`](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/tree/v1.0.0); the paper "
+            "PDF and figures are in [`v1.0.1`](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/tree/v1.0.1). "
+            "The sharpest ablation is the boundary subclass: bare LLMs fabricate numbers "
+            "**100%** of the time, the RAG pipeline refuses correctly **100%** of the time — "
+            "and every one of those cases is reproducible from the repository."
+        ),
+        "cite_head": "📌 How to cite",
+        "cite_intro": (
+            "Preprint (Research Square, v1, 2 Nov 2026, **CC BY 4.0**): "
+            "[`10.21203/rs.3.rs-11565315/v1`](https://doi.org/10.21203/rs.3.rs-11565315/v1)"
+        ),
+        "cite_bib": (
+            "@misc{zhao2026nutriqa,\n"
+            "  author       = {Yulin Zhao},\n"
+            "  title        = {NutriQA: A Traceable RAG Question-Answering Benchmark "
+            "and Empirical Study on Official Chinese Nutrition Data},\n"
+            "  year         = {2026},\n"
+            "  publisher    = {Research Square},\n"
+            "  doi          = {10.21203/rs.3.rs-11565315/v1},\n"
+            "  url          = {https://doi.org/10.21203/rs.3.rs-11565315/v1},\n"
+            "  note         = {Preprint, CC BY 4.0}\n"
+            "}"
+        ),
+        "repro_head": "🔁 Reproducibility anchors",
+        "repro_body": (
+            "Data, code, question sets and every evaluation report are pinned at tag "
+            "[`v1.0.0`](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/tree/v1.0.0); the paper "
+            "PDF and figures are in "
+            "[`v1.0.1`](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/tree/v1.0.1). "
+            "Both evaluations re-run end to end from the repository."
+        ),
+        "eco_head": "🧭 The MetaNutri ecosystem — three repositories, two published papers",
+        "eco_table": (
+            "| Repository | What it holds | Paper |\n|---|---|---|\n"
+            "| [`MetaNutri---AI-`](https://github.com/ElijahZhao/MetaNutri---AI-) | "
+            "Main platform + the PPGR research module (data, pipeline, results) | "
+            "[`10.21203/rs.3.rs-11558064/v1`](https://doi.org/10.21203/rs.3.rs-11558064/v1) |\n"
+            "| [`MetaNutri-Ai-RAG`](https://github.com/ElijahZhao/MetaNutri-Ai-RAG) | "
+            "**This repository** — Chinese-nutrition retrieval pipeline + the 200-item "
+            "NutriQA benchmark | "
+            "[`10.21203/rs.3.rs-11565315/v1`](https://doi.org/10.21203/rs.3.rs-11565315/v1) |\n"
+            "| [`MetaNutri-Ai-ppgr-predictor`](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) | "
+            "Deployment shell — ships the frozen models as a live inference demo | — |"
+        ),
         "new_conv": "➕ New chat",
         "rename_btn": "Rename",
         "pin_btn": "Pin",
@@ -235,15 +395,15 @@ I18N = {
         "x3_h_mdl": "Model", "x3_h_hit": "Retrieval hit", "x3_h_faith": "Faithfulness", "x3_h_cite": "Citation",
         "x3_h_gain": "RAG gain", "x3_h_rr": "RAG", "x3_h_rn": "NoRAG", "x3_h_rs": "Strict",
         "x3_h_prot": "Protocol", "x3_h_agr": "Agreement", "x3_h_fab": "Fabrication", "x3_h_ref": "Refusal",
-        "sweep_title": "🔬 Hyper-parameter Sweep · top-k × similarity threshold (9 runs × 50 questions)",
+        "sweep_title": "🔬 Hyper-parameter Sweep · top-k × similarity threshold (9 runs × 50-question subset · historical)",
         "sweep_col": ["top-k", "Threshold", "Hit", "Citation", "Coverage", "Faithfulness"],
-        "sweep_opt": "🏆 Sweet spot: top-k = 5, no threshold (all 100%) — now the default",
-        "sweep_note": "top-k=3: 3 source chunks cannot fit in context; top-k=8: longer context, occasional omission; threshold negligible below 0.5",
+        "sweep_opt": "🏆 Sweet spot: top-k = 5, no threshold (all 100%) — the default at the time; the current default is top_k=8, matching the paper benchmark",
+        "sweep_note": "(observed on the 50-question subset) top-k=3: 3 source chunks cannot fit in context; top-k=8: longer context, occasional omission; threshold negligible below 0.5",
         "hyb_title": "🧪 Hybrid Retrieval Comparison · BM25 + vector (RRF fusion)",
         "hyb_col": ["Mode", "Hit", "Citation", "Faithfulness"],
-        "hyb_vec": "Vector only (current default)",
-        "hyb_mix": "Hybrid (BM25 + vector)",
-        "hyb_note": "No retrieval gain (pure vector already saturated); fused context occasionally induces out-of-range citations → keep vector default",
+        "hyb_vec": "Vector only (the default at the time)",
+        "hyb_mix": "Hybrid (BM25 + vector) — current default",
+        "hyb_note": "Historical comparison on a 50-question subset; the published benchmark (NutriQA v1.0.0, top_k=8) uses hybrid retrieval — BM25 + vector fused by RRF — which is what this page runs",
         "ea_title": "🔍 Ablation Failure Cases · Why the bare LLM misses (6 items)",
         "ea_hint": "Expand to compare no-RAG vs RAG answers on the 6 cases a bare LLM gets wrong",
         "ea_mode": "Failure mode",
@@ -554,6 +714,24 @@ st.markdown(
 )
 
 st.markdown(f'<p class="chat-hint">{L["hint"]}</p>', unsafe_allow_html=True)
+
+st.markdown(L["about_body"])
+st.markdown("> " + L["cold_start"])
+with st.expander(L["faq_head"], expanded=False):
+    for q_key, a_key in (
+        ("faq_q1", "faq_a1"),
+        ("faq_q2", "faq_a2"),
+        ("faq_q3", "faq_a3"),
+    ):
+        st.markdown(f"**{L[q_key]}**")
+        st.markdown(L[a_key])
+    st.markdown(f"**{L['cite_head']}**")
+    st.markdown(L["cite_intro"])
+    st.code(L["cite_bib"], language="bibtex")
+    st.markdown(f"**{L['repro_head']}**")
+    st.markdown(L["repro_body"])
+    st.markdown(f"**{L['eco_head']}**")
+    st.markdown(L["eco_table"])
 
 
 @st.cache_resource

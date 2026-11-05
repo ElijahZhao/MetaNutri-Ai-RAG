@@ -6,7 +6,7 @@
 
 # 🥗 Nutri-RAG
 
-**基于检索增强生成（RAG）的健康饮食问答** — MetaNutri 生态的 LLM 研究模块
+**基于检索增强生成（RAG）的健康饮食问答** — MetaNutri 生态的独立研究仓
 
 [![DOI](https://img.shields.io/badge/DOI-10.21203%2Frs.3.rs--11565315%2Fv1-0ea5e9?style=for-the-badge)](https://doi.org/10.21203/rs.3.rs-11565315/v1)
 [![在线演示](https://img.shields.io/badge/Streamlit-%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
@@ -195,7 +195,7 @@ RAG 拒答率 100% 说明：**检索 + 明确的知识库边界**才是防幻觉
 | 8 | 0.2–0.35 | 100% | 100% | 98% | 98% |
 | 8 | 0.5 | 100% | 100% | 100% | 100% |
 
-top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发遗漏关键信息使覆盖掉到 98%；阈值在 0.5 以下影响有限。**top-k=5 且不加阈值是最优点——已设为默认值**。完整表格：`data/sweep_report.json` · 重新生成：`python3 src/eval_sweep.py`
+top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发遗漏关键信息使覆盖掉到 98%；阈值在 0.5 以下影响有限。**top-k=5 且不加阈值是该子集上的最优点**——自 v1.0.0 基准起，当前默认是 `top_k=8` + 混合检索。完整表格：`data/sweep_report.json` · 重新生成：`python3 src/eval_sweep.py`
 
 **混合检索对比**（字符 bigram BM25 + 向量，RRF 融合）——50 题：
 
@@ -204,7 +204,7 @@ top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发�
 | 纯向量（当时的默认） | 100% | 100% | 100% |
 | 混合（BM25+向量） | 100% | 96% | 96% |
 
-检索层无增益（纯向量在本评测集上已饱和），且融合上下文偶发诱导越界引用编号——**故保持均衡双路纯向量检索为默认**。重新生成：`python3 src/eval_hybrid.py`
+在本子集上检索层无增益（纯向量已饱和），且融合上下文偶发诱导越界引用编号——**故纯向量是"当时的默认"**。v1.0.0 基准与当前运行的线上应用都使用**混合检索（BM25 + 向量，RRF，top_k=8）**。重新生成：`python3 src/eval_hybrid.py`
 
 ## 📚 数据来源
 
@@ -219,7 +219,7 @@ top-k=3 有 3 题源切片挤不进上下文；top-k=8 上下文过长、偶发�
 
 ## 🔗 生态关联
 
-Nutri-RAG 是 **MetaNutri** 生态的 LLM 研究模块：
+Nutri-RAG 是 **MetaNutri** 生态的独立研究仓：
 
 - **MetaNutri** — 全栈精准营养平台（[仓库](https://github.com/ElijahZhao/MetaNutri---AI-) · [演示](https://meta-nutri-ai.vercel.app/)）
 - **MetaNutri-Ai-ppgr-predictor** — 餐后 2 小时血糖预测（[仓库](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) · [演示](https://metanutri-ai-ppgr-predictor.streamlit.app/)）

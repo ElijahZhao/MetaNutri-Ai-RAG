@@ -6,7 +6,7 @@
 
 # 🥗 Nutri-RAG
 
-**Health-diet Q&A via Retrieval-Augmented Generation** — the LLM research module of the MetaNutri ecosystem
+**Health-diet Q&A via Retrieval-Augmented Generation** — an independent research repository in the MetaNutri ecosystem
 
 [![DOI](https://img.shields.io/badge/DOI-10.21203%2Frs.3.rs--11565315%2Fv1-0ea5e9?style=for-the-badge)](https://doi.org/10.21203/rs.3.rs-11565315/v1)
 [![Online Demo](https://img.shields.io/badge/Streamlit-Online%20Demo-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
@@ -19,7 +19,9 @@
 
 </div>
 
-**Nutri-RAG** is a research-grade RAG application that answers health-diet questions grounded in official Chinese nutrition data: the *China Food Composition Tables* (325 foods × 32 nutrients) and the *Dietary Guidelines for Chinese Residents (2022)* (8 principles + detailed practices).
+**Nutri-RAG** is a research-grade RAG application that answers health-diet questions grounded in official Chinese nutrition data: the *China Food Composition Tables* (325 foods × 32 nutrients) and the *Dietary Guidelines for Chinese Residents (2022)* (8 principles + detailed practices) — **344 knowledge chunks** in total. It is also where the **NutriQA** benchmark (200 traceable questions, three commercial models) was built.
+
+**Sibling repositories:** [`MetaNutri---AI-`](https://github.com/ElijahZhao/MetaNutri---AI-) — the full-stack platform and the PPGR research module, preprint [`10.21203/rs.3.rs-11558064/v1`](https://doi.org/10.21203/rs.3.rs-11558064/v1) · [`MetaNutri-Ai-ppgr-predictor`](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) — the deployment shell that ships the frozen PPGR models.
 
 ## 📄 Preprint
 
@@ -206,7 +208,7 @@ The 100% RAG refusal rate shows that *retrieval + an explicit knowledge-base bou
 | 8 | 0.2–0.35 | 100% | 100% | 98% | 98% |
 | 8 | 0.5 | 100% | 100% | 100% | 100% |
 
-top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverage (longer context, occasional omission), and the similarity threshold has little effect until 0.5. **top-k=5 with no threshold is the sweet spot** — and it is now the default. Full table: `data/sweep_report.json` · Regenerate: `python3 src/eval_sweep.py`
+top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverage (longer context, occasional omission), and the similarity threshold has little effect until 0.5. **top-k=5 with no threshold was the sweet spot on this subset** — the default since the v1.0.0 benchmark is `top_k=8` with hybrid retrieval. Full table: `data/sweep_report.json` · Regenerate: `python3 src/eval_sweep.py`
 
 **Hybrid retrieval comparison** (char-bigram BM25 + vector, RRF fusion) — 50 cases:
 
@@ -215,7 +217,7 @@ top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverag
 | Vector (default at the time) | 100% | 100% | 100% |
 | Hybrid (BM25+vector) | 100% | 96% | 96% |
 
-No retrieval gain (pure vector is already saturated on this set), and the fused context occasionally induces out-of-range citation numbers — so **plain balanced two-path vector retrieval stays the default**. Regenerate: `python3 src/eval_hybrid.py`
+No retrieval gain on this subset (pure vector is already saturated here), and the fused context occasionally induces out-of-range citation numbers — so vector-only was the default *at the time*. The v1.0.0 benchmark and the running app both use **hybrid retrieval (BM25 + vector, RRF, top_k=8)**. Regenerate: `python3 src/eval_hybrid.py`
 
 ## 📚 Data Sources
 

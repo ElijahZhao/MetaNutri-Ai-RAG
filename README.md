@@ -6,81 +6,45 @@
 
 # 🥗 Nutri-RAG
 
-**Health-diet Q&A via Retrieval-Augmented Generation** — an independent research repository in the MetaNutri ecosystem
+**Health-diet question answering via retrieval-augmented generation (RAG)** — an independent research repository in the MetaNutri ecosystem.
 
 [![DOI](https://img.shields.io/badge/DOI-10.21203%2Frs.3.rs--11565315%2Fv1-0ea5e9?style=for-the-badge)](https://doi.org/10.21203/rs.3.rs-11565315/v1)
-[![Online Demo](https://img.shields.io/badge/Streamlit-Online%20Demo-FF4B4B?logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
+[![Online Demo](https://img.shields.io/badge/Streamlit-Online%20Demo-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://metanutri-ai-rag-question-answering.streamlit.app/)
 [![CI](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml/badge.svg)](https://github.com/ElijahZhao/MetaNutri-Ai-RAG/actions/workflows/ci-gates.yml)
-[![License](https://img.shields.io/github/license/ElijahZhao/MetaNutri-Ai-RAG?color=8b5cf6)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)]()
-[![Vector DB](https://img.shields.io/badge/VectorDB-ChromaDB-4ea94b)]()
-[![LLM](https://img.shields.io/badge/LLM-qwen--plus-FF6B6B)]()
-[![Embedding](https://img.shields.io/badge/Embedding-text--embedding--v3-8b5cf6)]()
+[![License](https://img.shields.io/github/license/ElijahZhao/MetaNutri-Ai-RAG?style=for-the-badge&color=8b5cf6)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+
+**325 foods × 32 nutrients · 19 guideline sections · 344 knowledge chunks · NutriQA 200-item benchmark**
 
 </div>
 
-**Nutri-RAG** is a research-grade RAG application that answers health-diet questions grounded in official Chinese nutrition data: the *China Food Composition Tables* (325 foods × 32 nutrients) and the *Dietary Guidelines for Chinese Residents (2022)* (8 principles + detailed practices) — **344 knowledge chunks** in total. It is also where the **NutriQA** benchmark (200 traceable questions, three commercial models) was built.
-
-**Sibling repositories:** [`MetaNutri---AI-`](https://github.com/ElijahZhao/MetaNutri---AI-) — the full-stack platform and the PPGR research module, preprint [`10.21203/rs.3.rs-11558064/v1`](https://doi.org/10.21203/rs.3.rs-11558064/v1) · [`MetaNutri-Ai-ppgr-predictor`](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) — the deployment shell that ships the frozen PPGR models.
-
-## 📄 Preprint
-
-> **NutriQA: A Traceable RAG Question-Answering Benchmark and Empirical Study on Official Chinese Nutrition Data**
->
-> Yulin Zhao · *Research Square* · v1 · 2 November 2026 · **CC BY 4.0**
->
-> **DOI** [`10.21203/rs.3.rs-11565315/v1`](https://doi.org/10.21203/rs.3.rs-11565315/v1) · **Read** [on Research Square](https://doi.org/10.21203/rs.3.rs-11565315/v1) · **PDF** [published version in this repo](docs/paper/NutriQA-paper-researchsquare-v1.pdf)
-
-This repository is the research home of the NutriQA paper: the 200-item benchmark, the evaluation
-scripts, the figures and the manuscript all live here — [`docs/paper/`](docs/paper/) ·
-[`docs/figures/`](docs/figures/) · source [`NutriQA-paper.md`](docs/paper/NutriQA-paper.md) ·
-中文稿 [`NutriQA-paper-zh.md`](docs/paper/NutriQA-paper-zh.md).
-
-**Headline results** (all regenerated from `data/eval_report*.json` / `data/refusal_report*.json`):
-hybrid retrieval reaches 160/160 hits at `top_k=8`; RAG lifts gold coverage from ~0.76 to 0.96–0.99;
-bare LLMs fabricate numeric values for **100%** of out-of-KB boundary items while RAG refusal suppresses
-that to ~0–2.5%; deterministic judgment rules agree with human annotation at **0.949**, against **0.846**
-for a generic LLM judge.
+**Nutri-RAG** answers health-diet questions grounded in official Chinese nutrition data: the *China Food Composition Tables* (325 foods × 32 nutrients) and the *Dietary Guidelines for Chinese Residents (2022)* (8 principles plus detailed practice sections) — **344 knowledge chunks** in total. It is also where the **NutriQA** benchmark (200 traceable questions across three commercial models) was built.
 
 ## ✨ Highlights
 
-- **Balanced two-path retrieval** — food chunks and guideline chunks are queried separately with equal quota, so guideline recommendations are never squeezed out by 325 food chunks
-- **Citation-grounded answers** — every key claim carries a `[n]` reference to its source chunk, making answers fully traceable
-- **Built-in evaluation** — 200-item NutriQA benchmark (composition 60 / guideline 50 / special 50 / refusal 40) with no-RAG vs RAG ablation across 3 commercial models, regenerable with one command
-- **Reproducible data pipeline** — official data sources, scraper → clean → chunk → vector store, all scripted
-- **Lightweight deployment** — single-process Streamlit app on the free tier; vector store auto-restored from tarball
+- **Balanced two-path retrieval.** Food chunks and guideline chunks are retrieved separately with equal quota, so guideline recommendations are never crowded out by the 325 food chunks.
+- **Citation-grounded answers.** Every key claim carries a `[n]` reference to its source chunk, making the answer traceable and checkable.
+- **A real benchmark, not a demo.** The NutriQA 200-item set (composition 60 / guideline 50 / special 50 / refusal 40) supports no-RAG vs RAG ablation across three models and regenerates with one command.
+- **Reproducible data pipeline.** Official sources → scrape → clean → chunk → vector store, all scripted and versioned.
+- **Lightweight deployment.** A single-process Streamlit app on the free tier; the vector store is restored from a committed tarball when missing.
 
-## 🏗️ Architecture
+## 📸 Preview
 
-```mermaid
-flowchart TD
-    A["Official data sources<br/>China Food Composition Tables + Dietary Guidelines 2022"] --> B["Data pipeline<br/>scrape → clean → chunk"]
-    B --> C[("ChromaDB vector store<br/>344 slices")]
-    C --> D["Python RAG pipeline<br/>retrieval → context assembly → LLM → answer + citations"]
-    D --> E["Streamlit app<br/>chat UI + evaluation dashboard"]
-```
-
-## 🚀 Online Demo
-
-Try it live: **[metanutri-ai-rag-question-answering.streamlit.app](https://metanutri-ai-rag-question-answering.streamlit.app/)**
-
-Ask questions like *"高血压人群饮食上应该注意什么？"* or *"每100克鸡蛋含多少蛋白质？"* — every answer expands to its source citations for verification.
-
-## 🖼️ Screenshots
-
-| Chat · Chinese — every answer carries `[n]` citations | Chat · English — full i18n, answers follow the UI language |
+| Chat · Chinese — every answer carries `[n]` citations | Chat · English — answers follow the UI language |
 |---|---|
 | <img src="assets/screenshots/screenshot-chat-zh.png" width="100%" alt="Chat - Chinese" /> | <img src="assets/screenshots/screenshot-chat-en.png" width="100%" alt="Chat - English" /> |
 
-| Evaluation dashboard · 50-case coverage matrix (green = covered both ways, orange = RAG-only gain) | Evaluation research (full-page) · 50-case details, refusal, 9-run sweep, hybrid comparison, failure cases — the whole research chain on one page |
+| Evaluation page · Chinese UI — 160-item metrics and per-item coverage | Evaluation page · English UI |
 |---|---|
-| <img src="assets/screenshots/screenshot-eval-zh.png" width="100%" alt="Evaluation dashboard" /> | <img src="assets/screenshots/screenshot-eval-research-en.png" width="100%" alt="Evaluation research dashboard" /> |
+| <img src="assets/screenshots/screenshot-eval-zh.png" width="100%" alt="Evaluation page (Chinese UI)" /> | <img src="assets/screenshots/screenshot-eval-research-en.png" width="100%" alt="Evaluation page (English UI)" /> |
 
-## 📊 Paper figures (NutriQA)
+Live demo: <https://metanutri-ai-rag-question-answering.streamlit.app/>
 
-Figures from the *NutriQA* paper (git tag `v1.0.0`), regenerable with `docs/figures/make_figures.py` (data read from `data/eval_report*.json` / `data/refusal_report*.json`):
+### Paper figures (NutriQA)
 
-| Fig 1 · NutriQA evaluation pipeline | Fig 2 · RQ1 retrieval ablation (hit rate) |
+Regenerated with [`docs/figures/make_figures.py`](docs/figures/make_figures.py) from `data/eval_report*.json` / `data/refusal_report*.json`:
+
+| Fig 1 · Evaluation pipeline | Fig 2 · RQ1 retrieval ablation |
 |---|---|
 | <img src="docs/figures/fig1_pipeline.png" width="100%" alt="Fig 1 - pipeline" /> | <img src="docs/figures/fig2_retrieval_ablation.png" width="100%" alt="Fig 2 - retrieval ablation" /> |
 
@@ -92,48 +56,52 @@ Figures from the *NutriQA* paper (git tag `v1.0.0`), regenerable with `docs/figu
 |---|---|
 | <img src="docs/figures/fig5_judge_agreement.png" width="100%" alt="Fig 5 - judge agreement" /> | <img src="docs/figures/fig6_boundary_hallucination.png" width="100%" alt="Fig 6 - boundary hallucination" /> |
 
-## ⚡ Quick Start
+## 🚀 Quick start
 
 ```bash
 git clone https://github.com/ElijahZhao/MetaNutri-Ai-RAG.git
 cd MetaNutri-Ai-RAG
 pip install -r requirements.txt
 
-# configure your Alibaba Bailian API key in .env:
+# Put your Alibaba Bailian key in .env:
 #   DASHSCOPE_API_KEY=sk-...
 
-# optional: rebuild the vector store (auto-restored from data/chroma_db.tar.gz if missing)
+# Optional: rebuild the vector store (auto-restored from data/chroma_db.tar.gz if missing)
 python3 src/kb.py --rebuild
 
 streamlit run app.py
 ```
 
-For deployment on Streamlit Community Cloud: set `DASHSCOPE_API_KEY` in **Advanced settings → Secrets** (TOML format), as shown in `.streamlit/secrets.toml.example`.
+On Streamlit Community Cloud, set `DASHSCOPE_API_KEY` under **Advanced settings → Secrets** (TOML), as shown in `.streamlit/secrets.toml.example`.
 
-## 📁 Structure
+## 📁 Project structure
 
 ```
-├── app.py                  # Streamlit demo: chat + citations + eval dashboard
+├── app.py                  # Streamlit demo: chat + citations + evaluation dashboard
 ├── src/
 │   ├── config.py           # pipeline configuration
 │   ├── retrieval.py        # balanced two-path retrieval (food + guideline)
+│   ├── hybrid.py           # BM25 char-bigram + vector RRF fusion
 │   ├── generation.py       # context assembly + LLM answer with [n] citations
-│   ├── kb.py               # vector store build/rebuild (ChromaDB)
-│   └── evaluation.py       # 160-case eval + no-RAG vs RAG ablation (HybridRetriever)
+│   ├── kb.py               # ChromaDB build / rebuild
+│   ├── evaluation.py       # 160-item generation eval + no-RAG vs RAG ablation
+│   ├── eval_refusal.py     # 40-item refusal evaluation
+│   ├── eval_sweep.py       # hyper-parameter sweep (9 runs)
+│   └── eval_hybrid.py      # hybrid vs vector comparison
 ├── data/
-│   ├── fetch_*.py          # data collection scripts (official sources)
-│   ├── build_kb_texts.py   # chunking
-│   ├── build_eval_set.py   # eval set generation
-│   ├── eval_questions.json # 160-case eval set
-│   ├── eval_report.json    # latest evaluation report
+│   ├── fetch_*.py          # official-source collection scripts
+│   ├── build_kb_texts.py   # chunking: 325 food + 19 guideline chunks
+│   ├── build_eval_set.py   # benchmark generation
+│   ├── eval_questions.json # 160-item generation set
 │   ├── kb_foods.txt        # 325 food chunks
 │   ├── kb_guidelines.txt   # 19 guideline chunks
-│   ├── chroma_db.tar.gz    # vector store backup (344 slices)
-│   └── SOURCES.md          # data provenance registry
+│   ├── chroma_db.tar.gz    # vector store backup (344 chunks)
+│   └── SOURCES.md          # provenance registry
+├── docs/                   # paper, figures, benchmark spec, error analysis
 └── requirements.txt
 ```
 
-## 🧰 Tech Stack
+## 🛠️ Tech stack
 
 | Component | Choice |
 |---|---|
@@ -142,22 +110,79 @@ For deployment on Streamlit Community Cloud: set `DASHSCOPE_API_KEY` in **Advanc
 | Vector store | ChromaDB (embedded, file-based) |
 | Embedding | `text-embedding-v3` (Alibaba DashScope) |
 | LLM | `qwen-plus` (OpenAI-compatible endpoint) |
-| Eval | NutriQA benchmark (200 items) — see [`docs/eval-benchmark-spec.md`](docs/eval-benchmark-spec.md) |
+| Retrieval | BM25 char-bigram + vector, RRF fusion, `top_k=8` |
+| Evaluation | NutriQA 200 items (160 generation + 40 refusal), three models |
+
+## ❓ FAQ
+
+<details>
+<summary><strong>Why not a full-stack app?</strong></summary>
+
+The research contribution here is the retrieval pipeline, citation grounding and evaluation. Full-stack engineering is demonstrated by the sibling MetaNutri platform.
+</details>
+
+<details>
+<summary><strong>Where does the data come from?</strong></summary>
+
+Official public sources only: the China Food Composition Tables (China CDC) and the 2022 Dietary Guidelines (Chinese Nutrition Society). Every processing step is scripted — see [`data/SOURCES.md`](data/SOURCES.md).
+</details>
+
+<details>
+<summary><strong>What does it cost to run?</strong></summary>
+
+Near zero: all heavy computation is on the API side, and the free Streamlit tier is sufficient.
+</details>
+
+<details>
+<summary><strong>How do I reproduce the tables?</strong></summary>
+
+`git checkout v1.0.1` pins the paper, data, code and figures. Then run `python3 src/evaluation.py`, `python3 src/eval_refusal.py`, `python3 src/eval_sweep.py` and `python3 src/eval_hybrid.py`.
+</details>
+
+## 📝 Changelog
+
+- **v0.7** — Publication: NutriQA preprint on Research Square (DOI `10.21203/rs.3.rs-11565315/v1`, CC BY 4.0); PDF added under `docs/paper/`; `CITATION.cff` added; tag `v1.0.1` pins data, code, evidence, figures and paper files.
+- **v0.6** — Portfolio and robustness: narrative guide, EN/ZH evaluation screenshots, publication memo, readable API-failure handling.
+- **v0.5** — UI and i18n: full English interface, streaming answers, warm theme, evaluation panel, 8 English example questions.
+- **v0.4** — Research suite: refusal evaluation, 9-run sweep, hybrid comparison, failure attribution.
+- **v0.3** — Streamlit demo (chat + citations + evaluation dashboard), deployed.
+- **v0.2** — RAG pipeline: balanced two-path retrieval, citation generation, 50-case eval + ablation.
+- **v0.1** — Data pipeline: 325 foods × 32 nutrients, 17 guideline chunks, 342-chunk vector store.
+
+## 📄 Preprint
+
+> **NutriQA: A Traceable RAG Question-Answering Benchmark and Empirical Study on Official Chinese Nutrition Data**
+>
+> Yulin Zhao · *Research Square* · v1 · 2 November 2026 · **CC BY 4.0**
+>
+> **DOI** [`10.21203/rs.3.rs-11565315/v1`](https://doi.org/10.21203/rs.3.rs-11565315/v1) · **PDF** [published version in this repository](docs/paper/NutriQA-paper-researchsquare-v1.pdf)
+
+The 200-item benchmark, evaluation scripts, figures and manuscripts all live here — [`docs/paper/`](docs/paper/) · [`docs/figures/`](docs/figures/) · [English source](docs/paper/NutriQA-paper.md) · [中文稿](docs/paper/NutriQA-paper-zh.md).
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart TD
+    A["Official data sources<br/>China Food Composition Tables + Dietary Guidelines 2022"] --> B["Data pipeline<br/>scrape → clean → chunk"]
+    B --> C[("ChromaDB vector store<br/>344 chunks")]
+    C --> D["RAG pipeline<br/>retrieval → context assembly → LLM → answer + citations"]
+    D --> E["Streamlit app<br/>chat UI + evaluation dashboard"]
+```
 
 ## 📊 Evaluation
 
-**Current benchmark (NutriQA v1.0.0)** — 200 items (composition 60 / guideline 50 / special 50 / refusal 40), hybrid retrieval (BM25 char-bigram + vector RRF, top_k=8), KB = 344 docs (325 foods + 19 guideline chunks), three commercial models. All numbers below are regenerated from `data/eval_report*.json` / `data/refusal_report*.json`; see the NutriQA paper (title page + `docs/figures`, pinned at tag v1.0.1; data, code and the full evidence trail are at v1.0.0).
+**Current benchmark (NutriQA v1.0.0 baseline)** — 200 items (composition 60 / guideline 50 / special 50 / refusal 40), hybrid retrieval (BM25 char-bigram + vector RRF, `top_k=8`), KB = 344 chunks (325 foods + 19 guideline sections), three commercial models. All numbers are regenerated from `data/eval_report*.json` / `data/refusal_report*.json`.
 
-Generation evaluation (160 items):
+### Generation evaluation (160 items)
 
 | Metric | qwen-plus | deepseek-chat | glm-5.3-flash |
 |---|---|---|---|
 | Retrieval hit rate | 1.0 | 1.0 | 1.0 |
 | Faithfulness | 0.9625 | **0.9938** | 0.9875 |
 | Gold cover (RAG → NoRAG) | 0.9625 → 0.7625 | 0.9938 → 0.7688 | 0.9875 → 0.7625 |
-| **RAG gain** | 0.20 | 0.225 | 0.225 |
+| RAG gain | 0.20 | 0.225 | 0.225 |
 
-Refusal evaluation (40 items):
+### Refusal evaluation (40 items)
 
 | Protocol | qwen-plus | deepseek-chat | glm-5.3-flash |
 |---|---|---|---|
@@ -165,109 +190,55 @@ Refusal evaluation (40 items):
 | NoRAG (bare LLM) | 0.0 | 0.0 | 0.025 |
 | Strict (refuse instruction) | 0.675 | 0.925 | 0.925 |
 
-Boundary hallucination (10 out-of-KB × numeric-bait items): bare LLMs fabricate numeric values **100%** across all three models; RAG refusal suppresses this to ~0–2.5%.
+**Boundary hallucination (10 out-of-KB numeric-bait items):** bare LLMs fabricate numeric values **100%** of the time across all three models; RAG refusal suppresses this to ~0–2.5%.
 
-Automated-judgment gate (stratified 40-item sample, 39 valid): deterministic rules–human **0.949**, LLM-judge–human 0.846, rules–LLM-judge 0.850.
+**Automated-judgment gate (stratified 40-item sample, 39 valid):** deterministic rules–human **0.949**, LLM-judge–human 0.846, rules–LLM-judge 0.850.
 
----
+### Historical 50-case baseline
 
-_Below: the historical 50-case baseline (superseded by the v1.0.0 benchmark above), then the earlier research extensions — refusal, hyper-parameter sweep, hybrid-retrieval comparison and failure attribution._
+<details>
+<summary>Superseded by the v1.0.0 benchmark — retained for the research record</summary>
 
-Offline evaluation on 50 hand-verified cases (20 composition / 15 guideline / 15 special; gold answers are real CSV values or verbatim guideline text — none hand-written), qwen-plus, 100 LLM calls total:
+Offline evaluation on 50 hand-verified cases (20 composition / 15 guideline / 15 special; gold answers are real CSV values or verbatim guideline text), qwen-plus, 100 LLM calls:
 
 | Metric | Score |
 |---|---|
-| Retrieval hit rate | **100%** (50/50) |
-| Generation faithfulness | **100%** (50/50) |
-| Citation rate | **100%** (50/50) |
-| Gold-info coverage, no-RAG → RAG | **88% → 100%** |
+| Retrieval hit rate | 100% (50/50) |
+| Generation faithfulness | 100% (50/50) |
+| Citation rate | 100% (50/50) |
+| Gold-info coverage, no-RAG → RAG | 88% → 100% |
 
-Per category — all three at **1.0** (retrieval hit & faithfulness). The ablation gap concentrates on corpus-specific values (e.g. milk calcium, lean pork protein, sweet potato energy) that a bare LLM cannot recall; RAG answers are additionally fully citation-traceable.
+Refusal evaluation: 10 out-of-scope questions — RAG 100% (10/10), bare LLM 0% (0/10), bare LLM with a "refuse" instruction 80% (8/10).
 
-Why the bare LLM misses exactly those cases (precision loss, regional-data mismatch, stance blending, framework mismatch): see [`docs/error-analysis.md`](docs/error-analysis.md).
+Hyper-parameter sweep: 9 configurations (`top_k` ∈ {3, 5, 8} × threshold ∈ {0.2, 0.35, 0.5}); `top_k=5` with no threshold was the best setting on this subset, while the v1.0.0 benchmark uses hybrid retrieval at `top_k=8`.
 
-Regenerate: `python3 src/evaluation.py`
+Hybrid vs vector on 50 cases: both reach 100% retrieval hit; hybrid shows 96% citation and faithfulness. No retrieval gain on this saturated subset, so vector-only was the default at the time.
 
-**Refusal evaluation (anti-hallucination)** — 10 out-of-scope questions (6 off-topic + 4 not-in-KB foods/scenarios): how often does the system refuse instead of fabricating?
+</details>
 
-| System | Refusal rate |
-|---|---|
-| **Nutri-RAG (RAG)** | **100%** (10/10) |
-| Bare LLM (no RAG) | 0% (0/10) — fabricates nutrition facts |
-| Bare LLM + "refuse" instruction | 80% (8/10) |
+## 📚 Data sources
 
-The 100% RAG refusal rate shows that *retrieval + an explicit knowledge-base boundary* — not prompting alone — is what prevents hallucination. Regenerate: `python3 src/eval_refusal.py`
+- **China Food Composition Tables** — National Institute for Nutrition and Health, China CDC (<https://nlc.chinanutri.cn/fq/>)
+- **Dietary Guidelines for Chinese Residents (2022)** — Chinese Nutrition Society (<http://dg.cnsoc.org/>)
 
-**Hyper-parameter sweep** — 9 configurations (top-k ∈ {3,5,8} × similarity threshold ∈ {0.2,0.35,0.5}) on the 50-case eval set (450 LLM calls):
-
-| top-k | threshold | Retrieval hit | Citation | Gold cover | Faithfulness |
-|---|---|---|---|---|---|
-| 3 | 0.2–0.5 | 94% | 100% | 100% | 100% |
-| **5** | **0.2–0.35** | **100%** | **100%** | **100%** | **100%** |
-| 5 | 0.5 | 100% | 96% | 100% | 96% |
-| 8 | 0.2–0.35 | 100% | 100% | 98% | 98% |
-| 8 | 0.5 | 100% | 100% | 100% | 100% |
-
-top-k=3 misses 3 cases (source chunks cannot fit), top-k=8 degrades gold coverage (longer context, occasional omission), and the similarity threshold has little effect until 0.5. **top-k=5 with no threshold was the sweet spot on this subset** — the default since the v1.0.0 benchmark is `top_k=8` with hybrid retrieval. Full table: `data/sweep_report.json` · Regenerate: `python3 src/eval_sweep.py`
-
-**Hybrid retrieval comparison** (char-bigram BM25 + vector, RRF fusion) — 50 cases:
-
-| Mode | Retrieval hit | Citation | Faithfulness |
-|---|---|---|---|
-| Vector (default at the time) | 100% | 100% | 100% |
-| Hybrid (BM25+vector) | 100% | 96% | 96% |
-
-No retrieval gain on this subset (pure vector is already saturated here), and the fused context occasionally induces out-of-range citation numbers — so vector-only was the default *at the time*. The v1.0.0 benchmark and the running app both use **hybrid retrieval (BM25 + vector, RRF, top_k=8)**. Regenerate: `python3 src/eval_hybrid.py`
-
-## 📚 Data Sources
-
-- **China Food Composition Tables** — National Institute for Nutrition and Health, China CDC ([nlc.chinanutri.cn](https://nlc.chinanutri.cn/fq/))
-- **Dietary Guidelines for Chinese Residents (2022)** — Chinese Nutrition Society ([dg.cnsoc.org](http://dg.cnsoc.org/))
-
-Full provenance, scraping scripts and rebuild instructions: [`data/SOURCES.md`](data/SOURCES.md)
-
-## ⚠️ Disclaimer
-
-This project is for research and educational demonstration only. It does not constitute medical advice. For health concerns, consult a licensed physician or registered dietitian.
+Full provenance, scraping scripts and rebuild instructions: [`data/SOURCES.md`](data/SOURCES.md).
 
 ## 🔗 Ecosystem
 
-Nutri-RAG is the LLM research module of the **MetaNutri** ecosystem:
-
 - **MetaNutri** — full-stack precision-nutrition platform ([repo](https://github.com/ElijahZhao/MetaNutri---AI-) · [demo](https://meta-nutri-ai.vercel.app/))
 - **MetaNutri-Ai-ppgr-predictor** — 2-hour postprandial glucose prediction ([repo](https://github.com/ElijahZhao/MetaNutri-Ai-ppgr-predictor) · [demo](https://metanutri-ai-ppgr-predictor.streamlit.app/))
-- **Nutri-RAG** (this repo) — health-diet Q&A via RAG, and the research home of the **NutriQA** paper ([preprint](https://doi.org/10.21203/rs.3.rs-11565315/v1))
-
-## ❓ FAQ
-
-- **Why not a full-stack app?** The RAG narrative lives in the retrieval pipeline, citation grounding and evaluation — full-stack engineering is already demonstrated by MetaNutri itself.
-- **Where does the data come from?** Official public sources only; every step is scripted and reproducible.
-- **What does it cost to run?** Near-zero: all heavy computation is on the API side; the free Streamlit tier is sufficient.
-
-## 🎓 Portfolio narrative
-
-For applicants & interviewers: how to tell the Nutri-RAG story — one-liner, PS paragraph, resume bullets, three-repo ecosystem narrative and interview Q&A → [`docs/portfolio-narrative.md`](docs/portfolio-narrative.md).
+- **Nutri-RAG** (this repository) — health-diet Q&A via RAG and the research home of NutriQA ([preprint](https://doi.org/10.21203/rs.3.rs-11565315/v1))
 
 ## 📌 Citation
 
-If you use this repository or its benchmark, please cite the preprint:
-
 > Zhao, Y. (2026). *NutriQA: A Traceable RAG Question-Answering Benchmark and Empirical Study on Official Chinese Nutrition Data*. Research Square. DOI: [10.21203/rs.3.rs-11565315/v1](https://doi.org/10.21203/rs.3.rs-11565315/v1) · CC BY 4.0
 
-Machine-readable: [`CITATION.cff`](CITATION.cff). Reproduce with `git checkout v1.0.1` — data, code,
-the evidence trail, the figures and the paper files are all pinned at that tag.
+Machine-readable: [`CITATION.cff`](CITATION.cff). Reproduce with `git checkout v1.0.1` — data, code, evidence, figures and paper files are pinned at that tag.
+
+## ⚠️ Disclaimer
+
+Research and educational demonstration only. Not medical advice. For health concerns, consult a licensed physician or registered dietitian.
 
 ## 📄 License
 
-[MIT](LICENSE) — consistent with the MetaNutri ecosystem (MetaNutri & MetaNutri-Ai-ppgr-predictor).
-The code and data in this repository are MIT; the preprint and its figures are CC BY 4.0.
-
-## 📝 Changelog
-
-- **v0.7** — Publication: NutriQA preprint published on Research Square (DOI [10.21203/rs.3.rs-11565315/v1](https://doi.org/10.21203/rs.3.rs-11565315/v1), CC BY 4.0); published PDF added under `docs/paper/`; `CITATION.cff` added; tag `v1.0.1` pins data, code, evidence, figures and paper files
-- **v0.6** — Portfolio & robustness: portfolio narrative guide, EN/zh evaluation research screenshots, publication-opportunity memo, readable API-failure handling (no more crash page)
-- **v0.5** — UI & i18n: full English interface, streaming answers, warm theme, 4-block evaluation panel, 8 English example questions (4×2)
-- **v0.4** — Research suite: refusal evaluation (10 out-of-scope cases), 9-run hyper-parameter sweep, hybrid-retrieval comparison, failure attribution (6 no-RAG cases)
-- **v0.3** — Streamlit demo (chat + citations + eval dashboard), deployed
-- **v0.2** — RAG pipeline: balanced two-path retrieval, generation with citations, 50-case eval + ablation
-- **v0.1** — Data pipeline: 325 foods × 32 nutrients, 17 guideline chunks, 342-chunk vector store
+Code and data in this repository are [MIT](LICENSE); the preprint and its figures are CC BY 4.0 — consistent with the MetaNutri ecosystem.
